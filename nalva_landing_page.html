@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NALVA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #fefefe;
+            font-weight: 300;
+            letter-spacing: -0.01em;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(254, 254, 254, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo svg {
+            width: 32px;
+            height: 32px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            color: #1a1a1a;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #666;
+            font-size: 15px;
+            font-weight: 400;
+            transition: color 0.2s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #1a1a1a;
+        }
+        
+        .cta-button {
+            background: #e6745c;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            background: #d86348;
+            transform: translateY(-1px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 120px;
+            background: linear-gradient(180deg, #fefefe 0%, #f8f6f3 100%);
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        
+        .hero-text h1 {
+            font-size: 56px;
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 32px;
+            color: #1a1a1a;
+            letter-spacing: -0.02em;
+        }
+        
+        .hero-text p {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 48px;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .btn-primary {
+            background: #e6745c;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary:hover {
+            background: #d86348;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(230, 116, 92, 0.3);
+        }
+        
+        .btn-secondary {
+            color: #666;
+            padding: 16px 32px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 400;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+        }
+        
+        .btn-secondary:hover {
+            color: #1a1a1a;
+            border-color: rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Process Diagram */
+        .process-diagram {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .process-circle {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: white;
+            border: 2px solid #f0f0f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+        
+        .process-circle:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .circle-1 { top: 50px; left: 50%; transform: translateX(-50%); }
+        .circle-2 { right: 50px; top: 50%; transform: translateY(-50%); }
+        .circle-3 { bottom: 50px; left: 50%; transform: translateX(-50%); }
+        .circle-4 { left: 50px; top: 50%; transform: translateY(-50%); }
+        
+        .center-logo {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border: 2px solid #e6745c;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 24px rgba(230, 116, 92, 0.15);
+        }
+        
+        .center-logo svg {
+            width: 40px;
+            height: 40px;
+        }
+        
+        /* Problem Section */
+        .problems {
+            padding: 120px 0;
+            background: white;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .section-header h2 {
+            font-size: 48px;
+            font-weight: 300;
+            color: #1a1a1a;
+            margin-bottom: 24px;
+            letter-spacing: -0.01em;
+        }
+        
+        .section-header p {
+            font-size: 18px;
+            color: #666;
+            font-weight: 300;
+        }
+        
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 48px;
+        }
+        
+        .problem-card {
+            text-align: center;
+            padding: 48px 32px;
+            background: white;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .problem-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+        }
+        
+        .problem-icon {
+            width: 56px;
+            height: 56px;
+            background: #f8f6f3;
+            border-radius: 16px;
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .problem-card h3 {
+            font-size: 20px;
+            font-weight: 500;
+            color: #1a1a1a;
+            margin-bottom: 16px;
+            line-height: 1.4;
+        }
+        
+        .problem-card p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            padding: 120px 0;
+            background: #f8f6f3;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 80px;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            padding: 48px 32px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pricing-card.featured {
+            border-color: #e6745c;
+            box-shadow: 0 16px 48px rgba(230, 116, 92, 0.15);
+        }
+        
+        .featured-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #e6745c;
+            color: white;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .plan-name {
+            font-size: 24px;
+            font-weight: 500;
+            color: #1a1a1a;
+            margin-bottom: 16px;
+        }
+        
+        .plan-price {
+            font-size: 48px;
+            font-weight: 300;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+        
+        .plan-price span {
+            font-size: 16px;
+            color: #666;
+            font-weight: 400;
+        }
+        
+        .plan-features {
+            list-style: none;
+            margin: 32px 0 48px;
+            text-align: left;
+        }
+        
+        .plan-features li {
+            padding: 8px 0;
+            font-size: 15px;
+            color: #666;
+            display: flex;
+            align-items: center;
+        }
+        
+        .plan-features li::before {
+            content: '✓';
+            color: #e6745c;
+            font-weight: 600;
+            margin-right: 12px;
+        }
+        
+        /* Testimonial */
+        .testimonial {
+            padding: 120px 0;
+            background: white;
+        }
+        
+        .testimonial-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        
+        .testimonial-text h3 {
+            font-size: 36px;
+            font-weight: 300;
+            line-height: 1.3;
+            color: #1a1a1a;
+            margin-bottom: 32px;
+            letter-spacing: -0.01em;
+        }
+        
+        .testimonial-author {
+            margin: 24px 0;
+        }
+        
+        .testimonial-author .company {
+            font-size: 16px;
+            font-weight: 500;
+            color: #e6745c;
+            margin-bottom: 4px;
+        }
+        
+        .testimonial-author .name {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .testimonial-quote {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.7;
+            font-weight: 300;
+            margin-bottom: 32px;
+        }
+        
+        .testimonial-image {
+            width: 200px;
+            height: 200px;
+            background: #f8f6f3;
+            border-radius: 20px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 120px 0;
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 48px;
+            font-weight: 300;
+            margin-bottom: 24px;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+        }
+        
+        .cta-section p {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 48px;
+            font-weight: 300;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 48px;
+            margin: 64px 0;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .feature-item {
+            text-align: center;
+        }
+        
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(230, 116, 92, 0.2);
+            border-radius: 16px;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .feature-item h4 {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .feature-item p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .btn-cta {
+            background: #e6745c;
+            color: white;
+            padding: 20px 48px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .btn-cta:hover {
+            background: #d86348;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(230, 116, 92, 0.4);
+        }
+        
+        /* Footer */
+        footer {
+            padding: 80px 0 40px;
+            background: #f8f6f3;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 80px;
+            margin-bottom: 48px;
+        }
+        
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .footer-brand svg {
+            width: 32px;
+            height: 32px;
+        }
+        
+        .footer-description {
+            font-size: 16px;
+            color: #666;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+        
+        .footer-column h4 {
+            font-size: 16px;
+            font-weight: 500;
+            color: #1a1a1a;
+            margin-bottom: 24px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column a {
+            color: #666;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 300;
+            transition: color 0.2s ease;
+        }
+        
+        .footer-column a:hover {
+            color: #1a1a1a;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            color: #999;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container { padding: 0 24px; }
+            .hero-content { grid-template-columns: 1fr; gap: 48px; }
+            .hero-text h1 { font-size: 40px; }
+            .problems-grid { grid-template-columns: 1fr; gap: 32px; }
+            .pricing-grid { grid-template-columns: 1fr; gap: 24px; }
+            .testimonial-content { grid-template-columns: 1fr; gap: 48px; }
+            .footer-content { grid-template-columns: 1fr; gap: 48px; }
+            .nav-links { display: none; }
+        }
+        
+        /* Smooth animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: all 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <svg viewBox="0 0 100 100">
+                    <g stroke="#e6745c" stroke-width="2" fill="none">
+                        <polygon points="50,10 80,30 80,70 50,90 20,70 20,30"/>
+                        <polygon points="50,20 70,35 70,65 50,80 30,65 30,35"/>
+                        <polygon points="50,30 60,40 60,60 50,70 40,60 40,40"/>
+                        <circle cx="50" cy="50" r="8" fill="#e6745c"/>
+                    </g>
+                </svg>
+                <span class="logo-text">NALVA</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">Nalvaとは</a></li>
+                <li><a href="#product">プロダクト</a></li>
+                <li><a href="#diagnosis">用途別診断</a></li>
+                <li><a href="#pricing">導入費用</a></li>
+            </ul>
+            <button class="cta-button">無料でお始めする</button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text fade-in">
+                    <h1>行動が変わる。<br>組織が進化する。<br>文化になる。</h1>
+                    <p>仕組みで行動を変え、習慣をつくり、文化を土台にした<br>DXを'定着'させる調査研究プラットフォーム。</p>
+                    <div class="hero-buttons">
+                        <button class="btn-primary">無料でお始めする</button>
+                        <a href="#" class="btn-secondary">デモを見る</a>
+                    </div>
+                </div>
+                <div class="process-diagram fade-in">
+                    <div class="process-circle circle-1">行動変革</div>
+                    <div class="process-circle circle-2">文化定着</div>
+                    <div class="process-circle circle-3">習慣化</div>
+                    <div class="process-circle circle-4">可視化</div>
+                    <div class="center-logo">
+                        <svg viewBox="0 0 100 100">
+                            <g stroke="#e6745c" stroke-width="3" fill="none">
+                                <polygon points="50,10 80,30 80,70 50,90 20,70 20,30"/>
+                                <polygon points="50,20 70,35 70,65 50,80 30,65 30,35"/>
+                                <circle cx="50" cy="50" r="12" fill="#e6745c"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problems Section -->
+    <section class="problems" id="about">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>なぜDXは定着しないのか？</h2>
+                <p>多くの企業が直面する3つの根本的な課題</p>
+            </div>
+            <div class="problems-grid">
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">
+                        <svg width="24" height="24" fill="#e6745c" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                    <h3>DXの閾値品質が<br>整わない</h3>
+                    <p>DXの推進会議は実施し続けているが、現場での共有が進んでいない状況が続いています。</p>
+                </div>
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">
+                        <svg width="24" height="24" fill="#e6745c" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <h3>構想が表現せず<br>続ける</h3>
+                    <p>会社に推進を行うとき、長期的で細かく支社目標を設定することが課題となっています。</p>
+                </div>
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">
+                        <svg width="24" height="24" fill="#e6745c" viewBox="0 0 24 24">
+                            <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zM4 18v-4h3v4h2v-7.5c0-1.1.9-2 2-2s2 .9 2 2V18h2v-4h3v4h2V8.5c0-1.1-.9-2-2-2h-1V4c0-1.11-.89-2-2-2s-2 .89-2 2v2.5H9V4c0-1.11-.89-2-2-2S5 2.89 5 4v2.5H4c-1.1 0-2 .9-2 2V18h2z"/>
+                        </svg>
+                    </div>
+                    <h3>社員が的確な対応に<br>関わらない</h3>
+                    <p>社員が目標達成のために、チェック体制や事例要求への配慮が不十分な状況です。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>プロダクト・料金プラン</h2>
+                <p>組織の規模と目的に合わせて選べる3つのプラン</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card fade-in">
+                    <h3 class="plan-name">ライト</h3>
+                    <div class="plan-price">29,800<span>円</span></div>
+                    <ul class="plan-features">
+                        <li>基本的な機能</li>
+                        <li>習慣の管理・継続支援</li>
+                        <li>基本レポート</li>
+                    </ul>
+                    <button class="btn-primary">導入を検討する</button>
+                </div>
+                <div class="pricing-card featured fade-in">
+                    <div class="featured-badge">おすすめ</div>
+                    <h3 class="plan-name">スタンダード</h3>
+                    <div class="plan-price">98,000<span>円</span></div>
+                    <ul class="plan-features">
+                        <li>全機能利用可能</li>
+                        <li>詳細分析レポート</li>
+                        <li>Slack連携対応</li>
+                        <li>専任サポート</li>
+                    </ul>
+                    <button class="btn-primary">導入を検討する</button>
+                </div>
+                <div class="pricing-card fade-in">
+                    <h3 class="plan-name">プロ</h3>
+                    <div class="plan-price">198,000<span>円〜</span></div>
+                    <ul class="plan-features">
+                        <li>エンタープライズ機能</li>
+                        <li>専任サポート</li>
+                        <li>カスタマイズ可能</li>
+                        <li>コンサルティング</li>
+                    </ul>
+                    <button class="btn-primary">導入を検討する</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="testimonial">
+        <div class="container">
+            <div class="testimonial-content">
+                <div class="testimonial-text fade-in">
+                    <h3>実施前後で社員の意識が変わり、自ら改善に力を注ぐように</h3>
+                    <div class="testimonial-author">
+                        <div class="company">株式会社テクノロジー</div>
+                        <div class="name">代表取締役 田中太郎様</div>
+                    </div>
+                    <div class="testimonial-quote">
+                        導入前は各部署での取り組みが統一されておらず、DXの進捗が見えない状況でした。
+                        Nalvaを導入してからは、社員一人ひとりの行動変化が可視化され、
+                        組織全体で改善に取り組む文化が根づいています。
+                    </div>
+                    <button class="btn-primary">事例をもっと見る</button>
+                </div>
+                <div class="testimonial-image fade-in">
+                    <svg width="80" height="80" fill="#e6745c" viewBox="0 0 24 24">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="fade-in">
+                <h2>DX定着診断レポートを<br>無料で作成いたします</h2>
+                <p>行動変容・習慣化・文化を土台にしたDXの定着度を測定し、<br>改善ポイントを明確にします</p>
+                
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" fill="#e6745c" viewBox="0 0 24 24">
+                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                            </svg>
+                        </div>
+                        <h4>完全無料</h4>
+                        <p>登録不要で今すぐ開始</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" fill="#e6745c" viewBox="0 0 24 24">
+                                <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
+                                <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                            </svg>
+                        </div>
+                        <h4>3分で完了</h4>
+                        <p>簡単な質問に答えるだけ</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" fill="#e6745c" viewBox="0 0 24 24">
+                                <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+                            </svg>
+                        </div>
+                        <h4>即時結果</h4>
+                        <p>診断結果をすぐに確認</p>
+                    </div>
+                </div>
+                
+                <a href="#" class="btn-cta">無料診断を始める</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="fade-in">
+                    <div class="footer-brand">
+                        <svg viewBox="0 0 100 100">
+                            <g stroke="#e6745c" stroke-width="2" fill="none">
+                                <polygon points="50,10 80,30 80,70 50,90 20,70 20,30"/>
+                                <polygon points="50,20 70,35 70,65 50,80 30,65 30,35"/>
+                                <polygon points="50,30 60,40 60,60 50,70 40,60 40,40"/>
+                                <circle cx="50" cy="50" r="8" fill="#e6745c"/>
+                            </g>
+                        </svg>
+                        <span class="logo-text">NALVA</span>
+                    </div>
+                    <p class="footer-description">
+                        DX定着支援プラットフォーム<br>
+                        組織の変革を習慣から始める
+                    </p>
+                </div>
+                <div class="footer-column fade-in">
+                    <h4>サービス</h4>
+                    <ul>
+                        <li><a href="#">Nalvaとは</a></li>
+                        <li><a href="#">プロダクト</a></li>
+                        <li><a href="#">用途別診断</a></li>
+                        <li><a href="#">導入費用</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column fade-in">
+                    <h4>サポート</h4>
+                    <ul>
+                        <li><a href="#">よくある質問</a></li>
+                        <li><a href="#">お問い合わせ</a></li>
+                        <li><a href="#">資料ダウンロード</a></li>
+                        <li><a href="#">ヘルプセンター</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column fade-in">
+                    <h4>会社情報</h4>
+                    <ul>
+                        <li><a href="#">運営会社</a></li>
+                        <li><a href="#">プライバシーポリシー</a></li>
+                        <li><a href="#">利用規約</a></li>
+                        <li><a href="#">セキュリティ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 NALVA. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(254, 254, 254, 0.95)';
+            } else {
+                header.style.background = 'rgba(254, 254, 254, 0.8)';
+            }
+        });
+    </script>
+</body>
+</html>
