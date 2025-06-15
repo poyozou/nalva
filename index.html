@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NALVA</title>
+    <title>5分で見える、失敗しないDXの始め方 | DX準備度診断ツール</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -56,8 +56,8 @@
         }
         
         .logo svg {
-            width: 32px;
-            height: 32px;
+            width: 40px;
+            height: 40px;
         }
         
         .logo-text {
@@ -173,8 +173,8 @@
             border-color: rgba(0, 0, 0, 0.2);
         }
         
-        /* Process Diagram */
-        .process-diagram {
+        /* Diagram */
+        .diagram-container {
             position: relative;
             width: 100%;
             height: 500px;
@@ -183,7 +183,7 @@
             justify-content: center;
         }
         
-        .process-circle {
+        .diagram-circle {
             position: absolute;
             width: 120px;
             height: 120px;
@@ -198,9 +198,11 @@
             color: #333;
             box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
             transition: all 0.3s ease;
+            text-align: center;
+            line-height: 1.4;
         }
         
-        .process-circle:hover {
+        .diagram-circle:hover {
             transform: translateY(-4px);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
@@ -210,7 +212,7 @@
         .circle-3 { bottom: 50px; left: 50%; transform: translateX(-50%); }
         .circle-4 { left: 50px; top: 50%; transform: translateY(-50%); }
         
-        .center-logo {
+        .center-icon {
             width: 80px;
             height: 80px;
             background: white;
@@ -222,14 +224,14 @@
             box-shadow: 0 4px 24px rgba(230, 116, 92, 0.15);
         }
         
-        .center-logo svg {
+        .center-icon svg {
             width: 40px;
             height: 40px;
         }
         
-        /* Problem Section */
-        .problems {
-            padding: 120px 0;
+        /* Trust Section */
+        .trust-indicators {
+            padding: 80px 0;
             background: white;
         }
         
@@ -250,6 +252,46 @@
             font-size: 18px;
             color: #666;
             font-weight: 300;
+        }
+        
+        .trust-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 48px;
+            margin-top: 80px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 48px 32px;
+            background: white;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: 300;
+            color: #1a1a1a;
+            margin-bottom: 16px;
+            line-height: 1;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-weight: 300;
+            font-size: 16px;
+        }
+        
+        /* Problems Section */
+        .problems {
+            padding: 120px 0;
+            background: #f8f6f3;
         }
         
         .problems-grid {
@@ -297,17 +339,49 @@
             font-weight: 300;
         }
         
+        /* Demo Section */
+        .demo-section {
+            padding: 120px 0;
+            background: white;
+        }
+        
+        .demo-mockup {
+            background: white;
+            border-radius: 20px;
+            padding: 48px;
+            margin-top: 80px;
+            border: 2px solid #f0f0f0;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.06);
+        }
+        
+        .progress-bar {
+            background: #f0f0f0;
+            height: 8px;
+            border-radius: 4px;
+            margin: 24px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: #e6745c;
+            height: 100%;
+            width: 60%;
+            border-radius: 4px;
+            animation: progress 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes progress {
+            0% { width: 30%; }
+            100% { width: 85%; }
+        }
+        
         /* Pricing Section */
         .pricing {
             padding: 120px 0;
             background: #f8f6f3;
-        }
-        
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-            margin-top: 80px;
         }
         
         .pricing-card {
@@ -317,17 +391,15 @@
             text-align: center;
             position: relative;
             transition: all 0.3s ease;
-            border: 2px solid transparent;
+            border: 2px solid #e6745c;
+            box-shadow: 0 16px 48px rgba(230, 116, 92, 0.15);
+            max-width: 500px;
+            margin: 80px auto 0;
         }
         
         .pricing-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.1);
-        }
-        
-        .pricing-card.featured {
-            border-color: #e6745c;
-            box-shadow: 0 16px 48px rgba(230, 116, 92, 0.15);
+            box-shadow: 0 24px 64px rgba(230, 116, 92, 0.2);
         }
         
         .featured-badge {
@@ -348,6 +420,7 @@
             font-weight: 500;
             color: #1a1a1a;
             margin-bottom: 16px;
+            margin-top: 16px;
         }
         
         .plan-price {
@@ -355,6 +428,7 @@
             font-weight: 300;
             color: #1a1a1a;
             margin-bottom: 8px;
+            line-height: 1;
         }
         
         .plan-price span {
@@ -384,72 +458,90 @@
             margin-right: 12px;
         }
         
-        /* Testimonial */
-        .testimonial {
-            padding: 120px 0;
+        /* Coming Soon Section */
+        .coming-soon {
             background: white;
+            padding: 100px 0;
+            text-align: center;
         }
         
-        .testimonial-content {
+        .coming-soon-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            margin-top: 80px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
-        .testimonial-text h3 {
+        .coming-soon-card {
+            background: white;
+            padding: 40px 32px;
+            border-radius: 16px;
+            border: 2px solid #f0f0f0;
+            opacity: 0.7;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .coming-soon-card:hover {
+            opacity: 1;
+            transform: translateY(-4px);
+        }
+        
+        .coming-soon-card::after {
+            content: 'Coming Soon';
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: #666;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .coming-soon-card h3 {
+            font-size: 20px;
+            font-weight: 500;
+            color: #1a1a1a;
+            margin-bottom: 16px;
+        }
+        
+        .coming-soon-card .price {
             font-size: 36px;
             font-weight: 300;
-            line-height: 1.3;
-            color: #1a1a1a;
-            margin-bottom: 32px;
-            letter-spacing: -0.01em;
+            color: #666;
+            margin: 20px 0;
         }
         
-        .testimonial-author {
-            margin: 24px 0;
-        }
-        
-        .testimonial-author .company {
-            font-size: 16px;
-            font-weight: 500;
-            color: #e6745c;
-            margin-bottom: 4px;
-        }
-        
-        .testimonial-author .name {
+        .coming-soon-card .price span {
             font-size: 14px;
+        }
+        
+        .coming-soon-card ul {
+            list-style: none;
+            text-align: left;
             color: #666;
+            margin-top: 24px;
         }
         
-        .testimonial-quote {
-            font-size: 18px;
-            color: #666;
-            line-height: 1.7;
-            font-weight: 300;
-            margin-bottom: 32px;
+        .coming-soon-card li {
+            padding: 6px 0;
+            font-size: 14px;
         }
         
-        .testimonial-image {
-            width: 200px;
-            height: 200px;
-            background: #f8f6f3;
-            border-radius: 20px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        /* CTA Section */
-        .cta-section {
+        /* Contact Section */
+        .contact {
             padding: 120px 0;
             background: #1a1a1a;
             color: white;
             text-align: center;
         }
         
-        .cta-section h2 {
+        .contact h2 {
             font-size: 48px;
             font-weight: 300;
             margin-bottom: 24px;
@@ -457,132 +549,75 @@
             letter-spacing: -0.01em;
         }
         
-        .cta-section p {
+        .contact p {
             font-size: 20px;
             color: rgba(255, 255, 255, 0.7);
             margin-bottom: 48px;
             font-weight: 300;
         }
         
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 48px;
-            margin: 64px 0;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+        .contact-form {
+            max-width: 600px;
+            margin: 60px auto 0;
         }
         
-        .feature-item {
-            text-align: center;
+        .form-group {
+            margin-bottom: 24px;
+            text-align: left;
         }
         
-        .feature-icon {
-            width: 56px;
-            height: 56px;
-            background: rgba(230, 116, 92, 0.2);
-            border-radius: 16px;
-            margin: 0 auto 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .feature-item h4 {
-            font-size: 16px;
-            font-weight: 500;
+        .form-group label {
+            display: block;
             margin-bottom: 8px;
+            font-weight: 400;
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.8);
         }
         
-        .feature-item p {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.6);
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 16px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            transition: all 0.3s ease;
+            font-family: inherit;
         }
         
-        .btn-cta {
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #e6745c;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .submit-button {
             background: #e6745c;
             color: white;
-            padding: 20px 48px;
+            padding: 18px 48px;
+            border: none;
             border-radius: 16px;
-            text-decoration: none;
             font-size: 18px;
             font-weight: 500;
+            cursor: pointer;
             transition: all 0.3s ease;
-            display: inline-block;
+            font-family: inherit;
         }
         
-        .btn-cta:hover {
+        .submit-button:hover {
             background: #d86348;
             transform: translateY(-2px);
             box-shadow: 0 12px 40px rgba(230, 116, 92, 0.4);
-        }
-        
-        /* Footer */
-        footer {
-            padding: 80px 0 40px;
-            background: #f8f6f3;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 80px;
-            margin-bottom: 48px;
-        }
-        
-        .footer-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-        
-        .footer-brand svg {
-            width: 32px;
-            height: 32px;
-        }
-        
-        .footer-description {
-            font-size: 16px;
-            color: #666;
-            font-weight: 300;
-            line-height: 1.6;
-        }
-        
-        .footer-column h4 {
-            font-size: 16px;
-            font-weight: 500;
-            color: #1a1a1a;
-            margin-bottom: 24px;
-        }
-        
-        .footer-column ul {
-            list-style: none;
-        }
-        
-        .footer-column li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-column a {
-            color: #666;
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 300;
-            transition: color 0.2s ease;
-        }
-        
-        .footer-column a:hover {
-            color: #1a1a1a;
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 32px;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-            color: #999;
-            font-size: 14px;
         }
         
         /* Responsive */
@@ -591,10 +626,11 @@
             .hero-content { grid-template-columns: 1fr; gap: 48px; }
             .hero-text h1 { font-size: 40px; }
             .problems-grid { grid-template-columns: 1fr; gap: 32px; }
-            .pricing-grid { grid-template-columns: 1fr; gap: 24px; }
-            .testimonial-content { grid-template-columns: 1fr; gap: 48px; }
-            .footer-content { grid-template-columns: 1fr; gap: 48px; }
+            .trust-stats { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+            .coming-soon-grid { grid-template-columns: 1fr; gap: 24px; }
             .nav-links { display: none; }
+            .section-header h2 { font-size: 36px; }
+            .contact h2 { font-size: 36px; }
         }
         
         /* Smooth animations */
@@ -623,15 +659,15 @@
                         <circle cx="50" cy="50" r="8" fill="#e6745c"/>
                     </g>
                 </svg>
-                <span class="logo-text">NALVA</span>
+                <span class="logo-text">DX診断</span>
             </div>
             <ul class="nav-links">
-                <li><a href="#about">Nalvaとは</a></li>
-                <li><a href="#product">プロダクト</a></li>
-                <li><a href="#diagnosis">用途別診断</a></li>
-                <li><a href="#pricing">導入費用</a></li>
+                <li><a href="#about">診断とは</a></li>
+                <li><a href="#demo">診断の流れ</a></li>
+                <li><a href="#pricing">料金プラン</a></li>
+                <li><a href="#contact">お問い合わせ</a></li>
             </ul>
-            <button class="cta-button">無料でお始めする</button>
+            <button class="cta-button">無料診断を始める</button>
         </nav>
     </header>
 
@@ -640,19 +676,19 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text fade-in">
-                    <h1>行動が変わる。<br>組織が進化する。<br>文化になる。</h1>
-                    <p>仕組みで行動を変え、習慣をつくり、文化を土台にした<br>DXを'定着'させる調査研究プラットフォーム。</p>
+                    <h1>5分で見える。<br>失敗しない。<br>DXの始め方。</h1>
+                    <p>組織のDX準備度を瞬時に診断し、<br>カスタマイズされた実装ロードマップで<br>確実な変革を実現します。</p>
                     <div class="hero-buttons">
-                        <button class="btn-primary">無料でお始めする</button>
-                        <a href="#" class="btn-secondary">デモを見る</a>
+                        <button class="btn-primary">無料診断を始める</button>
+                        <a href="#demo" class="btn-secondary">診断の流れを見る</a>
                     </div>
                 </div>
-                <div class="process-diagram fade-in">
-                    <div class="process-circle circle-1">行動変革</div>
-                    <div class="process-circle circle-2">文化定着</div>
-                    <div class="process-circle circle-3">習慣化</div>
-                    <div class="process-circle circle-4">可視化</div>
-                    <div class="center-logo">
+                <div class="diagram-container fade-in">
+                    <div class="diagram-circle circle-1">5分で<br>完了診断</div>
+                    <div class="diagram-circle circle-2">カスタム<br>ロードマップ</div>
+                    <div class="diagram-circle circle-3">失敗回避<br>チェック</div>
+                    <div class="diagram-circle circle-4">24時間<br>レポート</div>
+                    <div class="center-icon">
                         <svg viewBox="0 0 100 100">
                             <g stroke="#e6745c" stroke-width="3" fill="none">
                                 <polygon points="50,10 80,30 80,70 50,90 20,70 20,30"/>
@@ -666,11 +702,39 @@
         </div>
     </section>
 
+    <!-- Trust Section -->
+    <section class="trust-indicators">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>信頼できる診断ツール</h2>
+                <p>実績に基づく確かな診断システム</p>
+            </div>
+            <div class="trust-stats">
+                <div class="stat-item fade-in">
+                    <div class="stat-number">5分</div>
+                    <div class="stat-label">で完了する診断</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number">8項目</div>
+                    <div class="stat-label">の詳細分析</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number">24時間</div>
+                    <div class="stat-label">以内のレポート納期</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">カスタマイズ対応</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Problems Section -->
     <section class="problems" id="about">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>なぜDXは定着しないのか？</h2>
+                <h2>なぜDXは失敗するのか？</h2>
                 <p>多くの企業が直面する3つの根本的な課題</p>
             </div>
             <div class="problems-grid">
@@ -680,8 +744,8 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                         </svg>
                     </div>
-                    <h3>DXの閾値品質が<br>整わない</h3>
-                    <p>DXの推進会議は実施し続けているが、現場での共有が進んでいない状況が続いています。</p>
+                    <h3>準備不足で<br>始めてしまう</h3>
+                    <p>現状分析が不十分なまま、最新技術の導入だけに注力してしまい、組織の準備が整わない状況が続いています。</p>
                 </div>
                 <div class="problem-card fade-in">
                     <div class="problem-icon">
@@ -689,8 +753,8 @@
                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                         </svg>
                     </div>
-                    <h3>構想が表現せず<br>続ける</h3>
-                    <p>会社に推進を行うとき、長期的で細かく支社目標を設定することが課題となっています。</p>
+                    <h3>戦略が曖昧で<br>進まない</h3>
+                    <p>全社的なDX戦略を策定するものの、具体的な実装手順や優先順位が不明確で、現場での実行が進みません。</p>
                 </div>
                 <div class="problem-card fade-in">
                     <div class="problem-icon">
@@ -698,9 +762,55 @@
                             <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zM4 18v-4h3v4h2v-7.5c0-1.1.9-2 2-2s2 .9 2 2V18h2v-4h3v4h2V8.5c0-1.1-.9-2-2-2h-1V4c0-1.11-.89-2-2-2s-2 .89-2 2v2.5H9V4c0-1.11-.89-2-2-2S5 2.89 5 4v2.5H4c-1.1 0-2 .9-2 2V18h2z"/>
                         </svg>
                     </div>
-                    <h3>社員が的確な対応に<br>関わらない</h3>
-                    <p>社員が目標達成のために、チェック体制や事例要求への配慮が不十分な状況です。</p>
+                    <h3>組織の抵抗で<br>停滞する</h3>
+                    <p>社員の変化への抵抗感や既存業務の優先により、DXへの取り組みが後回しになり、定着しない状況です。</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="demo-section" id="demo">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>診断の流れ</h2>
+                <p>シンプルな質問に答えるだけで、詳細な分析レポートを即座にお届けします</p>
+            </div>
+            
+            <div class="demo-mockup fade-in">
+                <h3 style="margin-bottom: 24px; color: #1a1a1a; font-size: 20px; font-weight: 500;">DX準備度診断 - サンプル画面</h3>
+                
+                <div style="text-align: left; max-width: 500px; margin: 0 auto;">
+                    <p style="margin-bottom: 12px; font-weight: 500; color: #e6745c; font-size: 14px;">質問 3/8: 現在のIT活用状況について</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    
+                    <div style="background: #f8f6f3; padding: 32px; border-radius: 16px; margin: 24px 0;">
+                        <p style="margin-bottom: 24px; font-weight: 500; color: #1a1a1a; font-size: 16px;">貴社の現在のデジタル化レベルはどの程度ですか？</p>
+                        
+                        <label style="display: block; margin-bottom: 12px; cursor: pointer; padding: 16px; background: white; border-radius: 12px; border: 2px solid #f0f0f0; transition: all 0.2s; font-size: 15px; font-weight: 300;">
+                            <input type="radio" name="digital-level" style="margin-right: 12px;">
+                            基本的なPC・メール利用のみ
+                        </label>
+                        
+                        <label style="display: block; margin-bottom: 12px; cursor: pointer; padding: 16px; background: white; border-radius: 12px; border: 2px solid #e6745c; color: #e6745c; font-weight: 400; font-size: 15px;">
+                            <input type="radio" name="digital-level" style="margin-right: 12px;" checked>
+                            クラウドサービスを部分的に活用
+                        </label>
+                        
+                        <label style="display: block; margin-bottom: 20px; cursor: pointer; padding: 16px; background: white; border-radius: 12px; border: 2px solid #f0f0f0; font-size: 15px; font-weight: 300;">
+                            <input type="radio" name="digital-level" style="margin-right: 12px;">
+                            データ分析・自動化ツールを導入済み
+                        </label>
+                        
+                        <button style="background: #e6745c; color: white; padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; font-weight: 500; font-size: 14px;">次へ →</button>
+                    </div>
+                </div>
+                
+                <p style="color: #666; font-size: 14px; margin-top: 24px; text-align: center; font-weight: 300;">
+                    ※ 実際の診断では、より詳細な分析が行われます
+                </p>
             </div>
         </div>
     </section>
@@ -709,172 +819,159 @@
     <section class="pricing" id="pricing">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>プロダクト・料金プラン</h2>
-                <p>組織の規模と目的に合わせて選べる3つのプラン</p>
+                <h2>手の届く価格で本格診断</h2>
+                <p>月額29,800円で、高額なコンサルティングと同等の価値をご提供</p>
             </div>
-            <div class="pricing-grid">
-                <div class="pricing-card fade-in">
-                    <h3 class="plan-name">ライト</h3>
-                    <div class="plan-price">29,800<span>円</span></div>
-                    <ul class="plan-features">
-                        <li>基本的な機能</li>
-                        <li>習慣の管理・継続支援</li>
-                        <li>基本レポート</li>
-                    </ul>
-                    <button class="btn-primary">導入を検討する</button>
-                </div>
-                <div class="pricing-card featured fade-in">
-                    <div class="featured-badge">おすすめ</div>
-                    <h3 class="plan-name">スタンダード</h3>
-                    <div class="plan-price">98,000<span>円</span></div>
-                    <ul class="plan-features">
-                        <li>全機能利用可能</li>
-                        <li>詳細分析レポート</li>
-                        <li>Slack連携対応</li>
-                        <li>専任サポート</li>
-                    </ul>
-                    <button class="btn-primary">導入を検討する</button>
-                </div>
-                <div class="pricing-card fade-in">
-                    <h3 class="plan-name">プロ</h3>
-                    <div class="plan-price">198,000<span>円〜</span></div>
-                    <ul class="plan-features">
-                        <li>エンタープライズ機能</li>
-                        <li>専任サポート</li>
-                        <li>カスタマイズ可能</li>
-                        <li>コンサルティング</li>
-                    </ul>
-                    <button class="btn-primary">導入を検討する</button>
-                </div>
+            
+            <div class="pricing-card fade-in">
+                <div class="featured-badge">おすすめ</div>
+                <h3 class="plan-name">スタンダードプラン</h3>
+                <div class="plan-price">29,800<span>円/月</span></div>
+                
+                <ul class="plan-features">
+                    <li>月1回の詳細DX診断</li>
+                    <li>業界特化型分析レポート</li>
+                    <li>カスタム実装ロードマップ</li>
+                    <li>失敗リスク評価・回避策</li>
+                    <li>PDF・Excel形式でのレポート提供</li>
+                    <li>メール・チャットサポート</li>
+                    <li>月次進捗フォローアップ</li>
+                </ul>
+                
+                <button class="btn-primary">導入を検討する</button>
             </div>
         </div>
     </section>
 
-    <!-- Testimonial -->
-    <section class="testimonial">
+    <!-- Coming Soon Section -->
+    <section class="coming-soon">
         <div class="container">
-            <div class="testimonial-content">
-                <div class="testimonial-text fade-in">
-                    <h3>実施前後で社員の意識が変わり、自ら改善に力を注ぐように</h3>
-                    <div class="testimonial-author">
-                        <div class="company">株式会社テクノロジー</div>
-                        <div class="name">代表取締役 田中太郎様</div>
-                    </div>
-                    <div class="testimonial-quote">
-                        導入前は各部署での取り組みが統一されておらず、DXの進捗が見えない状況でした。
-                        Nalvaを導入してからは、社員一人ひとりの行動変化が可視化され、
-                        組織全体で改善に取り組む文化が根づいています。
-                    </div>
-                    <button class="btn-primary">事例をもっと見る</button>
+            <div class="section-header fade-in">
+                <h2>今後追加予定のプラン</h2>
+                <p>より多くの企業様のニーズにお応えするため、追加プランを準備中です</p>
+            </div>
+            
+            <div class="coming-soon-grid">
+                <div class="coming-soon-card fade-in">
+                    <h3>ライトプラン</h3>
+                    <div class="price">14,800<span>円/月</span></div>
+                    <ul>
+                        <li>✓ 基本診断機能</li>
+                        <li>✓ 簡易レポート</li>
+                        <li>✓ メールサポート</li>
+                    </ul>
                 </div>
-                <div class="testimonial-image fade-in">
-                    <svg width="80" height="80" fill="#e6745c" viewBox="0 0 24 24">
-                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                    </svg>
+                
+                <div class="coming-soon-card fade-in">
+                    <h3>プレミアムプラン</h3>
+                    <div class="price">59,800<span>円/月</span></div>
+                    <ul>
+                        <li>✓ 無制限診断・分析</li>
+                        <li>✓ AI駆動カスタム分析</li>
+                        <li>✓ 専門コンサルタント</li>
+                        <li>✓ 週次進捗レビュー</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
         <div class="container">
             <div class="fade-in">
-                <h2>DX定着診断レポートを<br>無料で作成いたします</h2>
-                <p>行動変容・習慣化・文化を土台にしたDXの定着度を測定し、<br>改善ポイントを明確にします</p>
+                <h2>まずは無料診断を<br>お試しください</h2>
+                <p>5分で完了する診断で、あなたの組織のDX可能性を発見してください</p>
                 
-                <div class="features-grid">
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <svg width="24" height="24" fill="#e6745c" viewBox="0 0 24 24">
-                                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-                            </svg>
-                        </div>
-                        <h4>完全無料</h4>
-                        <p>登録不要で今すぐ開始</p>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="company">会社名</label>
+                        <input type="text" id="company" name="company" placeholder="株式会社○○" required>
                     </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <svg width="24" height="24" fill="#e6745c" viewBox="0 0 24 24">
-                                <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
-                                <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
-                            </svg>
-                        </div>
-                        <h4>3分で完了</h4>
-                        <p>簡単な質問に答えるだけ</p>
+                    
+                    <div class="form-group">
+                        <label for="name">お名前</label>
+                        <input type="text" id="name" name="name" placeholder="山田 太郎" required>
                     </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <svg width="24" height="24" fill="#e6745c" viewBox="0 0 24 24">
-                                <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
-                            </svg>
-                        </div>
-                        <h4>即時結果</h4>
-                        <p>診断結果をすぐに確認</p>
+                    
+                    <div class="form-group">
+                        <label for="email">メールアドレス</label>
+                        <input type="email" id="email" name="email" placeholder="yamada@company.com" required>
                     </div>
-                </div>
+                    
+                    <div class="form-group">
+                        <label for="employees">従業員数</label>
+                        <select id="employees" name="employees" required style="color: rgba(255,255,255,0.5);">
+                            <option value="">選択してください</option>
+                            <option value="1-10" style="color: #1a1a1a;">1-10名</option>
+                            <option value="11-50" style="color: #1a1a1a;">11-50名</option>
+                            <option value="51-200" style="color: #1a1a1a;">51-200名</option>
+                            <option value="201-1000" style="color: #1a1a1a;">201-1000名</option>
+                            <option value="1000+" style="color: #1a1a1a;">1000名以上</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="submit-button">無料診断を開始する</button>
+                </form>
                 
-                <a href="#" class="btn-cta">無料診断を始める</a>
+                <p style="margin-top: 40px; font-size: 14px; color: rgba(255,255,255,0.6); font-weight: 300;">
+                    ※ 診断結果は24時間以内にお送りいたします。押し売りは一切いたしません。
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="fade-in">
-                    <div class="footer-brand">
-                        <svg viewBox="0 0 100 100">
-                            <g stroke="#e6745c" stroke-width="2" fill="none">
-                                <polygon points="50,10 80,30 80,70 50,90 20,70 20,30"/>
-                                <polygon points="50,20 70,35 70,65 50,80 30,65 30,35"/>
-                                <polygon points="50,30 60,40 60,60 50,70 40,60 40,40"/>
-                                <circle cx="50" cy="50" r="8" fill="#e6745c"/>
-                            </g>
-                        </svg>
-                        <span class="logo-text">NALVA</span>
-                    </div>
-                    <p class="footer-description">
-                        DX定着支援プラットフォーム<br>
-                        組織の変革を習慣から始める
-                    </p>
-                </div>
-                <div class="footer-column fade-in">
-                    <h4>サービス</h4>
-                    <ul>
-                        <li><a href="#">Nalvaとは</a></li>
-                        <li><a href="#">プロダクト</a></li>
-                        <li><a href="#">用途別診断</a></li>
-                        <li><a href="#">導入費用</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column fade-in">
-                    <h4>サポート</h4>
-                    <ul>
-                        <li><a href="#">よくある質問</a></li>
-                        <li><a href="#">お問い合わせ</a></li>
-                        <li><a href="#">資料ダウンロード</a></li>
-                        <li><a href="#">ヘルプセンター</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column fade-in">
-                    <h4>会社情報</h4>
-                    <ul>
-                        <li><a href="#">運営会社</a></li>
-                        <li><a href="#">プライバシーポリシー</a></li>
-                        <li><a href="#">利用規約</a></li>
-                        <li><a href="#">セキュリティ</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 NALVA. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
     <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handling
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitButton = this.querySelector('.submit-button');
+            const originalText = submitButton.textContent;
+            
+            submitButton.textContent = '送信中...';
+            submitButton.disabled = true;
+            submitButton.style.opacity = '0.7';
+            
+            setTimeout(() => {
+                alert('ありがとうございます！24時間以内に無料診断結果をお送りいたします。\n\nメールをご確認ください。');
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+                submitButton.style.opacity = '1';
+                this.reset();
+            }, 2000);
+        });
+
+        // Header CTA and pricing CTA handling
+        document.querySelectorAll('.cta-button, .btn-primary').forEach(button => {
+            button.addEventListener('click', function(e) {
+                if (this.textContent.includes('無料診断') || this.textContent.includes('導入を検討')) {
+                    e.preventDefault();
+                    document.querySelector('#company').scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                    setTimeout(() => {
+                        document.querySelector('#company').focus();
+                    }, 800);
+                }
+            });
+        });
+
         // Intersection Observer for fade-in animations
         const observerOptions = {
             threshold: 0.1,
@@ -892,20 +989,6 @@
         // Observe all fade-in elements
         document.querySelectorAll('.fade-in').forEach(el => {
             observer.observe(el);
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
         });
 
         // Header background on scroll
