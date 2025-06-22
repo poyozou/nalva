@@ -168,7 +168,7 @@
         }
         
         /* Mobile Menu */
-        .mobile-menu-toggle {
+         .mobile-menu-toggle {
             display: none;
             background: none;
             border: none;
@@ -176,36 +176,17 @@
             padding: 8px;
             flex-direction: column;
             gap: 4px;
-            position: relative;
-            width: 32px;
-            height: 32px;
-            justify-content: center;
-            align-items: center;
         }
         
         .hamburger-line {
-            width: 20px;
+            width: 24px;
             height: 2px;
             background: #666;
             transition: all 0.3s ease;
-            position: absolute;
-        }
-        
-        .hamburger-line:nth-child(1) {
-            top: 6px;
-        }
-        
-        .hamburger-line:nth-child(2) {
-            top: 15px;
-        }
-        
-        .hamburger-line:nth-child(3) {
-            top: 24px;
         }
         
         .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
-            top: 15px;
-            transform: rotate(45deg);
+            transform: rotate(45deg) translate(5px, 5px);
         }
         
         .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
@@ -213,8 +194,7 @@
         }
         
         .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
-            top: 15px;
-            transform: rotate(-45deg);
+            transform: rotate(-45deg) translate(7px, -6px);
         }
         
         .mobile-menu {
@@ -746,23 +726,25 @@
             /* モバイル版ナビゲーション配置 */
             nav {
                 justify-content: space-between;
-            }
-            
-            .logo {
-                order: 2;
-                position: absolute;
-                left: 50%;
-                transform: translateX(-50%);
+                align-items: center;
             }
             
             .mobile-menu-toggle {
                 order: 1;
+                flex-shrink: 0;
+            }
+            
+            .logo {
+                order: 2;
+                flex-shrink: 0;
+                margin-left: 16px;
             }
             
             .cta-button {
                 order: 3;
                 font-size: 12px;
                 padding: 8px 16px;
+                margin-left: auto;
             }
         }
         

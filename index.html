@@ -1040,23 +1040,25 @@
             /* モバイル版ナビゲーション配置 */
             nav {
                 justify-content: space-between;
-            }
-            
-            .logo {
-                order: 2;
-                position: absolute;
-                left: 50%;
-                transform: translateX(-50%);
+                align-items: center;
             }
             
             .mobile-menu-toggle {
                 order: 1;
+                flex-shrink: 0;
+            }
+            
+            .logo {
+                order: 2;
+                flex-shrink: 0;
+                margin-left: 16px;
             }
             
             .cta-button {
                 order: 3;
                 font-size: 12px;
                 padding: 8px 16px;
+                margin-left: auto;
             }
             
             .diagram-container {
