@@ -111,6 +111,156 @@
             color: #1a1a1a;
         }
         
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 250px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 16px 0;
+            z-index: 1000;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            margin-top: 0;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+            animation: fadeInDown 0.3s ease;
+        }
+        
+        .dropdown::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: -20px;
+            right: -20px;
+            height: 20px;
+            z-index: 999;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .dropdown-content a {
+            display: block;
+            padding: 12px 20px;
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+        
+        .dropdown-content a:hover {
+            background: #f8f6f3;
+            color: #e6745c;
+            border-left-color: #e6745c;
+        }
+        
+        .dropdown-arrow {
+            margin-left: 8px;
+            font-size: 12px;
+            transition: transform 0.2s ease;
+        }
+        
+        .dropdown:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            flex-direction: column;
+            gap: 4px;
+        }
+        
+        .hamburger-line {
+            width: 24px;
+            height: 2px;
+            background: #666;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+        
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 24px;
+        }
+        
+        .mobile-menu.active {
+            display: block;
+            animation: fadeInDown 0.3s ease;
+        }
+        
+        .mobile-menu a {
+            display: block;
+            padding: 16px 0;
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            font-weight: 400;
+            border-bottom: 1px solid #f0f0f0;
+            transition: color 0.2s ease;
+        }
+        
+        .mobile-menu a:last-child {
+            border-bottom: none;
+        }
+        
+        .mobile-menu a:hover {
+            color: #e6745c;
+        }
+        
+        .mobile-submenu {
+            margin-left: 20px;
+            margin-top: 12px;
+        }
+        
+        .mobile-submenu a {
+            padding: 8px 0;
+            font-size: 14px;
+            color: #666;
+            border-bottom: none;
+        }
+        
         .cta-button {
             background: #e6745c;
             color: white;
@@ -245,7 +395,7 @@
             background: rgba(230, 116, 92, 0.05);
         }
         
-        /* Triangle Diagram - Clean & Professional */
+        /* Triangle Diagram */
         .diagram-container {
             position: relative;
             width: 100%;
@@ -280,7 +430,6 @@
             border-color: #e6745c;
         }
         
-        /* 正三角形の配置 */
         .triangle-1 { 
             top: 50px; 
             left: 50%; 
@@ -432,6 +581,105 @@
             line-height: 1.4;
         }
 
+        /* Insights Section */
+        .insights-section {
+            padding: 120px 0;
+            background: white;
+        }
+
+        .insights-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 48px;
+            margin-top: 80px;
+        }
+
+        .insight-card {
+            text-align: center;
+            padding: 48px 32px;
+            background: white;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+
+        .insight-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+            border-color: #e6745c;
+        }
+
+        .insight-number {
+            font-size: 36px;
+            font-weight: 500;
+            color: #e6745c;
+            margin-bottom: 16px;
+        }
+
+        .insight-label {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 16px;
+            font-weight: 400;
+        }
+
+        .insight-source {
+            font-size: 12px;
+            color: #999;
+            font-style: italic;
+        }
+
+        /* Problems Section */
+        .problems {
+            padding: 120px 0;
+            background: #f8f6f3;
+        }
+        
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 48px;
+        }
+        
+        .problem-card {
+            text-align: center;
+            padding: 48px 32px;
+            background: white;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .problem-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+        }
+        
+        .problem-icon {
+            width: 56px;
+            height: 56px;
+            background: #f8f6f3;
+            border-radius: 16px;
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .problem-card h3 {
+            font-size: 20px;
+            font-weight: 500;
+            color: #1a1a1a;
+            margin-bottom: 16px;
+            line-height: 1.4;
+        }
+        
+        .problem-card p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
         /* Services Section */
         .services-section {
             padding: 120px 0;
@@ -544,105 +792,6 @@
         
         .service-target strong {
             color: #1a1a1a;
-        }
-
-        /* Insights Section */
-        .insights-section {
-            padding: 120px 0;
-            background: white;
-        }
-
-        .insights-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 48px;
-            margin-top: 80px;
-        }
-
-        .insight-card {
-            text-align: center;
-            padding: 48px 32px;
-            background: white;
-            border-radius: 16px;
-            transition: all 0.3s ease;
-            border: 1px solid #f0f0f0;
-        }
-
-        .insight-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
-            border-color: #e6745c;
-        }
-
-        .insight-number {
-            font-size: 36px;
-            font-weight: 500;
-            color: #e6745c;
-            margin-bottom: 16px;
-        }
-
-        .insight-label {
-            font-size: 16px;
-            color: #666;
-            margin-bottom: 16px;
-            font-weight: 400;
-        }
-
-        .insight-source {
-            font-size: 12px;
-            color: #999;
-            font-style: italic;
-        }
-
-        /* Problems Section */
-        .problems {
-            padding: 120px 0;
-            background: #f8f6f3;
-        }
-        
-        .problems-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 48px;
-        }
-        
-        .problem-card {
-            text-align: center;
-            padding: 48px 32px;
-            background: white;
-            border-radius: 16px;
-            transition: all 0.3s ease;
-        }
-        
-        .problem-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
-        }
-        
-        .problem-icon {
-            width: 56px;
-            height: 56px;
-            background: #f8f6f3;
-            border-radius: 16px;
-            margin: 0 auto 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .problem-card h3 {
-            font-size: 20px;
-            font-weight: 500;
-            color: #1a1a1a;
-            margin-bottom: 16px;
-            line-height: 1.4;
-        }
-        
-        .problem-card p {
-            font-size: 16px;
-            color: #666;
-            line-height: 1.6;
-            font-weight: 300;
         }
 
         /* Demo Section */
@@ -858,14 +1007,15 @@
             .hero-text h1 { font-size: 40px; }
             .problems-grid { grid-template-columns: 1fr; gap: 32px; }
             .services-grid { grid-template-columns: 1fr; gap: 32px; }
-            .nav-links { display: none; }
             .section-header h2 { font-size: 36px; }
             .contact h2 { font-size: 36px; }
             .insights-stats { grid-template-columns: 1fr; gap: 32px; }
             .expertise-tags { justify-content: center; }
             .hero-buttons { justify-content: center; }
             
-            /* モバイル用の三角形レイアウト調整 */
+            .nav-links { display: none; }
+            .mobile-menu-toggle { display: flex; }
+            
             .diagram-container {
                 height: 400px;
                 padding: 20px;
@@ -878,7 +1028,6 @@
                 line-height: 1.2;
             }
             
-            /* モバイルでは縦一列に配置 */
             .triangle-1 { 
                 top: 20px; 
                 left: 50%; 
@@ -905,10 +1054,9 @@
             }
             
             .center-icon {
-                display: none; /* モバイルでは中央のアイコンを非表示 */
+                display: none;
             }
             
-            /* About セクションもモバイル対応 */
             .about-content {
                 grid-template-columns: 1fr;
                 gap: 48px;
@@ -920,7 +1068,6 @@
             }
         }
         
-        /* Smooth animations */
         .fade-in {
             opacity: 0;
             transform: translateY(32px);
@@ -945,8 +1092,30 @@
             <ul class="nav-links">
                 <li><a href="#about">Nalvaとは</a></li>
                 <li><a href="#services">サービス</a></li>
+                <li class="dropdown">
+                    <a href="#">事例<span class="dropdown-arrow">▼</span></a>
+                    <div class="dropdown-content">
+                        <a href="case-study.html">技術系コンサルティング企業のDX推進支援</a>
+                        <a href="case-study-2.html">大手企業の働きがい向上・組織変革支援</a>
+                    </div>
+                </li>
                 <li><a href="#faq">よくある質問</a></li>
             </ul>
+            <button class="mobile-menu-toggle">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+            </button>
+            <div class="mobile-menu">
+                <a href="#about">Nalvaとは</a>
+                <a href="#services">サービス</a>
+                <a href="#">事例</a>
+                <div class="mobile-submenu">
+                    <a href="case-study.html">技術系コンサルティング企業のDX推進支援</a>
+                    <a href="case-study-2.html">大手企業の働きがい向上・組織変革支援</a>
+                </div>
+                <a href="#faq">よくある質問</a>
+            </div>
             <button class="cta-button">お問い合わせ</button>
         </nav>
     </header>
@@ -1092,12 +1261,68 @@
         </div>
     </section>
 
+    <!-- Case Study Preview Section -->
+    <section style="padding: 120px 0; background: white;">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>実際の成功事例</h2>
+                <p>これまでの支援実績から、代表的な事例をご紹介します</p>
+            </div>
+            
+            <div style="max-width: 800px; margin: 80px auto 0; background: #f8f6f3; border-radius: 20px; padding: 48px; transition: all 0.3s ease; border: 2px solid transparent;" class="fade-in" onmouseover="this.style.borderColor='#e6745c'; this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(0,0,0,0.1)'" onmouseout="this.style.borderColor='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                
+                <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
+                    <div style="background: rgba(230, 116, 92, 0.1); color: #e6745c; padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: 500;">
+                        DX支援事例
+                    </div>
+                    <div style="color: #666; font-size: 14px;">
+                        インフラ・エンジニアリング業界 | 中堅規模企業
+                    </div>
+                </div>
+                
+                <h3 style="font-size: 24px; font-weight: 500; color: #1a1a1a; margin-bottom: 16px; line-height: 1.3;">
+                    技術系コンサルティング企業の組織コミュニケーション改革
+                </h3>
+                
+                <p style="color: #666; line-height: 1.6; margin-bottom: 32px; font-size: 16px;">
+                    メール中心のコミュニケーションから脱却し、ビジネスチャットツールを活用した効率的な情報共有体制を構築。承認プロセスの時間を40%短縮し、リモートワーク環境での連携を大幅に改善しました。
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 32px;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 28px; font-weight: 500; color: #e6745c; margin-bottom: 8px;">40%</div>
+                        <div style="font-size: 14px; color: #666;">承認時間短縮</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 28px; font-weight: 500; color: #e6745c; margin-bottom: 8px;">半年</div>
+                        <div style="font-size: 14px; color: #666;">プロジェクト期間</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 28px; font-weight: 500; color: #e6745c; margin-bottom: 8px;">全社</div>
+                        <div style="font-size: 14px; color: #666;">導入範囲</div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center;">
+                    <a href="case-study.html" style="display: inline-block; background: #e6745c; color: white; padding: 16px 32px; border-radius: 12px; text-decoration: none; font-weight: 500; transition: all 0.3s ease;" onmouseover="this.style.background='#d86348'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(230, 116, 92, 0.3)'" onmouseout="this.style.background='#e6745c'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        詳細を見る →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Services Section -->
     <section class="services-section" id="services">
         <div class="container">
             <div class="section-header fade-in">
                 <h2>Nalvaが提供する3つのサービス</h2>
                 <p>AI×組織開発の専門性を活かした包括的ソリューション</p>
+                <div style="margin-top: 32px;">
+                    <a href="case-study.html" style="color: #e6745c; text-decoration: none; font-weight: 500; font-size: 16px; border-bottom: 2px solid #e6745c; padding-bottom: 4px; transition: all 0.2s ease;">
+                        → 実際の成功事例を見る
+                    </a>
+                </div>
             </div>
             
             <div class="services-grid">
@@ -1325,6 +1550,25 @@
     </section>
 
     <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+            });
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('nav')) {
+                mobileMenuToggle?.classList.remove('active');
+                mobileMenu?.classList.remove('active');
+            }
+        });
+
         // FAQ Toggle
         document.querySelectorAll('.faq-question').forEach(button => {
             button.addEventListener('click', () => {
