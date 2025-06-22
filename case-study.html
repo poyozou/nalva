@@ -53,6 +53,7 @@
             align-items: center;
             justify-content: space-between;
             height: 80px;
+            position: relative;
         }
         
         .logo a {
@@ -175,17 +176,36 @@
             padding: 8px;
             flex-direction: column;
             gap: 4px;
+            position: relative;
+            width: 32px;
+            height: 32px;
+            justify-content: center;
+            align-items: center;
         }
         
         .hamburger-line {
-            width: 24px;
+            width: 20px;
             height: 2px;
             background: #666;
             transition: all 0.3s ease;
+            position: absolute;
+        }
+        
+        .hamburger-line:nth-child(1) {
+            top: 6px;
+        }
+        
+        .hamburger-line:nth-child(2) {
+            top: 15px;
+        }
+        
+        .hamburger-line:nth-child(3) {
+            top: 24px;
         }
         
         .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
+            top: 15px;
+            transform: rotate(45deg);
         }
         
         .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
@@ -193,7 +213,8 @@
         }
         
         .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -6px);
+            top: 15px;
+            transform: rotate(-45deg);
         }
         
         .mobile-menu {
@@ -721,6 +742,23 @@
             /* Mobile Navigation */
             .nav-links { display: none; }
             .mobile-menu-toggle { display: flex; }
+            .cta-button { display: none; }
+            
+            /* モバイル版ナビゲーション配置 */
+            nav {
+                justify-content: flex-start;
+                gap: 20px;
+            }
+            
+            .logo {
+                order: 2;
+                flex-grow: 1;
+                text-align: center;
+            }
+            
+            .mobile-menu-toggle {
+                order: 1;
+            }
         }
         
         /* Animations */
@@ -788,13 +826,13 @@
         <div class="container">
             <div class="case-header fade-in">
                 <div class="case-category">DX支援事例</div>
-                <h1 class="case-title">技術系コンサルティング企業の<br>DX推進支援事例</h1>
+                <h1 class="case-title">技術系コンサルティング企業のDX推進支援事例</h1>
                 <p class="case-subtitle">ビジネスチャットツール導入による組織コミュニケーション改革</p>
                 
                 <div class="case-meta">
                     <div class="meta-item">
                         <div class="meta-label">業界</div>
-                        <div class="meta-value">インフラ・<br>エンジニアリング</div>
+                        <div class="meta-value">インフラ・エンジニアリング</div>
                     </div>
                     <div class="meta-item">
                         <div class="meta-label">規模</div>

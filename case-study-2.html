@@ -53,6 +53,7 @@
             align-items: center;
             justify-content: space-between;
             height: 80px;
+            position: relative;
         }
         
         .logo a {
@@ -721,6 +722,23 @@
             /* Mobile Navigation */
             .nav-links { display: none; }
             .mobile-menu-toggle { display: flex; }
+            .cta-button { display: none; }
+            
+            /* モバイル版ナビゲーション配置 */
+            nav {
+                justify-content: flex-start;
+                gap: 20px;
+            }
+            
+            .logo {
+                order: 2;
+                flex-grow: 1;
+                text-align: center;
+            }
+            
+            .mobile-menu-toggle {
+                order: 1;
+            }
         }
         
         /* Animations */
@@ -788,7 +806,7 @@
         <div class="container">
             <div class="case-header fade-in">
                 <div class="case-category">組織変革支援事例</div>
-                <h1 class="case-title">大手企業の働きがい向上・<br>組織変革支援事例</h1>
+                <h1 class="case-title">大手企業の働きがい向上・組織変革支援事例</h1>
                 <p class="case-subtitle">データドリブンなアプローチで実現する持続的な組織変革</p>
                 
                 <div class="case-meta">
