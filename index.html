@@ -942,6 +942,9 @@
                 <div class="about-image fade-in">
                     <div class="profile-container">
                         <div class="profile-placeholder">
+                            <svg width="80" height="80" fill="rgba(255,255,255,0.9)" viewBox="0 0 24 24">
+                                <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1H3C1.9 1 1 1.9 1 3V21C1 22.1 1.9 23 3 23H13C12.4 22.2 12 21.1 12 20C12 16.7 14.7 14 18 14C19.4 14 20.7 14.6 21.7 15.4V9H21ZM13 12V14H3V12H13ZM13 16V18H3V16H13ZM20.1 16.5L18 18.5L15.9 16.5L15.2 17.2L17.3 19.3L15.2 21.4L15.9 22.1L18 20L20.1 22.1L20.8 21.4L18.7 19.3L20.8 17.2L20.1 16.5Z"/>
+                            </svg>
                         </div>
                     </div>
                 </div>
@@ -1198,8 +1201,10 @@
                 <h2>まずはお話をお聞かせください</h2>
                 <p>組織の課題やDXに関するお悩みについて、お気軽にご相談ください</p>
                 
-                <form class="contact-form" name="contact" method="POST" action="/thank-you.html" data-netlify="true">
-                    <input type="hidden" name="form-name" value="contact" />
+                <form name="contact" 
+                      method="POST" 
+                      data-netlify="true" 
+                      action="/thank-you.html">
                     
                     <div class="form-group">
                         <label for="company">会社名 *</label>
@@ -1228,8 +1233,8 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="challenges">現在の課題やご相談内容（任意）</label>
-                        <textarea id="challenges" name="challenges" rows="4" placeholder="例：組織変革を進めたいが何から始めればよいかわからない、DXプロジェクトが思うように進まない、など"></textarea>
+                        <label for="message">現在の課題やご相談内容（任意）</label>
+                        <textarea id="message" name="message" rows="4" placeholder="例：組織変革を進めたいが何から始めればよいかわからない、DXプロジェクトが思うように進まない、など"></textarea>
                     </div>
                     
                     <button type="submit" class="submit-button">
@@ -1293,52 +1298,37 @@
             });
         });
 
-        // Form submission - 確実なリダイレクト
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            e.preventDefault(); // デフォルト送信を停止
-            
-            const submitButton = this.querySelector('.submit-button');
-            const formData = new FormData(this);
-            
-            // 基本的なバリデーション
-            const requiredFields = this.querySelectorAll('[required]');
-            let isValid = true;
-            
-            requiredFields.forEach(field => {
-                if (!field.value.trim()) {
-                    field.style.borderColor = '#ff6b6b';
-                    isValid = false;
-                } else {
-                    field.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+        // Form submission - シンプル版
+        const form = document.querySelector('form[name="contact"]');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                const submitButton = this.querySelector('.submit-button');
+                
+                // 基本的なバリデーション
+                const requiredFields = this.querySelectorAll('[required]');
+                let isValid = true;
+                
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        field.style.borderColor = '#ff6b6b';
+                        isValid = false;
+                    } else {
+                        field.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                    }
+                });
+                
+                if (!isValid) {
+                    e.preventDefault();
+                    alert('必須項目をすべて入力してください。');
+                    return;
                 }
+                
+                // 送信中の表示
+                submitButton.textContent = '送信中...';
+                submitButton.disabled = true;
+                submitButton.style.opacity = '0.7';
             });
-            
-            if (!isValid) {
-                alert('必須項目をすべて入力してください。');
-                return;
-            }
-            
-            submitButton.textContent = '送信中...';
-            submitButton.disabled = true;
-            submitButton.style.opacity = '0.7';
-            
-            // Netlify Formsに送信
-            fetch('/', {
-                method: 'POST',
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: new URLSearchParams(formData).toString()
-            })
-            .then(() => {
-                // 送信成功後、カスタムサンクスページにリダイレクト
-                window.location.href = '/thank-you.html';
-            })
-            .catch((error) => {
-                alert('送信に失敗しました。もう一度お試しください。');
-                submitButton.textContent = 'お問い合わせを送信する';
-                submitButton.disabled = false;
-                submitButton.style.opacity = '1';
-            });
-        });
+        }
 
         // Intersection Observer for fade-in animations
         const observerOptions = {
