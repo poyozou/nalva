@@ -168,7 +168,7 @@
         }
         
         /* Mobile Menu */
-        .mobile-menu-toggle {
+         .mobile-menu-toggle {
             display: none;
             background: none;
             border: none;
@@ -176,17 +176,36 @@
             padding: 8px;
             flex-direction: column;
             gap: 4px;
+            position: relative;
+            width: 32px;
+            height: 32px;
+            justify-content: center;
+            align-items: center;
         }
         
         .hamburger-line {
-            width: 24px;
+            width: 20px;
             height: 2px;
             background: #666;
             transition: all 0.3s ease;
+            position: absolute;
+        }
+        
+        .hamburger-line:nth-child(1) {
+            top: 6px;
+        }
+        
+        .hamburger-line:nth-child(2) {
+            top: 15px;
+        }
+        
+        .hamburger-line:nth-child(3) {
+            top: 24px;
         }
         
         .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
+            top: 15px;
+            transform: rotate(45deg);
         }
         
         .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
@@ -194,7 +213,8 @@
         }
         
         .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -6px);
+            top: 15px;
+            transform: rotate(-45deg);
         }
         
         .mobile-menu {
