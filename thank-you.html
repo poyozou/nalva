@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お問い合わせありがとうございます | NALVA</title>
+    
+    <!-- ファビコン -->
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: linear-gradient(135deg, #fefefe 0%, #f8f6f3 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .thank-you-container {
+            max-width: 600px;
+            padding: 60px 40px;
+            text-align: center;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            margin: 40px;
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 32px;
+            box-shadow: 0 8px 32px rgba(34, 197, 94, 0.3);
+        }
+        
+        .success-icon svg {
+            fill: white;
+        }
+        
+        h1 {
+            font-size: 36px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 24px;
+            letter-spacing: -0.01em;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+        
+        .info-box {
+            background: #f8f6f3;
+            padding: 24px;
+            border-radius: 16px;
+            margin: 32px 0;
+            border-left: 4px solid #e6745c;
+        }
+        
+        .info-box h3 {
+            color: #e6745c;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .info-box p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .btn-primary {
+            background: #e6745c;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary:hover {
+            background: #d86348;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(230, 116, 92, 0.3);
+        }
+        
+        .btn-secondary {
+            color: #666;
+            padding: 16px 32px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 400;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            background: white;
+        }
+        
+        .btn-secondary:hover {
+            color: #1a1a1a;
+            border-color: #e6745c;
+            background: rgba(230, 116, 92, 0.05);
+        }
+        
+        .contact-info {
+            margin-top: 40px;
+            padding-top: 32px;
+            border-top: 1px solid #f0f0f0;
+        }
+        
+        .contact-info h4 {
+            color: #1a1a1a;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        
+        .contact-info p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .contact-info a {
+            color: #e6745c;
+            text-decoration: none;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .thank-you-container {
+                margin: 20px;
+                padding: 40px 24px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+        }
+        
+        /* アニメーション */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .thank-you-container {
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .success-icon {
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+    </style>
+</head>
+<body>
+    <div class="thank-you-container">
+        <div class="success-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+            </svg>
+        </div>
+        
+        <h1>お問い合わせありがとうございます</h1>
+        <p class="subtitle">
+            お送りいただいたご相談内容を確認させていただき、<br>
+            担当者より2営業日以内にご連絡いたします。
+        </p>
+        
+        <div class="info-box">
+            <h3>📧 次のステップ</h3>
+            <p>
+                ・ご入力いただいた内容を確認<br>
+                ・最適なソリューションをご提案<br>
+                ・無料相談セッションのご案内
+            </p>
+        </div>
+        
+        <div class="buttons">
+            <a href="https://nalva.net/" class="btn-primary">ホームに戻る</a>
+            <a href="https://nalva.net/#services" class="btn-secondary">サービス詳細を見る</a>
+        </div>
+        
+        <div class="contact-info">
+            <h4>お急ぎの場合</h4>
+            <p>
+                緊急のご相談がございましたら、直接メールでお問い合わせください：<br>
+                <a href="mailto:support@nalva.net">support@nalva.net</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
