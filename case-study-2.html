@@ -168,7 +168,7 @@
         }
         
         /* Mobile Menu */
-         .mobile-menu-toggle {
+        .mobile-menu-toggle {
             display: none;
             background: none;
             border: none;
@@ -183,7 +183,7 @@
             align-items: center;
         }
         
-      .hamburger-line {
+        .hamburger-line {
             width: 20px;
             height: 2px;
             background: #666;
@@ -216,6 +216,7 @@
             top: 15px;
             transform: rotate(-45deg);
         }
+        
         .mobile-menu {
             display: none;
             position: absolute;
@@ -741,22 +742,27 @@
             /* Mobile Navigation */
             .nav-links { display: none; }
             .mobile-menu-toggle { display: flex; }
-            .cta-button { display: none; }
             
             /* モバイル版ナビゲーション配置 */
             nav {
-                justify-content: flex-start;
-                gap: 20px;
+                justify-content: space-between;
             }
             
             .logo {
                 order: 2;
-                flex-grow: 1;
-                text-align: center;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
             }
             
             .mobile-menu-toggle {
                 order: 1;
+            }
+            
+            .cta-button {
+                order: 3;
+                font-size: 12px;
+                padding: 8px 16px;
             }
         }
         
