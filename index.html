@@ -3,10 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <!-- SEO最適化用タグを追加 -->
+    
+    <!-- 構造化データ -->
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "NALVA",
+    "url": "https://nalva.net",
+    "logo": {
+        "@type": "ImageObject",
+        "url": "https://nalva.net/logo-square.png",
+        "width": 500,
+        "height": 500
+    }
+    }
+    </script>
+    
+    <!-- 検索結果用（構造化データ） -->
+    "logo": "https://nalva.net/logo-square.png"
+
+    <!-- SEO最適化用タグを追加 -->
     <title>NALVA | 組織変革・DX支援コンサルティング</title>
     <meta name="description" content="NALVAは組織変革とデジタルトランスフォーメーション（DX）を支援するコンサルティング会社です。組織開発から業務改革まで、企業の変革をトータルサポートします。">
-    <meta name="keywords" content="NALVA,組織変革,DX,デジタルトランスフォーメーション,組織開発,コンサルティング,業務改革,企業変革">
+    <meta name="keywords" content="NALVA,組織変革,DX,デジタルトランスフォーメーション,DX推進,DXコンサル,組織開発,コンサルティング,業務改革,企業変革">
     <meta name="robots" content="index, follow">
     <meta name="author" content="NALVA">
     
@@ -16,6 +36,9 @@
     <meta property="og:url" content="https://nalva.net/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="NALVA">
+    <meta property="og:image" content="https://nalva.net/logo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary">
@@ -462,7 +485,7 @@
         .triangle-2 { bottom: 100px; left: 16%; }
         .triangle-3 { bottom: 100px; right: 16%; }
         
-        .center-icon {
+        .logo-square {
             width: 80px;
             height: 80px;
             display: flex;
@@ -471,7 +494,7 @@
             bottom: 80px;
         }
         
-        .center-icon img {
+        .logo-square img {
             width: 120px;
             height: 120px;
             object-fit: contain;
@@ -1098,7 +1121,7 @@
                 transform: translateX(-50%) translateY(-4px);
             }
             
-            .center-icon {
+            .logo-square {
                 display: none;
             }
             
@@ -1131,7 +1154,7 @@
         <nav class="container">
             <div class="logo">
                 <a href="https://nalva.net">
-                    <img src="./nalva-logo.png" alt="NALVA">
+                    <img src="./logo-horizontal.png" alt="NALVA">
                 </a>
             </div>
             <ul class="nav-links">
@@ -1188,8 +1211,8 @@
                     <div class="diagram-triangle triangle-2">生産性向上</div>
                     <div class="diagram-triangle triangle-3">組織文化</div>
                     
-                    <div class="center-icon">
-                        <img src="./center-icon.png" alt="NALVA アイコン">
+                    <div class="logo-square">
+                        <img src="./logo-square.png" alt="NALVA アイコン">
                     </div>
                 </div>
             </div>
