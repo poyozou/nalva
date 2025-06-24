@@ -790,27 +790,12 @@
             box-shadow: 0 8px 32px rgba(230, 116, 92, 0.3);
         }
         
-        .main-service-badge {
-            background: #e6745c;
-            color: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-            text-align: center;
-            margin-bottom: 24px;
-            display: inline-block;
-            position: absolute;
-            top: 24px;
-            right: 24px;
-            box-shadow: 0 4px 16px rgba(230, 116, 92, 0.3);
-        }
-        
         .main-service-card h3 {
             font-size: 32px;
             font-weight: 600;
             margin-bottom: 16px;
             text-align: center;
+            white-space: nowrap;
         }
         
         .main-service-cta {
@@ -1227,10 +1212,31 @@
                 padding: 48px 32px;
             }
             
-            .main-service-badge {
-                position: static;
-                margin: 0 auto 24px;
-                text-align: center;
+            .main-service-card h3 {
+                font-size: 24px;
+                line-height: 1.2;
+                white-space: normal;
+            }
+            
+            /* Service Phases Mobile Layout */
+            .service-phases {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            
+            .phase-column {
+                background: rgba(255, 255, 255, 0.5);
+                padding: 20px;
+                border-radius: 12px;
+                border-left: 4px solid #e6745c;
+            }
+            
+            .phase-title {
+                text-align: left;
+                border-bottom: none;
+                padding-bottom: 0;
+                margin-bottom: 12px;
+                font-size: 18px;
             }
             
             .nav-links { display: none; }
@@ -1508,7 +1514,7 @@
             <div style="max-width: 800px; margin: 80px auto 0; background: #f8f6f3; border-radius: 20px; padding: 48px; transition: all 0.3s ease; border: 2px solid transparent;" class="fade-in" onmouseover="this.style.borderColor='#e6745c'; this.style.transform='translateY(-4px)'; this.style.boxShadow='0 16px 48px rgba(0,0,0,0.1)'" onmouseout="this.style.borderColor='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                 
                 <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
-                    <div style="background: rgba(230, 116, 92, 0.1); color: #e6745c; padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: 500;">
+                    <div style="background: rgba(230, 116, 92, 0.1); color: #e6745c; padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: 500; white-space: nowrap;">
                         DX支援事例
                     </div>
                     <div style="color: #666; font-size: 14px;">
@@ -1569,12 +1575,12 @@
                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                         </svg>
                     </div>
-                    <div class="main-service-badge">核心サービス</div>
                     <h3>NALVA Transformation Lab</h3>
                     <p class="service-subtitle">DX&組織変革コンサルティング</p>
                     <div class="service-phases">
                         <div class="phase-column">
-                            <h4 class="phase-title">Phase 1: 診断・戦略</h4>
+                            <h4 class="phase-title">Phase 1</h4>
+                            <p style="font-size: 14px; color: #e6745c; font-weight: 500; margin-bottom: 12px;">診断・戦略</p>
                             <ul class="phase-features">
                                 <li>DX準備度アセスメント</li>
                                 <li>現状分析・課題特定</li>
@@ -1582,7 +1588,8 @@
                             </ul>
                         </div>
                         <div class="phase-column">
-                            <h4 class="phase-title">Phase 2: 実装・展開</h4>
+                            <h4 class="phase-title">Phase 2</h4>
+                            <p style="font-size: 14px; color: #e6745c; font-weight: 500; margin-bottom: 12px;">実装・展開</p>
                             <ul class="phase-features">
                                 <li>組織変革実装支援（6-12ヶ月プロジェクト）</li>
                                 <li>チーム編成・スキル開発</li>
@@ -1590,7 +1597,8 @@
                             </ul>
                         </div>
                         <div class="phase-column">
-                            <h4 class="phase-title">Phase 3: 定着・改善</h4>
+                            <h4 class="phase-title">Phase 3</h4>
+                            <p style="font-size: 14px; color: #e6745c; font-weight: 500; margin-bottom: 12px;">定着・改善</p>
                             <ul class="phase-features">
                                 <li>定着化サポート（継続支援）</li>
                                 <li>効果測定・改善提案</li>
