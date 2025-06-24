@@ -749,11 +749,125 @@
             font-weight: 300;
         }
         
-        .services-grid {
+        /* Main Service Layout */
+        .main-service {
+            margin-bottom: 48px;
+        }
+        
+        .main-service-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f6f3 100%);
+            border: 3px solid #e6745c;
+            padding: 64px 48px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .main-service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23e6745c" fill-opacity="0.03"><circle cx="30" cy="30" r="2"/></g></g></svg>');
+            z-index: 1;
+        }
+        
+        .main-service-card > * {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .main-service-icon {
+            width: 100px;
+            height: 100px;
+            background: #e6745c;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 32px;
+            box-shadow: 0 8px 32px rgba(230, 116, 92, 0.3);
+        }
+        
+        .main-service-badge {
+            background: #e6745c;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 24px;
+            display: inline-block;
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            box-shadow: 0 4px 16px rgba(230, 116, 92, 0.3);
+        }
+        
+        .main-service-card h3 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        
+        .main-service-cta {
+            margin-top: 40px;
+            text-align: center;
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .case-study-link {
+            color: #e6745c;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            border-bottom: 2px solid #e6745c;
+            padding-bottom: 4px;
+            transition: all 0.2s ease;
+        }
+        
+        .case-study-link:hover {
+            color: #d86348;
+            border-bottom-color: #d86348;
+        }
+        
+        /* Sub Services Layout */
+        .sub-services-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1fr 1fr;
             gap: 48px;
-            margin-top: 80px;
+        }
+        
+        .sub-service-card {
+            opacity: 0.85;
+            position: relative;
+        }
+        
+        .sub-service-card:hover {
+            opacity: 1;
+        }
+        
+        .coming-soon-badge {
+            background: rgba(102, 102, 102, 0.1);
+            color: #666;
+            padding: 6px 16px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 16px;
+            display: inline-block;
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            border: 1px solid rgba(102, 102, 102, 0.2);
         }
         
         .service-card {
@@ -821,6 +935,53 @@
             color: #e6745c;
             font-weight: bold;
             font-size: 16px;
+        }
+        
+        /* Service Phases Layout */
+        .service-phases {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin: 32px 0;
+        }
+        
+        .phase-column {
+            text-align: left;
+        }
+        
+        .phase-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #e6745c;
+            margin-bottom: 16px;
+            text-align: center;
+            border-bottom: 2px solid #e6745c;
+            padding-bottom: 8px;
+        }
+        
+        .phase-features {
+            list-style: none;
+            margin: 0;
+        }
+        
+        .phase-features li {
+            padding: 8px 0;
+            font-size: 14px;
+            color: #666;
+            font-weight: 300;
+            position: relative;
+            padding-left: 20px;
+            line-height: 1.4;
+        }
+        
+        .phase-features li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            color: #e6745c;
+            font-weight: bold;
+            font-size: 14px;
         }
         
         .service-target {
@@ -1050,12 +1211,27 @@
             .hero-content { grid-template-columns: 1fr; gap: 48px; }
             .hero-text h1 { font-size: 40px; }
             .problems-grid { grid-template-columns: 1fr; gap: 32px; }
-            .services-grid { grid-template-columns: 1fr; gap: 32px; }
+            .sub-services-grid { grid-template-columns: 1fr; gap: 32px; }
             .section-header h2 { font-size: 36px; }
             .contact h2 { font-size: 36px; }
             .insights-stats { grid-template-columns: 1fr; gap: 32px; }
             .expertise-tags { justify-content: center; }
             .hero-buttons { justify-content: center; }
+            
+            .main-service-cta {
+                flex-direction: column;
+                gap: 16px;
+            }
+            
+            .main-service-card {
+                padding: 48px 32px;
+            }
+            
+            .main-service-badge {
+                position: static;
+                margin: 0 auto 24px;
+                text-align: center;
+            }
             
             .nav-links { display: none; }
             .mobile-menu-toggle { display: flex; }
@@ -1385,32 +1561,62 @@
                 </div>
             </div>
             
-            <div class="services-grid">
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <svg width="40" height="40" fill="#e6745c" viewBox="0 0 24 24">
+            <!-- メインサービス：Transformation Lab -->
+            <div class="main-service fade-in">
+                <div class="service-card main-service-card">
+                    <div class="service-icon main-service-icon">
+                        <svg width="48" height="48" fill="#e6745c" viewBox="0 0 24 24">
                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                         </svg>
                     </div>
+                    <div class="main-service-badge">核心サービス</div>
                     <h3>NALVA Transformation Lab</h3>
                     <p class="service-subtitle">DX&組織変革コンサルティング</p>
-                    <ul class="service-features">
-                        <li>AI組織診断パッケージ</li>
-                        <li>変革実装支援（6-12ヶ月プロジェクト）</li>
-                        <li>定着化サポート（継続支援）</li>
-                    </ul>
+                    <div class="service-phases">
+                        <div class="phase-column">
+                            <h4 class="phase-title">Phase 1: 診断・戦略</h4>
+                            <ul class="phase-features">
+                                <li>DX準備度アセスメント</li>
+                                <li>現状分析・課題特定</li>
+                                <li>戦略策定・ロードマップ作成</li>
+                            </ul>
+                        </div>
+                        <div class="phase-column">
+                            <h4 class="phase-title">Phase 2: 実装・展開</h4>
+                            <ul class="phase-features">
+                                <li>組織変革実装支援（6-12ヶ月プロジェクト）</li>
+                                <li>チーム編成・スキル開発</li>
+                                <li>プロセス改善・システム導入</li>
+                            </ul>
+                        </div>
+                        <div class="phase-column">
+                            <h4 class="phase-title">Phase 3: 定着・改善</h4>
+                            <ul class="phase-features">
+                                <li>定着化サポート（継続支援）</li>
+                                <li>効果測定・改善提案</li>
+                                <li>ナレッジ共有・組織学習</li>
+                            </ul>
+                        </div>
+                    </div>
                     <div class="service-target">
                         <strong>対象：</strong>従業員100-1,000人規模の成長企業<br>
                         人事部門・DX推進部門の部長クラス
                     </div>
+                    <div class="main-service-cta">
+                        <button class="btn-primary">無料相談を申し込む</button>
+                    </div>
                 </div>
-                
-                <div class="service-card fade-in">
+            </div>
+            
+            <!-- サブサービス：AI Suite & Academy -->
+            <div class="sub-services-grid">
+                <div class="service-card sub-service-card fade-in">
                     <div class="service-icon">
                         <svg width="40" height="40" fill="#e6745c" viewBox="0 0 24 24">
                             <path d="M20 3H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h3l-1 1v2h12v-2l-1-1h3c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 13H4V5h16v11z"/>
                         </svg>
                     </div>
+                    <div class="coming-soon-badge">準備中</div>
                     <h3>NALVA AI Suite</h3>
                     <p class="service-subtitle">AIプロダクト・SaaSツール</p>
                     <ul class="service-features">
@@ -1424,12 +1630,13 @@
                     </div>
                 </div>
                 
-                <div class="service-card fade-in">
+                <div class="service-card sub-service-card fade-in">
                     <div class="service-icon">
                         <svg width="40" height="40" fill="#e6745c" viewBox="0 0 24 24">
                             <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
                         </svg>
                     </div>
+                    <div class="coming-soon-badge">準備中</div>
                     <h3>NALVA Academy</h3>
                     <p class="service-subtitle">デジタル教育・認定プログラム</p>
                     <ul class="service-features">
@@ -1564,7 +1771,8 @@
                 <form name="contact" 
                       method="POST" 
                       data-netlify="true" 
-                      action="/thank-you.html">
+                      action="/thank-you.html"
+                      class="contact-form">
                     
                     <div class="form-group">
                         <label for="company">会社名 *</label>
