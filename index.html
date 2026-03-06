@@ -1,902 +1,47 @@
 <!DOCTYPE html>
-<html lang="ja" data-lang="ja">
+<html lang="ja">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SFW03DREZH"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-SFW03DREZH');
-  </script>
-<meta charset="UTF-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" href="/favicon.ico" sizes="any" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <link rel="manifest" href="/site.webmanifest" />
   <title>Nalva — Design Thinking × AI Implementation</title>
   <meta name="description" content="AIを使いこなす思考を設計する。デザイン思考とAI実装を同時に扱う、中堅企業のための変革設計。Nalva Inc. / 高野 秋" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Serif+Display&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-
-  <style>
-    :root {
-      --bg:           #F7F5F0;
-      --bg-white:     #FFFFFF;
-      --bg-lifted:    #F0EDE6;
-      --bg-card:      #EDEAE3;
-      --bg-ink:       #1C1A16;
-      --rule:         #D8D4CC;
-      --rule-accent:  rgba(160,136,64,0.22);
-      --gold:         #A08840;
-      --gold-lite:    #C4A85A;
-      --gold-dim:     rgba(160,136,64,0.25);
-      --gold-ghost:   rgba(160,136,64,0.08);
-      --gold-bg:      #FAF6EC;
-      --ink:          #1C1A16;
-      --ink-mid:      #4A4640;
-      --ink-low:      #7A7570;
-      --ink-dim:      #B0ACA5;
-      --serif: 'DM Serif Display', Georgia, serif;
-      --sans:  'Noto Sans JP', sans-serif;
-      --mono:  'DM Mono', monospace;
-      --max:          1140px;
-      --pad:          6vw;
-      --gap-section:  9rem;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: var(--sans);
-      font-size: 17px;
-      font-weight: 300;
-      line-height: 1.80;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .wrap {
-      max-width: var(--max);
-      margin-inline: auto;
-      padding-inline: var(--pad);
-    }
-
-    h1, h2, h3, h4 {
-      font-family: var(--serif);
-      font-weight: 400;
-      line-height: 1.18;
-      letter-spacing: 0.01em;
-    }
-
-    .label {
-      font-family: var(--mono);
-      font-size: 0.60rem;
-      letter-spacing: 0.20em;
-      color: var(--gold);
-      text-transform: uppercase;
-    }
-
-    .label-line {
-      display: flex;
-      align-items: center;
-      gap: 1.1rem;
-    }
-
-    .label-line::before {
-      content: '';
-      display: block;
-      width: 22px;
-      height: 1px;
-      background: var(--gold);
-      flex-shrink: 0;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      inset-block-start: 0;
-      inset-inline: 0;
-      z-index: 200;
-      height: 66px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-inline: var(--pad);
-      border-bottom: 1px solid rgba(232,229,222,0.06);
-      background: rgba(12,11,9,0.6);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      transition: background 0.5s, border-color 0.5s;
-    }
-
-    nav.scrolled {
-      background: rgba(247,245,240,0.96);
-      border-bottom-color: var(--rule);
-    }
-    nav.scrolled .nav-contact { color: var(--gold); }
-    nav.scrolled .nav-contact:hover { color: var(--ink); border-color: var(--ink-low); }
-    nav.scrolled .lang-btn { color: var(--ink-dim); }
-    nav.scrolled .lang-btn.active { color: var(--gold); }
-
-    .nav-logo img {
-      height: 32px;
-      display: block;
-      filter: invert(1) brightness(0.85);
-      transition: filter 0.5s;
-    }
-
-    nav.scrolled .nav-logo img {
-      filter: none;
-    }
-
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 2.8rem;
-    }
-    .nav-contact {
-      font-family: var(--mono);
-      font-size: 0.60rem;
-      letter-spacing: 0.14em;
-      color: var(--gold-lite);
-      text-decoration: none;
-      border-bottom: 1px solid var(--gold-dim);
-      padding-bottom: 2px;
-      transition: color 0.4s, border-color 0.4s;
-    }
-
-    .nav-contact:hover { color: #E8E5DE; border-color: rgba(232,229,222,0.3); }
-
-    /* ── LANG TOGGLE ── */
-    .lang-toggle {
-      display: flex;
-      align-items: center;
-      gap: 0;
-      border: 1px solid rgba(196,168,90,0.2);
-      overflow: hidden;
-      transition: border-color 0.4s;
-    }
-
-    .lang-btn {
-      font-family: var(--mono);
-      font-size: 0.54rem;
-      letter-spacing: 0.14em;
-      color: rgba(232,229,222,0.35);
-      background: none;
-      border: none;
-      padding: 0.28rem 0.6rem;
-      cursor: pointer;
-      transition: color 0.4s, background 0.4s;
-      text-transform: uppercase;
-    }
-
-    .lang-btn:first-child {
-      border-right: 1px solid rgba(196,168,90,0.2);
-    }
-
-    .lang-btn.active {
-      color: var(--gold-lite);
-      background: rgba(160,136,64,0.1);
-    }
-
-    .lang-btn:hover:not(.active) {
-      color: rgba(232,229,222,0.55);
-    }
-
-    @media (max-width: 860px) {
-    }
-
-    /* ── HERO ── */
-    .hero {
-      min-height: 100svh;
-      display: grid;
-      grid-template-rows: 1fr auto;
-      padding-top: 66px;
-      position: relative;
-      background: #0C0B09;
-      overflow: hidden;
-    }
-
-    .hero-canvas {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-    }
-
-    .hero-vignette {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(ellipse 80% 60% at 50% 50%, transparent 40%, rgba(12,11,9,0.7) 100%),
-        radial-gradient(ellipse 120% 80% at 80% 20%, rgba(160,136,64,0.06) 0%, transparent 60%),
-        radial-gradient(ellipse 100% 80% at 20% 80%, rgba(160,136,64,0.04) 0%, transparent 50%);
-    }
-
-    .hero-body {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding-block: 8vw 6vw;
-      padding-inline: var(--pad);
-      max-width: var(--max);
-      margin-inline: auto;
-      width: 100%;
-    }
-
-    .hero-eyebrow {
-      margin-bottom: 3rem;
-      opacity: 0;
-      animation: rise 1.3s cubic-bezier(0.16,1,0.3,1) 0.1s both;
-    }
-
-    .hero .label { color: var(--gold-lite); }
-
-    .hero h1 {
-      font-size: clamp(2.8rem, 5.8vw, 6.2rem);
-      letter-spacing: -0.01em;
-      line-height: 1.12;
-      color: #E8E5DE;
-      max-width: 780px;
-      opacity: 0;
-      animation: rise 1.3s cubic-bezier(0.16,1,0.3,1) 0.28s both;
-    }
-
-    .hero-statement {
-      margin-top: 2.8rem;
-      max-width: 460px;
-      color: rgba(232,229,222,0.55);
-      font-size: 0.96rem;
-      line-height: 2.0;
-      font-weight: 300;
-      opacity: 0;
-      animation: rise 1.3s cubic-bezier(0.16,1,0.3,1) 0.44s both;
-    }
-
-    .hero-cta {
-      margin-top: 3.5rem;
-      display: flex;
-      align-items: center;
-      gap: 2.2rem;
-      opacity: 0;
-      animation: rise 1.3s cubic-bezier(0.16,1,0.3,1) 0.58s both;
-    }
-
-    .cta-link {
-      font-family: var(--mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.14em;
-      text-decoration: none;
-      color: var(--gold-lite);
-      border-bottom: 1px solid var(--gold-dim);
-      padding-bottom: 3px;
-      transition: color 0.2s, border-color 0.2s;
-    }
-
-    .cta-link:hover { color: #E8E5DE; border-color: rgba(232,229,222,0.4); }
-
-    .cta-secondary {
-      color: rgba(232,229,222,0.4);
-      text-decoration: none;
-      font-size: 0.76rem;
-      letter-spacing: 0.06em;
-      transition: color 0.2s;
-    }
-
-    .cta-secondary:hover { color: rgba(232,229,222,0.65); }
-
-    .hero-foot {
-      position: relative;
-      z-index: 2;
-      border-top: 1px solid rgba(232,229,222,0.08);
-      padding-block: 1.6rem;
-      padding-inline: var(--pad);
-    }
-
-    .hero-foot-inner {
-      max-width: var(--max);
-      margin-inline: auto;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .hero-foot p {
-      font-family: var(--mono);
-      font-size: 0.56rem;
-      letter-spacing: 0.16em;
-      color: rgba(232,229,222,0.22);
-      text-transform: uppercase;
-    }
-
-    /* ── SECTION BASE ── */
-    section { padding-block: var(--gap-section); }
-
-    .section-head {
-      margin-bottom: 4.5rem;
-    }
-
-    .section-head h2 {
-      font-size: clamp(2.2rem, 3.6vw, 3.6rem);
-      margin-top: 1.4rem;
-      max-width: 620px;
-    }
-
-    .section-head p {
-      margin-top: 1.4rem;
-      color: var(--ink-mid);
-      font-size: 1.0rem;
-      max-width: 500px;
-      line-height: 1.95;
-    }
-
-    /* ── PHILOSOPHY ── */
-    .philosophy {
-      background: var(--bg-white);
-      border-block: 1px solid var(--rule);
-    }
-
-    .phi-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: transparent;
-      margin-top: 3.5rem;
-      gap: 1.5rem;
-    }
-
-    @media (max-width: 680px) { .phi-grid { grid-template-columns: 1fr; } }
-
-    .phi-card {
-      background: var(--bg-white);
-      padding: 3.5rem 3rem;
-      border: 1px solid var(--rule);
-    }
-
-    .phi-index {
-      font-family: var(--serif);
-      font-size: 3.6rem;
-      font-weight: 400;
-      color: var(--gold-dim);
-      line-height: 1;
-      margin-bottom: 1.6rem;
-      display: block;
-    }
-
-    .phi-card h3 {
-      font-size: 1.15rem;
-      margin-bottom: 0.9rem;
-    }
-
-    .phi-mission-link {
-      margin-top: 3.2rem;
-    }
-
-    .mission-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-      font-size: 0.84rem;
-      color: rgba(176,160,122,0.72);
-      text-decoration: none;
-      letter-spacing: 0.04em;
-      transition: color 0.25s;
-    }
-
-    .mission-link span {
-      font-size: 0.78rem;
-      transition: transform 0.25s;
-      display: inline-block;
-    }
-
-    .mission-link:hover { color: rgba(176,160,122,1); }
-    .mission-link:hover span { transform: translateX(3px); }
-
-    /* ── CAPABILITIES ── */
-    .cap-list { margin-top: 3.5rem; }
-
-    .cap-row {
-      display: grid;
-      grid-template-columns: 2fr 3fr;
-      gap: 4rem;
-      padding-block: 3rem;
-      border-top: 1px solid var(--rule);
-      align-items: start;
-      transition: background 0.22s, padding-inline 0.22s;
-    }
-
-    .cap-row:last-child { border-bottom: 1px solid var(--rule); }
-
-    .cap-row:hover {
-      background: var(--gold-bg);
-      margin-inline: calc(-1 * var(--pad));
-      padding-inline: var(--pad);
-    }
-
-    .cap-name {
-      font-family: var(--serif);
-      font-size: 1.5rem;
-      font-weight: 400;
-      color: var(--ink);
-      line-height: 1.3;
-    }
-
-    .cap-body {
-      font-size: 0.95rem;
-      color: var(--ink-mid);
-      line-height: 1.92;
-    }
-
-    .cap-tag {
-      display: inline-block;
-      margin-top: 1.1rem;
-      font-family: var(--mono);
-      font-size: 0.56rem;
-      letter-spacing: 0.14em;
-      color: var(--gold);
-      border: 1px solid var(--gold-dim);
-      padding: 0.22rem 0.55rem;
-    }
-
-    @media (max-width: 680px) {
-      .cap-row { grid-template-columns: 1fr; gap: 0.8rem; }
-      .cap-row:hover { margin-inline: calc(-1 * 4vw); padding-inline: 4vw; }
-    }
-
-    /* ── ENGAGEMENT ── */
-    .engagement {
-      background: var(--bg-white);
-      border-block: 1px solid var(--rule);
-    }
-
-    .eng-inner {
-      margin-top: 3.5rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--rule);
-    }
-
-    @media (max-width: 820px) { .eng-inner { grid-template-columns: 1fr; } }
-
-    .eng-col {
-      background: var(--bg-white);
-      padding: 3.5rem 3rem;
-      border: 1px solid var(--rule);
-    }
-
-    .eng-col-head {
-      font-family: var(--mono);
-      font-size: 0.58rem;
-      letter-spacing: 0.18em;
-      color: var(--gold);
-      text-transform: uppercase;
-      margin-bottom: 1.8rem;
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-    }
-
-    .eng-col-head::before {
-      content: '';
-      display: block;
-      width: 16px;
-      height: 1px;
-      background: var(--gold);
-    }
-
-    .eng-col h3 {
-      font-size: 1.2rem;
-      margin-bottom: 1.1rem;
-    }
-
-    .eng-col p { font-size: 0.95rem; color: var(--ink-mid); line-height: 1.9; }
-
-    .eng-list {
-      list-style: none;
-      margin-top: 1.4rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.55rem;
-    }
-
-    .eng-list li {
-      font-size: 0.93rem;
-      color: var(--ink-mid);
-      display: flex;
-      gap: 0.75rem;
-      align-items: baseline;
-    }
-
-    .eng-list li::before {
-      content: '—';
-      color: var(--gold-dim);
-      flex-shrink: 0;
-      font-family: var(--mono);
-      font-size: 0.68rem;
-    }
-
-    .eng-results { background: var(--gold-bg); border: 1px solid var(--rule); }
-
-    .result-row {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-      padding-block: 1.7rem;
-      border-bottom: 1px solid var(--rule);
-    }
-
-    .result-row:first-of-type { border-top: 1px solid var(--rule); margin-top: 1.4rem; }
-
-    .result-num {
-      font-family: var(--serif);
-      font-size: 2.3rem;
-      font-weight: 400;
-      color: var(--ink);
-      letter-spacing: -0.01em;
-      line-height: 1;
-      letter-spacing: -0.02em;
-    }
-
-    .result-label {
-      font-size: 0.81rem;
-      color: var(--ink-mid);
-      line-height: 1.5;
-    }
-
-    .eng-note {
-      margin-top: 1.8rem;
-      font-size: 0.70rem;
-      color: var(--ink-dim);
-      line-height: 1.75;
-    }
-    .eng-note small {
-      display: block;
-      margin-top: 0.4rem;
-      font-size: 0.58rem;
-      color: var(--ink-dim);
-      opacity: 0.7;
-    }
-
-    /* ── ABOUT ── */
-    .about-grid {
-      margin-top: 4.5rem;
-      display: grid;
-      grid-template-columns: 5fr 4fr;
-      gap: 6rem;
-      align-items: start;
-    }
-
-    @media (max-width: 820px) { .about-grid { grid-template-columns: 1fr; gap: 3rem; } }
-
-    .about-pull {
-      font-family: var(--serif);
-      font-size: clamp(1.4rem, 2.4vw, 2.1rem);
-      font-weight: 400;
-      color: var(--ink);
-      line-height: 1.55;
-      padding-left: 2rem;
-      border-left: 2px solid var(--gold);
-      margin-bottom: 2.2rem;
-    }
-
-    .about-body {
-      font-size: 0.96rem;
-      color: var(--ink-mid);
-      line-height: 1.95;
-    }
-
-    .about-body p + p { margin-top: 1rem; }
-
-    .about-name {
-      margin-top: 2.2rem;
-      font-family: var(--mono);
-      font-size: 0.60rem;
-      letter-spacing: 0.14em;
-      color: var(--gold);
-    }
-
-    .credentials { display: flex; flex-direction: column; gap: 1.8rem; }
-
-    .cred {
-      padding-left: 1.4rem;
-      border-left: 1px solid var(--rule);
-    }
-
-    .cred h4 {
-      font-family: var(--sans);
-      font-size: 0.90rem;
-      font-weight: 400;
-      color: var(--ink);
-      margin-bottom: 0.35rem;
-    }
-
-    .cred p { font-size: 0.86rem; color: var(--ink-mid); line-height: 1.75; }
-
-    /* ── CONTACT ── */
-    .contact-section {
-      background: var(--bg-ink);
-      color: #F7F5F0;
-      padding-block: var(--gap-section);
-    }
-    .contact-inner {
-      max-width: var(--max); margin-inline: auto; padding-inline: var(--pad);
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 5rem; align-items: start;
-    }
-    @media(max-width:720px) { .contact-inner { grid-template-columns: 1fr; gap: 3rem; } }
-    .contact-left h2 {
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      color: #F7F5F0; margin-top: 1rem; margin-bottom: 1.5rem;
-      text-wrap: pretty;
-    }
-    .contact-left p { color: rgba(247,245,240,0.68); font-size: 1rem; line-height: 1.9; }
-    .contact-divider { width: 40px; height: 2px; background: var(--gold-lite); margin: 1.8rem 0; }
-    .contact-right { display: flex; flex-direction: column; gap: 0; }
-    .contact-step {
-      display: grid; grid-template-columns: 44px 1fr;
-      gap: 1.2rem; align-items: start;
-      padding: 1.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-    .contact-step:last-child { border-bottom: none; }
-    .contact-step-n {
-      width: 44px; height: 44px;
-      border: 1px solid rgba(255,255,255,0.15);
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--mono); font-size: 0.62rem;
-      color: var(--gold-lite); flex-shrink: 0;
-    }
-    .contact-step h4 { font-family: 'Noto Sans JP', sans-serif; font-weight: 500; font-size: 0.92rem; color: #F7F5F0; margin-bottom: 0.3rem; }
-    .contact-step p { font-size: 0.84rem; color: rgba(247,245,240,0.55); line-height: 1.65; }
-    .contact-cta {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: var(--gold); color: var(--bg-ink);
-      font-family: var(--mono);
-      font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase;
-      padding: 1.1rem 2rem; margin-top: 2.5rem;
-      border: none; cursor: pointer; transition: background 0.2s; text-decoration: none;
-    }
-    .contact-cta:hover { background: var(--gold-lite); }
-    .contact-email {
-      font-family: var(--mono); font-size: 0.80rem; letter-spacing: 0.06em;
-      color: rgba(247,245,240,0.45); margin-top: 1.2rem;
-    }
-    .contact-email a { color: inherit; text-decoration: none; }
-    .contact-alt-link {
-      display: block; margin-top: 2.5rem; padding-top: 1.5rem;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      font-size: 0.84rem; color: rgba(247,245,240,0.45);
-    }
-    .contact-alt-link a { color: var(--gold-lite); border-bottom: 1px solid rgba(196,168,90,0.3); padding-bottom: 1px; }
-
-    /* ── FOOTER ── */
-    footer { padding-block: 2.2rem; border-top: 1px solid var(--rule); background: var(--bg-ink); }
-
-    .footer-inner {
-      max-width: var(--max);
-      margin-inline: auto;
-      padding-inline: var(--pad);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    footer img { height: 22px; opacity: 0.75; }
-    .footer-logo-svg svg { height: 22px; width: auto; display: block; color: rgba(255,255,255,0.55); }
-
-    .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 0.25rem; }
-
-    footer p {
-      font-size: 0.64rem;
-      color: rgba(255,255,255,0.35);
-      letter-spacing: 0.06em;
-    }
-    .footer-social { display: flex; gap: 1.5rem; }
-    .footer-social a { font-family: var(--mono); font-size: 0.60rem; letter-spacing: 0.10em; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
-    .footer-social a:hover { color: var(--gold-lite); }
-    @media (max-width: 600px) {
-      .footer-inner { flex-direction: column; align-items: center; text-align: center; gap: 0.75rem; }
-      .footer-right { align-items: center; }
-    }
-
-    /* ── SCROLL REVEAL ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(16px);
-      transition: opacity 0.78s ease, transform 0.78s ease;
-    }
-
-    .reveal.in { opacity: 1; transform: none; }
-
-    .stagger > * {
-      opacity: 0;
-      transform: translateY(12px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
-    }
-
-    .stagger.in > *:nth-child(1) { opacity:1; transform:none; transition-delay:0s; }
-    .stagger.in > *:nth-child(2) { opacity:1; transform:none; transition-delay:0.08s; }
-    .stagger.in > *:nth-child(3) { opacity:1; transform:none; transition-delay:0.16s; }
-    .stagger.in > *:nth-child(4) { opacity:1; transform:none; transition-delay:0.24s; }
-
-    /* ── LANG TRANSITION ── */
-    [data-ja], [data-en] {
-      transition: opacity 0.25s ease;
-    }
-
-    [data-lang="ja"] [data-en] { display: none; }
-    [data-lang="en"] [data-ja] { display: none; }
-
-
-    .about-mission-link {
-      margin-top: 2.8rem;
-    }
-
-    @keyframes rise {
-      from { opacity:0; transform:translateY(20px); }
-      to   { opacity:1; transform:none; }
-    }
-
-
-    /* ── SERVICE CARDS ── */
-    .svc-cards {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      margin-top: 3.5rem;
-    }
-    @media (max-width: 820px) { .svc-cards { grid-template-columns: 1fr; } }
-
-    .svc-card {
-      background: var(--bg);
-      border: 1px solid var(--rule);
-      padding: 3rem 2.8rem 2.5rem;
-      display: flex;
-      flex-direction: column;
-      transition: border-color 0.25s, box-shadow 0.25s;
-    }
-    .svc-card:hover {
-      border-color: var(--gold-dim);
-      box-shadow: 0 4px 28px rgba(160,136,64,0.08);
-    }
-    .svc-card-alt {
-      background: var(--bg-white);
-    }
-
-    .svc-card-head {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.6rem;
-    }
-    .svc-num {
-      font-family: var(--serif);
-      font-size: 2.8rem;
-      font-weight: 400;
-      color: var(--rule);
-      line-height: 1;
-    }
-    .svc-tag-pill {
-      font-family: var(--mono);
-      font-size: 0.55rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--ink-low);
-      border: 1px solid var(--rule);
-      padding: 0.28rem 0.7rem;
-      background: var(--bg-white);
-    }
-    .svc-tag-gold {
-      color: var(--gold);
-      border-color: var(--gold-dim);
-      background: var(--gold-bg);
-    }
-
-    .svc-title {
-      font-family: var(--serif);
-      font-size: clamp(1.3rem, 2.2vw, 1.75rem);
-      font-weight: 400;
-      color: var(--ink);
-      line-height: 1.25;
-      margin-bottom: 1.2rem;
-    }
-    .svc-body {
-      font-size: 0.93rem;
-      color: var(--ink-mid);
-      line-height: 1.92;
-      margin-bottom: 1.8rem;
-      flex-grow: 1;
-    }
-
-    .svc-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      margin-bottom: 2.2rem;
-      padding-left: 0;
-    }
-    .svc-list li {
-      font-size: 0.86rem;
-      color: var(--ink-mid);
-      display: flex;
-      align-items: baseline;
-      gap: 0.7rem;
-      line-height: 1.5;
-    }
-    .svc-list li::before {
-      content: '—';
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      color: var(--gold);
-      flex-shrink: 0;
-    }
-
-    .svc-footer {
-      border-top: 1px solid var(--rule);
-      padding-top: 1.6rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: auto;
-    }
-    .svc-link {
-      font-family: var(--mono);
-      font-size: 0.58rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--ink-low);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      transition: color 0.2s;
-    }
-    .svc-link:hover { color: var(--ink); }
-    .svc-link:hover .svc-arrow { transform: translateX(3px); }
-    .svc-arrow {
-      display: inline-block;
-      transition: transform 0.2s;
-      font-size: 0.76rem;
-    }
-    .svc-cta-small {
-      font-family: var(--mono);
-      font-size: 0.58rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--gold);
-      text-decoration: none;
-      border-bottom: 1px solid var(--gold-dim);
-      padding-bottom: 2px;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .svc-cta-small:hover { color: var(--ink); border-color: var(--rule); }
-
-
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500&family=Jost:wght@200;300;400&family=Space+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
 <!-- ══════════════ NAV ══════════════ -->
-<nav id="nav"></nav>
+<nav id="nav">
+  <a href="/" class="nav-logo" aria-label="Nalva">
+    <img src="assets/logo.svg" alt="Nalva" />
+  </a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#philosophy">思想</a></li>
+      <li><a href="#capabilities">提供領域</a></li>
+      <li><a href="#engagement">事例</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <a href="#contact" class="nav-contact">CONTACT</a>
+  </div>
+</nav>
 
 <!-- ══════════════ HERO ══════════════ -->
 <section class="hero" id="top">
-  <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
-  <div class="hero-vignette"></div>
+  <div class="hero-geo" aria-hidden="true">
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" fill="none">
+      <polygon points="200,20 380,120 380,280 200,380 20,280 20,120" stroke="white" stroke-width="0.5"/>
+      <polygon points="200,52 348,137 348,263 200,348 52,263 52,137" stroke="white" stroke-width="0.4"/>
+      <polygon points="200,84 316,154 316,246 200,316 84,246 84,154" stroke="white" stroke-width="0.35"/>
+      <polygon points="200,116 284,171 284,229 200,284 116,229 116,171" stroke="white" stroke-width="0.3"/>
+      <polygon points="200,148 252,188 252,212 200,252 148,212 148,188" stroke="white" stroke-width="0.25"/>
+      <circle cx="200" cy="200" r="18" stroke="white" stroke-width="0.4"/>
+      <circle cx="200" cy="200" r="42" stroke="white" stroke-width="0.25"/>
+      <circle cx="200" cy="200" r="78" stroke="white" stroke-width="0.2"/>
+    </svg>
+  </div>
 
   <div class="hero-body">
     <div class="hero-eyebrow">
@@ -904,30 +49,25 @@
     </div>
 
     <h1>
-      <span data-ja>AIは導入できる。<br>しかし、思考は<br>設計されなければならない。</span>
-      <span data-en>AI can be deployed.<br>But thinking must<br>be designed.</span>
+      AIは導入できる。<br>
+      しかし、思考は<br>設計されなければならない。
     </h1>
 
     <p class="hero-statement">
-      <span data-ja>ツールを与えても、組織は変わりません。<br>問いを立てる力と、自走する文化。<br>その設計から、はじめます。</span>
-      <span data-en>Giving people tools doesn't transform organizations.<br>The ability to ask the right questions, and a culture of self-sufficiency.<br>That's where the design&nbsp;begins.</span>
+      ツールを与えても、組織は変わりません。<br>
+      問いを立てる力と、自走する文化。<br>
+      その設計から、はじめます。
     </p>
 
     <div class="hero-cta">
-      <a href="#contact" class="cta-link">
-        <span data-ja>CONTACT · 無料ヒアリング</span>
-        <span data-en>CONTACT · Free Discovery</span>
-      </a>
-      <a href="#capabilities" class="cta-secondary">
-        <span data-ja>提供領域を見る ↓</span>
-        <span data-en>View Capabilities ↓</span>
-      </a>
+      <a href="#contact" class="cta-link">CONTACT — 無料ヒアリング</a>
+      <a href="#capabilities" class="cta-secondary">提供領域を見る ↓</a>
     </div>
   </div>
 
   <div class="hero-foot">
     <div class="hero-foot-inner">
-      <p>Nalva Inc. · Tokyo, Japan</p>
+      <p>Nalva Inc. — Tokyo, Japan</p>
       <p>Founder : Aki Takano</p>
     </div>
   </div>
@@ -938,162 +78,100 @@
   <div class="wrap">
     <div class="section-head reveal">
       <div class="label-line label">Philosophy</div>
-      <h2>
-        <span data-ja>なぜやるのか</span>
-        <span data-en>Why We Exist</span>
-      </h2>
+      <h2>なぜやるのか</h2>
       <p>
-        <span data-ja>AIが定着しない理由は、スキルの問題ではありません。組織が「正しい問いを立てる構造」を持っていないからです。</span>
-        <span data-en>The reason AI fails to take root isn't a skills problem. It's that organizations lack the structures to ask the right questions in the first&nbsp;place.</span>
+        AIが定着しない理由は、スキルの問題ではありません。
+        組織が「正しい問いを立てる構造」を持っていないからです。
       </p>
     </div>
 
     <div class="phi-grid stagger">
       <div class="phi-card">
         <span class="phi-index">01</span>
-        <h3>
-          <span data-ja>問いの質が、答えの質を決める</span>
-          <span data-en>Question quality determines answer quality</span>
-        </h3>
+        <h3>問いの質が、答えの質を決める</h3>
         <p>
-          <span data-ja>AIは「問い」の鏡です。浅い問いには浅い答えが返ります。「そもそも何を解くべきか」から設計し直すことが、Nalvaの起点です。</span>
-          <span data-en>AI is a mirror of the questions you ask it. Shallow questions return shallow answers. Redesigning from "what should we actually be solving?" . That's where Nalva&nbsp;begins.</span>
+          AIは「問い」の鏡です。浅い問いには浅い答えが返ります。
+          「そもそも何を解くべきか」から設計し直すことが、Nalvaの起点です。
         </p>
       </div>
       <div class="phi-card">
         <span class="phi-index">02</span>
-        <h3>
-          <span data-ja>私が去っても、変革が続く状態を目指す</span>
-          <span data-en>Transformation that continues after we leave</span>
-        </h3>
+        <h3>私が去っても、変革が続く状態を目指す</h3>
         <p>
-          <span data-ja>常駐して支援し続けることが目標ではありません。3ヶ月後にチームが自分たちで走れる状態を設計することが、Nalvaの存在意義です。</span>
-          <span data-en>The goal isn't to keep supporting you indefinitely. Designing a state where your team can run on its own after 3 months. That is Nalva's reason for&nbsp;being.</span>
+          常駐して支援し続けることが目標ではありません。
+          3ヶ月後にチームが自分たちで走れる状態を設計することが、Nalvaの存在意義です。
         </p>
       </div>
       <div class="phi-card">
         <span class="phi-index">03</span>
-        <h3>
-          <span data-ja>変革は、一人の意欲では動かない</span>
-          <span data-en>One person's motivation can't drive transformation</span>
-        </h3>
+        <h3>変革は、一人の意欲では動かない</h3>
         <p>
-          <span data-ja>変革を継続する「チャンピオン人材」を社内で育て、構造として定着させることが本質的な解です。「知っている人だけが使う」状態では、組織は変わりません。</span>
-          <span data-en>The real answer is building internal champion talent who sustain transformation structurally. When only a few "in-the-know" people use AI, nothing changes at the organizational&nbsp;level.</span>
+          変革を継続する「チャンピオン人材」を社内で育て、構造として定着させることが本質的な解です。
+          「知っている人だけが使う」状態では、組織は変わりません。
         </p>
       </div>
       <div class="phi-card">
         <span class="phi-index">04</span>
-        <h3>
-          <span data-ja>学術とビジネスの交差点に立つ</span>
-          <span data-en>Standing at the intersection of academia and business</span>
-        </h3>
+        <h3>学術とビジネスの交差点に立つ</h3>
         <p>
-          <span data-ja>デザイン・アートの学術的基盤と、外資系コンサル・エンタープライズDXの実務経験。この両輪があることで、概念を現場に落とし込む翻訳が可能になります。</span>
-          <span data-en>Academic foundations in design and art, combined with consulting and enterprise DX experience. This dual grounding enables the translation of concepts into operational&nbsp;reality.</span>
+          デザイン・アートの学術的基盤と、外資系コンサル・エンタープライズDXの実務経験。
+          この両輪があることで、概念を現場に落とし込む翻訳が可能になります。
         </p>
       </div>
     </div>
 
     <div class="phi-mission-link reveal">
-      <a href="about#values" class="mission-link">
-        <span data-ja>設計の原則（Mission &amp; Values）</span>
-        <span data-en>Design Principles (Mission &amp; Values)</span>
-        <span>→</span>
-      </a>
+      <a href="about.html#values" class="mission-link">設計の原則（Mission &amp; Values）<span>→</span></a>
     </div>
   </div>
 </section>
 
 <!-- ══════════════ CAPABILITIES ══════════════ -->
-<section id="capabilities" style="background:var(--bg-white);">
+<section id="capabilities">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="label-line label">Capabilities</div>
-      <h2>
-        <span data-ja>提供できること</span>
-        <span data-en>What We Design</span>
-      </h2>
+      <h2>提供できること</h2>
       <p>
-        <span data-ja>対象と目的に応じた、2つの設計領域。</span>
-        <span data-en>Two design domains, matched to your context and goals.</span>
+        Nalvaが何を設計するかを示します。
+        詳細なプログラム構成はサービスページをご覧ください。
       </p>
     </div>
 
-    <div class="svc-cards">
-
-      <!-- Card 1 -->
-      <div class="svc-card reveal">
-        <div class="svc-card-head">
-          <div class="svc-num">01</div>
-          <div class="svc-tag-pill">
-            <span data-ja>国内企業向け</span>
-            <span data-en>For Japanese Companies</span>
-          </div>
-        </div>
-        <h3 class="svc-title">
-          <span data-ja>AI活用の思考再設計</span>
-          <span data-en>AI Thinking Redesign</span>
-        </h3>
-        <p class="svc-body">
-          <span data-ja>「何となく使う」状態から、「業務課題に正しく問いを立てて使う」状態へ。デザイン思考の5ステップを軸に、AIを使う前の思考の型を設計します。3ヶ月の伴走で、研修で終わらせずに組織の自走化を実現します。</span>
-          <span data-en>From "using it vaguely" to "asking precise questions tied to real business challenges." Built around Design Thinking, we design the cognitive frameworks that precede AI use, embedded through 3 months of hands-on&nbsp;implementation.</span>
-        </p>
-        <ul class="svc-list">
-          <li><span data-ja>ワークショップ形式（半日〜）</span><span data-en>Workshop format (half-day+)</span></li>
-          <li><span data-ja>3ヶ月伴走プログラム</span><span data-en>3-month implementation program</span></li>
-          <li><span data-ja>AI活用率の月次数値化</span><span data-en>Monthly AI adoption measurement</span></li>
-          <li><span data-ja>社内チャンピオン育成</span><span data-en>Internal champion development</span></li>
-        </ul>
-        <div class="svc-footer">
-          <a href="service.html" class="svc-link">
-            <span data-ja>詳しく見る</span>
-            <span data-en>View Program Details</span>
-            <span class="svc-arrow">→</span>
-          </a>
-          <a href="#contact" class="svc-cta-small">
-            <span data-ja>まずは無料相談</span>
-            <span data-en>Free Discovery Call</span>
-          </a>
+    <div class="cap-list">
+      <div class="cap-row reveal">
+        <div class="cap-name">AI活用の<br>思考再設計</div>
+        <div>
+          <p class="cap-body">
+            「何となく使う」状態から、「業務課題に正しく問いを立てて使う」状態へ。
+            デザイン思考の5ステップを軸に、AIを使う前の思考の型を設計します。
+            実際の業務課題を素材にしたワーク形式で、学びが現場に接続されるよう設計します。
+          </p>
+          <span class="cap-tag">Workshop / Half-day</span>
         </div>
       </div>
-
-      <!-- Card 2 -->
-      <div class="svc-card svc-card-alt reveal">
-        <div class="svc-card-head">
-          <div class="svc-num">02</div>
-          <div class="svc-tag-pill svc-tag-gold">
-            <span data-ja>海外企業向け</span>
-            <span data-en>For Foreign Companies</span>
-          </div>
-        </div>
-        <h3 class="svc-title">
-          <span data-ja>日本市場参入・組織設計</span>
-          <span data-en>Japan Market Entry &amp; Org Design</span>
-        </h3>
-        <p class="svc-body">
-          <span data-ja>外資系企業の日本進出が失敗する理由は、プロダクトでも規制でもありません。「見えない組織層」の設計不足です。意思決定の流れ、沈黙の場所、グローバル戦略が現地に翻訳されない構造。その設計から始めます。</span>
-          <span data-en>Foreign companies don't fail Japan entry on product or regulation. They fail on org design: the invisible layer. How decisions actually flow, where staff go silent, why global strategy fails to translate locally. That is where we&nbsp;begin.</span>
-        </p>
-        <ul class="svc-list">
-          <li><span data-ja>Japan GTM設計・意思決定フロー設計</span><span data-en>Japan GTM design &amp; decision flow architecture</span></li>
-          <li><span data-ja>組織文化・社内チャンピオン育成</span><span data-en>Org culture design &amp; internal champion development</span></li>
-          <li><span data-ja>日本型営業プロセス設計</span><span data-en>Japan sales process design</span></li>
-          <li><span data-ja>HQ向けROIレポート・進捗可視化</span><span data-en>HQ ROI reporting &amp; progress visibility</span></li>
-        </ul>
-        <div class="svc-footer">
-          <a href="service2.html" class="svc-link">
-            <span data-ja>詳しく見る</span>
-            <span data-en>View Program Details</span>
-            <span class="svc-arrow">→</span>
-          </a>
-          <a href="#contact" class="svc-cta-small">
-            <span data-ja>まずは無料相談</span>
-            <span data-en>Free Discovery Call</span>
-          </a>
+      <div class="cap-row reveal">
+        <div class="cap-name">自走型組織の<br>実装設計</div>
+        <div>
+          <p class="cap-body">
+            研修で終わらせない。3ヶ月間の伴走で、学びを実業務に定着させます。
+            月次でAI活用状況を数値化し、経営層への説明を設計します。
+            Nalvaが離れた後も組織が自走できる構造を、内側から育てます。
+          </p>
+          <span class="cap-tag">3-month Program</span>
         </div>
       </div>
-
+      <div class="cap-row reveal">
+        <div class="cap-name">組織診断・<br>戦略設計</div>
+        <div>
+          <p class="cap-body">
+            DX推進の停滞には、必ず構造的な原因があります。
+            組織診断のフレームワークを使って課題を可視化し、その組織固有の推進戦略を設計します。
+            まず30分、対話から始めます。
+          </p>
+          <span class="cap-tag">Free Discovery / 30min</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1103,159 +181,81 @@
   <div class="wrap">
     <div class="section-head reveal">
       <div class="label-line label">Selected Engagement</div>
-      <h2>
-        <span data-ja>代表的な変化</span>
-        <span data-en>Representative Results</span>
-      </h2>
+      <h2>代表的な変化</h2>
       <p>
-        <span data-ja>これは想定導入シナリオです。<br>このような文脈で、Nalvaは機能します。</span>
-        <span data-en>This is a projected deployment scenario. This is the kind of context in which Nalva works.</span>
+        これは想定導入シナリオです。
+        このような文脈で、Nalvaは機能します。
       </p>
     </div>
 
     <div class="eng-inner">
       <div class="eng-col reveal">
         <div class="eng-col-head">Context</div>
-        <h3>
-          <span data-ja>製造業・従業員600名<br>縦割り組織 / DX推進停滞</span>
-          <span data-en>Manufacturing · 600 employees<br>Siloed org / DX stalled</span>
-        </h3>
-        <p>
-          <span data-ja>ChatGPT導入済みで利用率25%。DX担当が単独で動き、研修効果が可視化できていない。経営層への成果説明が詰まっている状態。</span>
-          <span data-en>ChatGPT deployed with 25% utilization. DX lead working alone, training outcomes invisible. Results reporting to leadership completely&nbsp;stuck.</span>
-        </p>
+        <h3>製造業・従業員600名<br>縦割り組織 / DX推進停滞</h3>
+        <p>ChatGPT導入済みで利用率25%。DX担当が単独で動き、研修効果が可視化できていない。経営層への成果説明が詰まっている状態。</p>
         <ul class="eng-list">
-          <li>
-            <span data-ja>営業・設計・管理の3部門が縦割り</span>
-            <span data-en>Sales, Engineering, Admin operating in silos</span>
-          </li>
-          <li>
-            <span data-ja>推進担当が孤立し、疲弊している</span>
-            <span data-en>DX champion isolated and burning out</span>
-          </li>
-          <li>
-            <span data-ja>単発研修実施済み、定着なし</span>
-            <span data-en>One-off training completed, nothing retained</span>
-          </li>
+          <li>営業・設計・管理の3部門が縦割り</li>
+          <li>推進担当が孤立し、疲弊している</li>
+          <li>単発研修実施済み、定着なし</li>
         </ul>
       </div>
       <div class="eng-col eng-results reveal">
         <div class="eng-col-head">After 3 Months</div>
         <div class="result-row">
           <div class="result-num">25→65%</div>
-          <div class="result-label">
-            <span data-ja>AI活用率の変化</span>
-            <span data-en>AI adoption rate change</span>
-          </div>
+          <div class="result-label">AI活用率の変化</div>
         </div>
         <div class="result-row">
           <div class="result-num">40%</div>
-          <div class="result-label">
-            <span data-ja>営業資料作成時間の削減</span>
-            <span data-en>Reduction in sales doc prep time</span>
-          </div>
+          <div class="result-label">営業資料作成時間の削減</div>
         </div>
         <div class="result-row">
-          <div class="result-num"><span data-ja>7名</span><span data-en>7</span></div>
-          <div class="result-label">
-            <span data-ja>認定チャンピオンの誕生</span>
-            <span data-en>Certified champions created</span>
-          </div>
+          <div class="result-num">7名</div>
+          <div class="result-label">認定チャンピオンの誕生</div>
         </div>
-        <p class="eng-note">
-          <span data-ja>推進担当が「一人で戦わなくていい状態」になった。</span>
-          <span data-en>The DX lead reached a state of "not having to fight&nbsp;alone."</span>
-          <small>
-            <span data-ja>※ 想定モデルケース試算。実際の個社情報ではありません。</span>
-            <span data-en>※ Projected model case. Not based on actual company data.</span>
-          </small>
-        </p>
+        <p class="eng-note">推進担当が「一人で戦わなくていい状態」になった。<br>※ 想定モデルケース試算。実際の個社情報ではありません。</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ══════════════ ABOUT ══════════════ -->
-<section id="about" style="background:var(--bg);">
+<section id="about">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="label-line label">About</div>
-      <h2>
-        <span data-ja>Nalvaについて</span>
-        <span data-en>About Nalva</span>
-      </h2>
+      <h2>Nalvaについて</h2>
     </div>
 
     <div class="about-grid">
       <div class="reveal">
         <div class="about-pull">
-          <span data-ja>依存を生まない。<br>それが、私の役割です。</span>
-          <span data-en>No dependency created.<br>That is my role.</span>
+          依存を生まない。<br>それが、私の役割です。
         </div>
         <div class="about-body">
-          <p>
-            <span data-ja>Nalvaは、高野 秋（Aki Takano）が主宰するコンサルティングファームです。「AI活用の思考設計」と「外資系企業の日本市場参入・組織設計」の2つの領域を扱います。</span>
-            <span data-en>Nalva is a consulting firm led by Aki Takano, working across two domains: AI adoption design for Japanese organizations, and Japan market entry &amp; org design for global&nbsp;companies.</span>
-          </p>
-          <p>
-            <span data-ja>デザイン・アートの学術的基盤と、外資系リサーチコンサル、エンタープライズDXの実務経験を重ね合わせた独自のアプローチで、組織の「見えない層」を設計します。</span>
-            <span data-en>Through a unique approach combining academic foundations in design and art with practical experience in international research consulting and enterprise DX, we design the invisible layer that determines whether organizations actually&nbsp;change.</span>
-          </p>
-          <p>
-            <span data-ja>デザイン思考と組織変革を同時に扱える設計者は、まだ数少ない。その位置に、意図を持って立っています。</span>
-            <span data-en>Practitioners who can hold Design Thinking and organizational change simultaneously are still rare. Nalva occupies that position&nbsp;deliberately.</span>
-          </p>
+          <p>Nalvaは、高野 秋（Aki Takano）が主宰するAI変革設計ファームです。「AIを教える」のではなく、「AIを使いこなす思考を設計する」ことを事業の核にしています。</p>
+          <p>デザイン・アートの学術的基盤と、外資系リサーチコンサル、エンタープライズDXの実務経験を重ね合わせた独自のアプローチで、中堅企業のAI自走化を支援します。</p>
+          <p>デザイン思考とAI実装を同時に扱える設計者は、まだ数少ない。その位置に、意図を持って立っています。</p>
         </div>
-        <p class="about-name">Aki Takano · Founder &amp; Principal Consultant</p>
-        <div class="about-mission-link">
-          <a href="about#values" class="mission-link">
-            <span data-ja>設計の原則（Mission &amp; Values）</span>
-            <span data-en>Design Principles (Mission &amp; Values)</span>
-            <span>→</span>
-          </a>
-        </div>
+        <p class="about-name">Aki Takano — Founder &amp; Principal Consultant</p>
       </div>
 
       <div class="credentials stagger">
         <div class="cred">
-          <h4>
-            <span data-ja>デザイン・アート領域の学術的基盤</span>
-            <span data-en>Academic Foundation in Design &amp; Art</span>
-          </h4>
-          <p>
-            <span data-ja>正しい問いを立てることを徹底的に叩き込まれた経歴が、研修の思想的核心。</span>
-            <span data-en>A background deeply trained in formulating the right questions forms the intellectual core of every program.</span>
-          </p>
+          <h4>デザイン・アート領域の学術的基盤</h4>
+          <p>正しい問いを立てることを徹底的に叩き込まれた経歴が、研修の思想的核心。</p>
         </div>
         <div class="cred">
-          <h4>
-            <span data-ja>外資系リサーチコンサル</span>
-            <span data-en>International Research Consulting</span>
-          </h4>
-          <p>
-            <span data-ja>組織診断・変革支援。データで課題を可視化し、対話で変革を設計する実践的経験。</span>
-            <span data-en>Organizational diagnosis and transformation support. Practical experience in making problems visible through data and designing change through dialogue.</span>
-          </p>
+          <h4>外資系リサーチコンサル</h4>
+          <p>組織診断・変革支援。データで課題を可視化し、対話で変革を設計する実践的経験。</p>
         </div>
         <div class="cred">
-          <h4>
-            <span data-ja>外資系ITリーダー企業</span>
-            <span data-en>International IT Leader</span>
-          </h4>
-          <p>
-            <span data-ja>エンタープライズDX推進。「現場が使う」視点からAI研修を設計できる実務根拠。</span>
-            <span data-en>Enterprise DX advancement. Operational grounding for designing AI programs from the perspective of "what practitioners will actually use."</span>
-          </p>
+          <h4>外資系ITリーダー企業</h4>
+          <p>エンタープライズDX推進。「現場が使う」視点からAI研修を設計できる実務根拠。</p>
         </div>
         <div class="cred">
-          <h4>
-            <span data-ja>MBA × コンペ受賞（芸術・ビジネス系）</span>
-            <span data-en>MBA × Competition Awards (Art &amp; Business)</span>
-          </h4>
-          <p>
-            <span data-ja>経営論理とアート思考の両輪。日英バイリンガル対応。</span>
-            <span data-en>Business logic and art thinking working in tandem. Bilingual in Japanese and English.</span>
-          </p>
+          <h4>MBA × コンペ受賞（芸術・ビジネス系）</h4>
+          <p>経営論理とアート思考の両輪。日英バイリンガル対応。</p>
         </div>
       </div>
     </div>
@@ -1264,304 +264,72 @@
 
 <!-- ══════════════ CONTACT ══════════════ -->
 <section class="contact-section" id="contact">
-  <div class="contact-inner">
-    <div class="contact-left">
-      <div class="label gold">
-        <span data-en>Start Here</span>
-        <span data-ja>ここから始める</span>
-      </div>
+  <div class="wrap">
+    <div class="contact-inner reveal">
+      <div class="label-line label">Contact</div>
       <h2>
-        <span data-ja>まずは30分、<br>「うちの場合」を<br>一緒に考えませんか。</span>
-        <span data-en>Let's spend 30 minutes<br>thinking through<br>your specific situation.</span>
+        まずは30分、<br>
+        「うちの場合」を<br>
+        一緒に考えませんか。
       </h2>
-      <div class="contact-divider"></div>
-      <p>
-        <span data-ja>どのコースが合っているか、どんな変化が期待できるか、費用対効果はどのくらいか。無料30分コールですべてお話しします。1週間以内に提案書を提出いたします。</span>
-        <span data-en>Which program fits, what kind of change is realistic, what the ROI might look like — we'll work through all of it in a free 30-minute call, followed by a scoped proposal within one&nbsp;week.</span>
+      <p class="contact-body">
+        どのコースが合っているか、どんな変化が期待できるか、費用対効果はどのくらいか。すべて無料でお話しします。
       </p>
-      <a href="https://calendly.com/atakano-nalva/30min" target="_blank" rel="noopener" class="contact-cta">
-        <span data-en>Book Free Discovery Call →</span>
-        <span data-ja>無料ディスカバリーコールを予約 →</span>
-      </a>
-      <div class="contact-email"><a href="/cdn-cgi/l/email-protection#03707673736c7177436d626f75622d6d6677"><span class="__cf_email__" data-cfemail="ccbfb9bcbca3beb88ca2ada0baade2a2a9b8">[email&#160;protected]</span></a></div>
-    </div>
 
-    <div class="contact-right">
-      <div class="contact-step">
-        <div class="contact-step-n">01</div>
-        <div>
-          <h4 data-en>Free 30-min discovery call</h4>
-          <h4 data-ja>無料30分ディスカバリーコール</h4>
-          <p data-en>Map your specific situation — which program fits, what kind of change is realistic.</p>
-          <p data-ja>御社固有の状況をマッピング。どのコースが合っているか、どんな変化が現実的か。</p>
+      <div class="contact-steps">
+        <div class="contact-step">
+          <div class="step-n">1</div>
+          <div class="step-text">無料30分ヒアリング申込</div>
+        </div>
+        <div class="contact-step">
+          <div class="step-n">2</div>
+          <div class="step-text">課題とコースを整理</div>
+        </div>
+        <div class="contact-step">
+          <div class="step-n">3</div>
+          <div class="step-text">ROI試算・提案書（1週間以内）</div>
         </div>
       </div>
-      <div class="contact-step">
-        <div class="contact-step-n">02</div>
-        <div>
-          <h4 data-en>Scoped proposal — within one week</h4>
-          <h4 data-ja>提案書提出：1週間以内</h4>
-          <p data-en>ROI estimate + recommended engagement design. No standard packages.</p>
-          <p data-ja>ROI試算＋推奨エンゲージメント設計。標準パッケージはありません。</p>
-        </div>
-      </div>
-      <div class="contact-step">
-        <div class="contact-step-n">03</div>
-        <div>
-          <h4 data-en>Program begins — monthly cycle</h4>
-          <h4 data-ja>プログラム開始：月次サイクル</h4>
-          <p data-en>Design → Implement → Reflect → Report. Calibrated each cycle to your org's reality.</p>
-          <p data-ja>設計→実装→振り返り→報告。毎月、組織の実態に合わせてキャリブレーションします。</p>
-        </div>
+
+      <a href="mailto:support@nalva.net" class="contact-cta">CONTACT — support@nalva.net</a>
+
+      <div class="contact-links">
+        <a href="https://nalva.net">nalva.net</a>
+        <a href="https://linkedin.com/in/aki-takano" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ══════════════ FOOTER ══════════════ -->
-<footer></footer>
+<footer>
+  <div class="footer-inner">
+    <img src="assets/logo.svg" alt="Nalva" />
+    <div class="footer-right">
+      <p>&copy; 2026 Nalva Inc.</p>
+      <p>本資料の無断転用・二次利用はご遠慮ください</p>
+    </div>
+  </div>
+</footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/shared.js"></script>
 <script>
-  // Nav scroll — switch to light when past hero
-  (function () {
-    var nav = document.getElementById('nav');
-    var hero = document.querySelector('.hero');
-    window.addEventListener('scroll', function () {
-      var heroBottom = hero.offsetHeight - 80;
-      nav.classList.toggle('scrolled', window.scrollY > heroBottom);
-    }, { passive: true });
-  })();
+  // Nav scroll effect
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
 
-  // ── Hero Canvas Animation ──
-  (function() {
-    const canvas = document.getElementById('heroCanvas');
-    if (!canvas) return;
-    const heroEl = document.querySelector('.hero');
-    const ctx = canvas.getContext('2d');
-    let w, h, particles, time = 0;
-    let animId;
-
-    // Mouse tracking
-    let mouse = { x: -9999, y: -9999, active: false };
-    const mouseRadius = 200;    // influence radius
-    const mouseStrength = 0.012; // attraction strength (gentle)
-
-    heroEl.addEventListener('mousemove', function(e) {
-      const rect = heroEl.getBoundingClientRect();
-      mouse.x = e.clientX - rect.left;
-      mouse.y = e.clientY - rect.top;
-      mouse.active = true;
+  // Scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
     });
+  }, { threshold: 0.07, rootMargin: '0px 0px -36px 0px' });
 
-    heroEl.addEventListener('mouseleave', function() {
-      mouse.active = false;
-    });
-
-    // Touch support for mobile
-    heroEl.addEventListener('touchmove', function(e) {
-      const rect = heroEl.getBoundingClientRect();
-      mouse.x = e.touches[0].clientX - rect.left;
-      mouse.y = e.touches[0].clientY - rect.top;
-      mouse.active = true;
-    }, { passive: true });
-
-    heroEl.addEventListener('touchend', function() {
-      mouse.active = false;
-    });
-
-    function resize() {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      const rect = canvas.parentElement.getBoundingClientRect();
-      w = rect.width;
-      h = rect.height;
-      canvas.width = w * dpr;
-      canvas.height = h * dpr;
-      canvas.style.width = w + 'px';
-      canvas.style.height = h + 'px';
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    }
-
-    function createParticles() {
-      const count = Math.min(Math.floor((w * h) / 12000), 120);
-      particles = [];
-      for (let i = 0; i < count; i++) {
-        particles.push({
-          x: Math.random() * w,
-          y: Math.random() * h,
-          vx: (Math.random() - 0.5) * 0.3,
-          vy: (Math.random() - 0.5) * 0.3,
-          r: Math.random() * 2.2 + 0.8,
-          phase: Math.random() * Math.PI * 2,
-          speed: Math.random() * 0.3 + 0.1
-        });
-      }
-    }
-
-    function draw() {
-      time += 0.004;
-      ctx.clearRect(0, 0, w, h);
-
-      // Update particles
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        p.x += p.vx + Math.sin(time + p.phase) * 0.15;
-        p.y += p.vy + Math.cos(time * 0.7 + p.phase) * 0.1;
-
-        // Mouse attraction
-        if (mouse.active) {
-          const dx = mouse.x - p.x;
-          const dy = mouse.y - p.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < mouseRadius && dist > 1) {
-            const force = (1 - dist / mouseRadius) * mouseStrength;
-            p.x += dx * force;
-            p.y += dy * force;
-          }
-        }
-
-        // Wrap around
-        if (p.x < -20) p.x = w + 20;
-        if (p.x > w + 20) p.x = -20;
-        if (p.y < -20) p.y = h + 20;
-        if (p.y > h + 20) p.y = -20;
-      }
-
-      // Draw connections between particles
-      const maxDist = 160;
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < maxDist) {
-            const alpha = (1 - dist / maxDist) * 0.35;
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = 'rgba(196,168,90,' + alpha + ')';
-            ctx.lineWidth = 0.6;
-            ctx.stroke();
-          }
-        }
-      }
-
-      // Draw connections from mouse cursor to nearby particles
-      if (mouse.active) {
-        const cursorDist = 220;
-        for (let i = 0; i < particles.length; i++) {
-          const p = particles[i];
-          const dx = mouse.x - p.x;
-          const dy = mouse.y - p.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < cursorDist) {
-            const alpha = (1 - dist / cursorDist) * 0.18;
-            ctx.beginPath();
-            ctx.moveTo(mouse.x, mouse.y);
-            ctx.lineTo(p.x, p.y);
-            ctx.strokeStyle = 'rgba(220,195,110,' + alpha + ')';
-            ctx.lineWidth = 0.4;
-            ctx.stroke();
-          }
-        }
-
-        // Subtle glow at cursor position
-        const grad = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 60);
-        grad.addColorStop(0, 'rgba(196,168,90,0.08)');
-        grad.addColorStop(1, 'rgba(196,168,90,0)');
-        ctx.beginPath();
-        ctx.arc(mouse.x, mouse.y, 60, 0, Math.PI * 2);
-        ctx.fillStyle = grad;
-        ctx.fill();
-      }
-
-      // Draw particles
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        const pulse = 0.6 + Math.sin(time * 2 + p.phase) * 0.4;
-        let alpha = 0.35 + pulse * 0.3;
-
-        // Brighten particles near cursor
-        if (mouse.active) {
-          const dx = mouse.x - p.x;
-          const dy = mouse.y - p.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < mouseRadius) {
-            const boost = (1 - dist / mouseRadius) * 0.4;
-            alpha = Math.min(alpha + boost, 1);
-          }
-        }
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(196,168,90,' + alpha + ')';
-        ctx.fill();
-      }
-
-      // Draw flowing geometric shapes (subtle hexagons)
-      for (let g = 0; g < 3; g++) {
-        const cx = w * (0.6 + g * 0.15);
-        const cy = h * (0.3 + g * 0.2);
-        const size = 60 + g * 30;
-        const rot = time * (0.15 + g * 0.05);
-        let alpha = 0.08 + Math.sin(time + g) * 0.04;
-
-        // Hexagons glow near cursor
-        if (mouse.active) {
-          const dx = mouse.x - cx;
-          const dy = mouse.y - cy;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < mouseRadius + size) {
-            alpha += (1 - dist / (mouseRadius + size)) * 0.06;
-          }
-        }
-
-        ctx.save();
-        ctx.translate(cx, cy);
-        ctx.rotate(rot);
-        ctx.beginPath();
-        for (let s = 0; s < 6; s++) {
-          const angle = (Math.PI / 3) * s - Math.PI / 2;
-          const px = Math.cos(angle) * size;
-          const py = Math.sin(angle) * size;
-          if (s === 0) ctx.moveTo(px, py);
-          else ctx.lineTo(px, py);
-        }
-        ctx.closePath();
-        ctx.strokeStyle = 'rgba(196,168,90,' + alpha + ')';
-        ctx.lineWidth = 0.8;
-        ctx.stroke();
-        ctx.restore();
-      }
-
-      animId = requestAnimationFrame(draw);
-    }
-
-    function init() {
-      resize();
-      createParticles();
-      draw();
-    }
-
-    // Pause when not visible
-    const heroObserver = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        if (!animId) draw();
-      } else {
-        cancelAnimationFrame(animId);
-        animId = null;
-      }
-    }, { threshold: 0 });
-
-    heroObserver.observe(heroEl);
-
-    window.addEventListener('resize', () => {
-      resize();
-      createParticles();
-    });
-
-    init();
-  })();
+  document.querySelectorAll('.reveal, .stagger').forEach(el => io.observe(el));
 </script>
 </body>
 </html>
