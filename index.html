@@ -885,6 +885,7 @@
             <span data-ja>「何となく使う」状態から、「業務課題に正しく問いを立てて使う」状態へ。デザイン思考の5ステップを軸に、AIを使う前の思考の型を設計します。実際の業務課題を素材にしたワーク形式で、学びが現場に接続されるよう設計します。</span>
             <span data-en>Moving from "using it vaguely" to "asking precise questions tied to real business challenges." Built around the 5 steps of Design Thinking, we design the cognitive frameworks that come before you open the AI tool — using actual work challenges as the material, so learning connects directly to operations.</span>
           </p>
+          <a href="service#structure" class="cta-secondary" style="margin-right:1.5rem;"><span data-ja>→ DX推進担当向けの設計論を見る</span><span data-en>→ Read the design framework for DX leaders</span></a>
           <span class="cap-tag">Workshop / Half-day</span>
         </div>
       </div>
@@ -1116,7 +1117,7 @@
         </div>
       </div>
 
-      <a href="mailto:support@nalva.net" class="contact-cta">CONTACT — support@nalva.net</a>
+      <a href="/cdn-cgi/l/email-protection#fe8d8b8e8e918c8abe909f92889fd0909b8a" class="contact-cta">CONTACT — <span class="__cf_email__" data-cfemail="493a3c3939263b3d092728253f2867272c3d">[email&#160;protected]</span></a>
 
       <div class="contact-links">
         <a href="https://nalva.net">nalva.net</a>
@@ -1138,7 +1139,7 @@
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Nav scroll
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
@@ -1169,9 +1170,8 @@
   // Init language from storage or browser
   (function() {
     const saved = localStorage.getItem('nalva-lang');
-    const browserLang = navigator.language && navigator.language.startsWith('ja') ? 'ja' : 'en';
-    const lang = saved || browserLang;
-    if (lang !== 'ja') setLang(lang);
+    const lang = saved || (navigator.language.startsWith('ja') ? 'ja' : 'en');
+    setLang(lang);
   })();
 </script>
 </body>
