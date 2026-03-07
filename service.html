@@ -15,6 +15,10 @@
     [data-lang="ja"] [data-en] { display: none; }
     [data-lang="en"] [data-ja] { display: none; }
   </style>
+  <style>
+    /* reveal初期状態をopacity:1に上書き。JSでinクラスを付与する必要をなくす */
+    .reveal, .stagger { opacity: 1 !important; transform: none !important; }
+  </style>
 </head>
 <body>
 
@@ -602,6 +606,27 @@
   }, { threshold: 0.12 });
 
   document.querySelectorAll('.reveal, .stagger').forEach(el => io.observe(el));
+
+  // ページロード時・ハッシュジャンプ後に既にビューポートに入っている要素を即時表示
+  function revealVisible() {
+    document.querySelectorAll('.reveal, .stagger').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 1.1 && rect.bottom > -100) {
+        el.classList.add('in');
+      }
+    });
+  }
+  // ハッシュジャンプ直後・ロード後・スクロール後に複数回発火
+  window.addEventListener('load', () => {
+    revealVisible();
+    setTimeout(revealVisible, 100);
+    setTimeout(revealVisible, 500);
+    setTimeout(revealVisible, 1000);
+  });
+  document.addEventListener('DOMContentLoaded', revealVisible);
+  window.addEventListener('hashchange', () => setTimeout(revealVisible, 100));
+  // スクロール後も常に発火（IntersectionObserverのバックアップ）
+  window.addEventListener('scroll', revealVisible, { passive: true });
 
   // Language toggle
   function setLang(lang) {
