@@ -380,4 +380,9 @@
   }
 
   (function() {
-    const saved = local
+    const saved = localStorage.getItem('nalva-lang');
+    if (saved && saved !== 'ja') setLang(saved);
+  })();
+</script>
+</body>
+</html>
