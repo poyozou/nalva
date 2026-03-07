@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="ja" data-lang="ja">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SFW03DREZH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SFW03DREZH');
+  </script>
+  <style>
+    /* reveal初期状態をopacity:1に上書き */
+    .reveal, .stagger { opacity: 1 !important; transform: none !important; }
+    .stagger > * { opacity: 1 !important; transform: none !important; }
+  </style>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nalva — Design Thinking × AI Implementation</title>
@@ -1150,7 +1163,7 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   // Nav scroll
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
@@ -1178,12 +1191,4 @@
     localStorage.setItem('nalva-lang', lang);
   }
 
-  // Init language from storage or browser
-  (function() {
-    const saved = localStorage.getItem('nalva-lang');
-    const lang = saved || (navigator.language.startsWith('ja') ? 'ja' : 'en');
-    setLang(lang);
-  })();
-</script>
-</body>
-</html>
+  // 
