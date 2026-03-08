@@ -16,29 +16,38 @@
   </style>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
   <title>About — Nalva Inc.</title>
   <meta name="description" content="Designing a future where gratitude circulates. Nalva Inc. — Aki Takano" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400&family=Jost:wght@200;300;400&family=Space+Mono&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Serif+Display&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg:          #111210;
-      --bg-lifted:   #161714;
-      --bg-card:     #1b1a18;
-      --rule:        rgba(255,255,255,0.07);
-      --rule-accent: rgba(176,160,122,0.18);
-      --gold:        #b0a07a;
-      --gold-dim:    rgba(176,160,122,0.28);
-      --gold-ghost:  rgba(176,160,122,0.08);
-      --ink:         #e8e5de;
-      --ink-mid:     rgba(232,229,222,0.72);
-      --ink-low:     rgba(232,229,222,0.42);
-      --ink-dim:     rgba(232,229,222,0.28);
-      --serif: 'Noto Serif JP', 'Georgia', serif;
-      --sans:  'Jost', sans-serif;
-      --mono:  'Space Mono', monospace;
-      --max:   1100px;
+      --bg:          #F7F5F0;
+      --bg-white:    #FFFFFF;
+      --bg-lifted:   #F0EDE6;
+      --bg-card:     #EDEAE3;
+      --bg-ink:      #1C1A16;
+      --rule:        #D8D4CC;
+      --rule-accent: rgba(160,136,64,0.22);
+      --gold:        #A08840;
+      --gold-lite:   #C4A85A;
+      --gold-dim:    rgba(160,136,64,0.25);
+      --gold-ghost:  rgba(160,136,64,0.08);
+      --gold-bg:     #FAF6EC;
+      --ink:         #1C1A16;
+      --ink-mid:     #4A4640;
+      --ink-low:     #7A7570;
+      --ink-dim:     #B0ACA5;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans:  'Noto Sans JP', sans-serif;
+      --mono:  'DM Mono', monospace;
+      --max:   1140px;
       --pad:   6vw;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -63,7 +72,7 @@
       height: 66px; display: flex; align-items: center; justify-content: space-between;
       padding-inline: var(--pad);
       border-bottom: 1px solid var(--rule);
-      background: rgba(17,18,16,0.92);
+      background: rgba(247,245,240,0.92);
       backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
       transition: border-color 0.4s;
     }
@@ -144,31 +153,56 @@
     .value-idx::before { content: ''; display: block; width: 14px; height: 1px; background: var(--gold); }
     .value-name { font-family: var(--serif); font-size: clamp(1.5rem, 2.2vw, 2.1rem); color: var(--ink); margin-bottom: 1.4rem; }
     .value-tagline { font-family: var(--serif); font-size: 0.88rem; color: var(--ink-mid); line-height: 1.65; padding-left: 1rem; border-left: 1px solid var(--rule-accent); margin-bottom: 1.2rem; }
-    .value-body { font-size: 0.90rem; color: var(--ink-low); line-height: 1.95; }
+    .value-body { font-size: 0.90rem; color: var(--ink-low); line-height: 1.95; text-wrap: pretty; }
 
     /* CONTACT */
-    .contact { padding-block: 8rem; background: var(--bg-lifted); border-top: 1px solid var(--rule); }
-    .contact-inner { max-width: 620px; }
-    .contact-inner h2 { font-family: var(--serif); font-size: clamp(2.1rem, 4vw, 4rem); font-weight: 400; color: var(--ink); line-height: 1.28; margin-top: 1.4rem; }
-    .contact-note { margin-top: 1.8rem; font-size: 0.90rem; color: var(--ink-low); line-height: 1.92; max-width: 460px; }
-    .contact-note strong { color: var(--ink-mid); font-weight: 300; }
-    .contact-steps { margin-top: 3rem; }
-    .contact-step { display: flex; align-items: baseline; gap: 1.8rem; padding-block: 1.2rem; border-top: 1px solid var(--rule); }
-    .contact-step:last-child { border-bottom: 1px solid var(--rule); }
-    .step-n { font-family: var(--serif); font-size: 1.5rem; color: var(--ink-dim); width: 1.6rem; flex-shrink: 0; }
-    .step-text { font-size: 0.84rem; color: var(--ink-mid); }
-    .contact-cta { margin-top: 2.8rem; display: inline-flex; align-items: center; gap: 0.8rem; font-family: var(--mono); font-size: 0.60rem; letter-spacing: 0.14em; color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold-dim); padding-bottom: 3px; transition: color 0.2s, border-color 0.2s; }
-    .contact-cta::after { content: '→'; font-size: 0.74rem; }
-    .contact-cta:hover { color: var(--ink); border-color: var(--ink-low); }
-    .contact-links { margin-top: 2.4rem; display: flex; gap: 2.4rem; }
-    .contact-links a { font-size: 0.76rem; color: var(--ink-dim); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
-    .contact-links a:hover { color: var(--gold); }
+    .contact-section { background: var(--bg-ink); color: #F7F5F0; padding-block: 8rem; }
+    .contact-inner {
+      max-width: var(--max); margin-inline: auto; padding-inline: var(--pad);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+    }
+    @media(max-width:720px) { .contact-inner { grid-template-columns: 1fr; gap: 3rem; } }
+    .contact-left h2 { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 400; line-height: 1.18; letter-spacing: 0.01em; color: #F7F5F0; margin-top: 1rem; margin-bottom: 1.5rem; text-wrap: balance; }
+    .contact-left p { color: rgba(247,245,240,0.68); font-size: 1rem; line-height: 1.9; }
+    .contact-divider { width: 40px; height: 2px; background: var(--gold-lite); margin: 1.8rem 0; }
+    .contact-right { display: flex; flex-direction: column; gap: 0; }
+    .contact-step {
+      display: grid; grid-template-columns: 44px 1fr; gap: 1.2rem; align-items: start;
+      padding: 1.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .contact-step:last-child { border-bottom: none; }
+    .contact-step-n {
+      width: 44px; height: 44px; border: 1px solid rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono); font-size: 0.62rem; color: var(--gold-lite); flex-shrink: 0;
+    }
+    .contact-step h4 { font-family: 'Noto Sans JP', sans-serif; font-weight: 500; font-size: 0.92rem; color: #F7F5F0; margin-bottom: 0.3rem; }
+    .contact-step p { font-size: 0.84rem; color: rgba(247,245,240,0.55); line-height: 1.65; }
+    .contact-cta {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--gold); color: var(--bg-ink); font-family: var(--mono);
+      font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase;
+      padding: 1.1rem 2rem; margin-top: 2.5rem;
+      border: none; cursor: pointer; transition: background 0.2s; text-decoration: none;
+    }
+    .contact-cta:hover { background: var(--gold-lite); }
+    .contact-email { font-family: var(--mono); font-size: 0.80rem; letter-spacing: 0.06em; color: rgba(247,245,240,0.45); margin-top: 1.2rem; }
+    .contact-email a { color: inherit; text-decoration: none; }
+    .contact-alt-link {
+      display: block; margin-top: 2.5rem; padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.84rem; color: rgba(247,245,240,0.45);
+    }
+    .contact-alt-link a { color: var(--gold-lite); border-bottom: 1px solid rgba(196,168,90,0.3); padding-bottom: 1px; }
 
     /* FOOTER */
     footer { padding-block: 2.2rem; border-top: 1px solid var(--rule); }
     .footer-inner { max-width: var(--max); margin-inline: auto; padding-inline: var(--pad); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
     footer img { height: 20px; opacity: 0.38; }
     footer p { font-size: 0.64rem; color: var(--ink-dim); letter-spacing: 0.06em; }
+    .footer-social { display: flex; gap: 1.5rem; }
+    .footer-social a { font-family: var(--mono); font-size: 0.60rem; letter-spacing: 0.10em; color: var(--ink-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-social a:hover { color: var(--gold); }
 
     /* SCROLL REVEAL */
     .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.78s ease, transform 0.78s ease; }
@@ -184,7 +218,7 @@
 <!-- NAV -->
 <nav id="nav">
   <a href="/" class="nav-logo" aria-label="Nalva">
-    <img src="transparent-logo.png" alt="Nalva" style="height:28px;display:block;opacity:0.92;" />
+    <img src="transparent-logo-blk.png" alt="Nalva" style="height:28px;display:block;" />
   </a>
   <div class="nav-right">
     <div class="lang-toggle" role="group" aria-label="Language">
@@ -305,46 +339,60 @@
 </section>
 
 <!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="wrap">
-    <div class="contact-inner reveal">
-      <span class="label-line label">Contact</span>
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="contact-left">
+      <div class="label gold">
+        <span data-en>Start Here</span>
+        <span data-ja>ここから始める</span>
+      </div>
       <h2>
-        <span data-ja>まずは30分、<br>「うちの場合」を<br>一緒に考えませんか。</span>
-        <span data-en>Let's spend 30 minutes<br>thinking through<br>your specific situation.</span>
+        <span data-ja>まずは30分、「うちの場合」を一緒に考えませんか。</span>
+        <span data-en>Let's spend 30 minutes thinking through your specific situation.</span>
       </h2>
-      <p class="contact-note">
-        <strong><span data-ja>売り込みはしません。まずは状況整理から。</span><span data-en>No sales pitch. Just clarifying the situation.</span></strong><br>
-        <span data-ja>どのコースが合っているか、費用対効果はどのくらいか。すべて無料でお話しします。</span>
-        <span data-en>Which program fits, what the ROI might look like — we'll work through all of it, at no cost.</span>
+      <div class="contact-divider"></div>
+      <p>
+        <span data-ja>売り込みはしません。まずは状況整理から。どのコースが合っているか、費用対効果はどのくらいか。無料30分コールですべてお話しします。1週間以内に提案書を提出いたします。</span>
+        <span data-en>No sales pitch — just clarifying the situation. Which program fits, what the ROI might look like. A free 30-minute call to map the gap, followed by a scoped proposal within one week.</span>
       </p>
-      <div class="contact-steps">
-        <div class="contact-step">
-          <div class="step-n">1</div>
-          <div class="step-text">
-            <span data-ja>無料30分ヒアリング申込</span>
-            <span data-en>Book a free 30-min session</span>
-          </div>
-        </div>
-        <div class="contact-step">
-          <div class="step-n">2</div>
-          <div class="step-text">
-            <span data-ja>課題とコースを整理</span>
-            <span data-en>Clarify challenges and program fit</span>
-          </div>
-        </div>
-        <div class="contact-step">
-          <div class="step-n">3</div>
-          <div class="step-text">
-            <span data-ja>ROI試算・提案書（1週間以内）</span>
-            <span data-en>ROI estimate + proposal (within 1 week)</span>
-          </div>
+      <a href="https://calendly.com/atakano-nalva/30min" target="_blank" rel="noopener" class="contact-cta">
+        <span data-en>Book Free Discovery Call →</span>
+        <span data-ja>無料ディスカバリーコールを予約 →</span>
+      </a>
+      <div class="contact-email"><a href="mailto:support@nalva.net">support@nalva.net</a></div>
+      <div class="contact-alt-link">
+        <span data-en>Learn more about our services <a href="service.html">→ Service</a></span>
+        <span data-ja>サービス詳細はこちら <a href="service.html">→ Service</a></span>
+      </div>
+    </div>
+
+    <div class="contact-right">
+      <div class="contact-step">
+        <div class="contact-step-n">01</div>
+        <div>
+          <h4 data-en>Free 30-min discovery call</h4>
+          <h4 data-ja>無料30分ディスカバリーコール</h4>
+          <p data-en>Map your specific situation — which program fits, what kind of change is realistic.</p>
+          <p data-ja>御社固有の状況をマッピング。どのコースが合っているか、どんな変化が現実的か。</p>
         </div>
       </div>
-      <a href="mailto:support@nalva.net" class="contact-cta">CONTACT — support@nalva.net</a>
-      <div class="contact-links">
-        <a href="https://nalva.net">nalva.net</a>
-        <a href="https://www.linkedin.com/in/akitakano/" target="_blank">LinkedIn</a>
+      <div class="contact-step">
+        <div class="contact-step-n">02</div>
+        <div>
+          <h4 data-en>Scoped proposal — within one week</h4>
+          <h4 data-ja>提案書提出：1週間以内</h4>
+          <p data-en>ROI estimate + recommended engagement design. No standard packages.</p>
+          <p data-ja>ROI試算＋推奨エンゲージメント設計。標準パッケージはありません。</p>
+        </div>
+      </div>
+      <div class="contact-step">
+        <div class="contact-step-n">03</div>
+        <div>
+          <h4 data-en>Program begins — monthly cycle</h4>
+          <h4 data-ja>プログラム開始：月次サイクル</h4>
+          <p data-en>Design → Implement → Reflect → Report. Calibrated each cycle to your org's reality.</p>
+          <p data-ja>設計→実装→振り返り→報告。毎月、組織の実態に合わせてキャリブレーションします。</p>
+        </div>
       </div>
     </div>
   </div>
@@ -353,7 +401,12 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <img src="transparent-logo.png" alt="Nalva" style="height:22px;opacity:0.5;" />
+    <img src="transparent-logo-blk.png" alt="Nalva" style="height:22px;opacity:0.5;" />
+    <div class="footer-social">
+      <a href="https://note.com/nalva" target="_blank" rel="noopener">note</a>
+      <a href="https://x.com/aki_nalva" target="_blank" rel="noopener">X</a>
+      <a href="https://www.linkedin.com/in/akitakano/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
     <p>© 2026 Nalva Inc.</p>
   </div>
 </footer>
