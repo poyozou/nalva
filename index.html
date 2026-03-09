@@ -1344,6 +1344,7 @@
   (function() {
     const canvas = document.getElementById('heroCanvas');
     if (!canvas) return;
+    const heroEl = document.querySelector('.hero');
     const ctx = canvas.getContext('2d');
     let w, h, particles, time = 0;
     let animId;
@@ -1353,26 +1354,26 @@
     const mouseRadius = 200;    // influence radius
     const mouseStrength = 0.012; // attraction strength (gentle)
 
-    hero.addEventListener('mousemove', function(e) {
-      const rect = hero.getBoundingClientRect();
+    heroEl.addEventListener('mousemove', function(e) {
+      const rect = heroEl.getBoundingClientRect();
       mouse.x = e.clientX - rect.left;
       mouse.y = e.clientY - rect.top;
       mouse.active = true;
     });
 
-    hero.addEventListener('mouseleave', function() {
+    heroEl.addEventListener('mouseleave', function() {
       mouse.active = false;
     });
 
     // Touch support for mobile
-    hero.addEventListener('touchmove', function(e) {
-      const rect = hero.getBoundingClientRect();
+    heroEl.addEventListener('touchmove', function(e) {
+      const rect = heroEl.getBoundingClientRect();
       mouse.x = e.touches[0].clientX - rect.left;
       mouse.y = e.touches[0].clientY - rect.top;
       mouse.active = true;
     }, { passive: true });
 
-    hero.addEventListener('touchend', function() {
+    heroEl.addEventListener('touchend', function() {
       mouse.active = false;
     });
 
@@ -1559,7 +1560,7 @@
       }
     }, { threshold: 0 });
 
-    heroObserver.observe(hero);
+    heroObserver.observe(heroEl);
 
     window.addEventListener('resize', () => {
       resize();
