@@ -705,6 +705,10 @@
     .footer-social { display: flex; gap: 1.5rem; }
     .footer-social a { font-family: var(--mono); font-size: 0.60rem; letter-spacing: 0.10em; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
     .footer-social a:hover { color: var(--gold-lite); }
+    @media (max-width: 600px) {
+      .footer-inner { flex-direction: column; align-items: center; text-align: center; gap: 0.75rem; }
+      .footer-right { align-items: center; }
+    }
 
     /* ── SCROLL REVEAL ── */
     .reveal {
@@ -894,18 +898,7 @@
 <body>
 
 <!-- ══════════════ NAV ══════════════ -->
-<nav id="nav">
-  <a href="/" class="nav-logo" aria-label="Nalva">
-    <img src="transparent-logo-blk.png" alt="Nalva" style="height:32px; display:block; mix-blend-mode:multiply;" />
-  </a>
-  <div class="nav-right">
-    <div class="lang-toggle" role="group" aria-label="Language">
-      <button class="lang-btn active" data-lang-btn="ja" onclick="setLang('ja')">JA</button>
-      <button class="lang-btn" data-lang-btn="en" onclick="setLang('en')">EN</button>
-    </div>
-    <a href="#contact" class="nav-contact">CONTACT</a>
-  </div>
-</nav>
+<nav id="nav"></nav>
 
 <!-- ══════════════ HERO ══════════════ -->
 <section class="hero" id="top">
@@ -1333,55 +1326,19 @@
 </section>
 
 <!-- ══════════════ FOOTER ══════════════ -->
-<footer>
-  <div class="footer-inner">
-    <img src="transparent-logo.png" alt="Nalva" style="height:22px; display:block; opacity:0.75;" />
-    <div class="footer-social">
-      <a href="https://note.com/nalva" target="_blank" rel="noopener">note</a>
-      <a href="https://x.com/aki_nalva" target="_blank" rel="noopener">X</a>
-      <a href="https://www.linkedin.com/in/akitakano/" target="_blank" rel="noopener">LinkedIn</a>
-    </div>
-    <div class="footer-right">
-      <p>© 2026 Nalva Inc.</p>
-      <p data-ja>本資料の無断転用・二次利用はご遠慮ください</p>
-      <p data-en>Unauthorized reproduction or redistribution is prohibited.</p>
-    </div>
-  </div>
-</footer>
+<footer></footer>
 
+<script src="js/shared.js"></script>
 <script>
   // Nav scroll — switch to light when past hero
-  const nav = document.getElementById('nav');
-  const hero = document.querySelector('.hero');
-  window.addEventListener('scroll', () => {
-    const heroBottom = hero.offsetHeight - 80;
-    nav.classList.toggle('scrolled', window.scrollY > heroBottom);
-  }, { passive: true });
-
-  // Scroll reveal
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in');
-      }
-    });
-  }, { threshold: 0.12 });
-
-  document.querySelectorAll('.reveal, .stagger').forEach(el => io.observe(el));
-
-  // Language toggle
-  function setLang(lang) {
-    const html = document.documentElement;
-    html.setAttribute('data-lang', lang);
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.classList.toggle('active', btn.getAttribute('data-lang-btn') === lang);
-    });
-    localStorage.setItem('nalva-lang', lang);
-  }
-
-  // Restore saved language
-  const savedLang = localStorage.getItem('nalva-lang');
-  if (savedLang) setLang(savedLang);
+  (function () {
+    var nav = document.getElementById('nav');
+    var hero = document.querySelector('.hero');
+    window.addEventListener('scroll', function () {
+      var heroBottom = hero.offsetHeight - 80;
+      nav.classList.toggle('scrolled', window.scrollY > heroBottom);
+    }, { passive: true });
+  })();
 
   // ── Hero Canvas Animation ──
   (function() {
