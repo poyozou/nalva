@@ -141,10 +141,6 @@
       align-items: start;
       padding-bottom: 5rem;
     }
-    @media(max-width:820px) {
-      .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
-      .hero-right { display: none; }
-    }
     .hero-left {}
     .hero h1 {
       font-size: clamp(2.4rem, 4.2vw, 4rem);
@@ -201,6 +197,34 @@
     .hero-stat-n em { font-style: normal; font-size: 1.5rem; color: var(--gold); }
     .hero-stat-label { font-size: 0.86rem; color: var(--ink-mid); line-height: 1.5; }
     .hero-stat-src { font-family: 'DM Mono', monospace; font-size: 0.52rem; color: var(--ink-faint); letter-spacing: 0.1em; margin-top: 0.3rem; }
+    @media(max-width:820px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-right { /* visible on mobile */ }
+      .hero-stats {
+        border-left: none; padding-left: 0;
+        display: grid; grid-template-columns: 1fr 1fr;
+        gap: 0; background: none;
+        border: 1px solid var(--rule);
+      }
+      .hero-stat {
+        padding: 1.2rem 1.2rem;
+        border-bottom: 1px solid var(--rule-lite);
+        border-right: 1px solid var(--rule-lite);
+        background: var(--bg-white);
+      }
+      .hero-stat:nth-child(2n) { border-right: none; }
+      .hero-stat:last-child:nth-child(odd) { grid-column: 1 / -1; border-right: none; }
+      .hero-stat:last-child { border-bottom: none; }
+      .hero-stat-n { font-size: 2.2rem; }
+      .hero-stat-n em { font-size: 1rem; }
+      .hero-stat-label { font-size: 0.78rem; }
+    }
+    @media(max-width:480px) {
+      .hero-stats { grid-template-columns: 1fr; }
+      .hero-stat { border-right: none !important; }
+      .hero-stat:nth-last-child(-n+2) { border-bottom: 1px solid var(--rule-lite); }
+      .hero-stat:last-child { border-bottom: none; }
+    }
 
     /* ── PROBLEM SECTION ── */
     .problem-section { padding-block: var(--gap); background: var(--bg); }
@@ -238,15 +262,30 @@
     }
     .c-r, .c-g, .c-b, .c-gr { background: var(--ink-low); }
 
+    /* Problem category groups */
+    .problem-group { margin-top: 2rem; }
+    .problem-group:first-of-type { margin-top: 2.5rem; }
+    .problem-group-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.56rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+    .problem-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+    .problem-grid.cols-1 { grid-template-columns: 1fr; }
+    @media(max-width:600px) { .problem-grid.cols-2 { grid-template-columns: 1fr; } }
+
     /* ── SCOPE SECTION ── */
     .scope-section { padding-block: var(--gap); background: var(--bg-white); }
     .scope-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
       gap: 1px; background: var(--rule);
       border: 1px solid var(--rule);
       margin-top: 2.5rem;
     }
-    @media(max-width:680px) { .scope-grid { grid-template-columns: 1fr; } }
+    @media(max-width:900px) { .scope-grid { grid-template-columns: 1fr; } }
     .scope-col { padding: 2.5rem 2.2rem; }
     .scope-col-nalva { background: var(--gold-bg); border-top: 3px solid var(--gold); }
     .scope-col-refer { background: var(--bg); }
@@ -274,91 +313,32 @@
     .scope-item strong { display: block; font-size: 0.88rem; color: var(--ink); font-weight: 500; margin-bottom: 0.1rem; }
     .scope-item span { font-size: 0.80rem; color: var(--ink-low); line-height: 1.5; }
 
-    /* ── ENGAGEMENT MODEL ── */
-    .engagement-section { padding-block: var(--gap); background: var(--bg); }
-    .engagement-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 3rem; margin-top: 2.5rem; align-items: start;
-    }
-    @media(max-width:720px) { .engagement-grid { grid-template-columns: 1fr; } }
-
-    /* cycle diagram */
-    .cycle-box {
-      background: var(--bg-white);
+    /* ── GAP SECTION ── */
+    .gap-section { padding-block: var(--gap); background: var(--bg); border-top: 1px solid var(--rule); }
+    .gap-grid {
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: 1px; background: var(--rule);
       border: 1px solid var(--rule);
+      margin-top: 2.5rem;
     }
-    .cycle-header {
-      padding: 1.5rem 2rem;
-      border-bottom: 1px solid var(--rule);
-      font-family: 'DM Mono', monospace;
-      font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--ink-low);
-    }
-    .cycle-row {
-      display: grid; grid-template-columns: 80px 1fr;
-      border-bottom: 1px solid var(--rule-lite);
-    }
-    .cycle-row:last-child { border-bottom: none; }
-    .cycle-week {
-      padding: 1.4rem 1.2rem;
-      border-right: 1px solid var(--rule-lite);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 0.2rem;
-    }
-    .cycle-week-n {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.4rem; line-height: 1; color: var(--gold);
-    }
-    .cycle-week-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.44rem; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--ink-faint); text-align: center;
-    }
-    .cycle-content { padding: 1.4rem 1.6rem; }
-    .cycle-content h5 { font-family: 'Noto Sans JP', sans-serif; font-weight: 500; font-size: 0.9rem; color: var(--ink); margin-bottom: 0.5rem; }
-    .cycle-content ul { list-style: none; display: flex; flex-direction: column; gap: 0.25rem; }
-    .cycle-content li { font-size: 0.82rem; color: var(--ink-low); display: flex; gap: 0.4rem; }
-    .cycle-content li::before { content: '—'; color: var(--ink-faint); font-size: 0.6rem; margin-top: 0.25rem; }
-    .cycle-repeat {
-      padding: 1rem 2rem;
-      border-top: 2px solid var(--gold-dim);
-      font-family: 'DM Mono', monospace;
-      font-size: 0.56rem; letter-spacing: 0.12em; color: var(--gold);
-      text-align: center;
-    }
-
-    /* compare table */
-    .compare-box {
+    @media(max-width:900px) { .gap-grid { grid-template-columns: 1fr; } }
+    .gap-cell {
       background: var(--bg-white);
-      border: 1px solid var(--rule);
+      padding: 2.2rem 2rem;
     }
-    .compare-header {
-      display: grid; grid-template-columns: 2fr 1fr 1fr;
-      padding: 1rem 1.5rem;
-      border-bottom: 2px solid var(--ink);
+    .gap-cell-type {
       font-family: 'DM Mono', monospace;
-      font-size: 0.52rem; letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--ink-low);
+      font-size: 0.52rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 0.8rem;
     }
-    .compare-header span:not(:first-child) { text-align: center; }
-    .compare-row {
-      display: grid; grid-template-columns: 2fr 1fr 1fr;
-      padding: 0.8rem 1.5rem;
-      border-bottom: 1px solid var(--rule-lite);
-      align-items: center;
-    }
-    .compare-row:last-child { border-bottom: none; }
-    .compare-row:nth-child(even) { background: var(--bg); }
-    .compare-feature { font-size: 0.84rem; color: var(--ink-mid); }
-    .compare-cell { text-align: center; font-size: 0.85rem; }
-    .c-yes { color: var(--gold); font-weight: 500; }
-    .c-no { color: var(--rule); }
-    .c-maybe { color: var(--ink-faint); font-size: 0.75rem; }
-    .compare-footer {
-      padding: 1.4rem 1.5rem;
-      border-top: 2px solid var(--gold-dim);
-      font-size: 0.84rem; color: var(--ink-mid); line-height: 1.7;
+    .gap-cell h3 { font-size: 1rem; margin-bottom: 0.6rem; color: var(--ink); }
+    .gap-cell p { font-size: 0.88rem; }
+    .gap-cell-why {
+      margin-top: 1rem; padding-top: 0.8rem;
+      border-top: 1px solid var(--rule-lite);
+      font-size: 0.82rem; color: var(--gold); line-height: 1.55;
+      font-weight: 400;
     }
 
     /* ── WHY AKI ── */
@@ -514,20 +494,12 @@
     <div class="hero-right">
       <div class="hero-stats">
         <div class="hero-stat">
-          <div class="hero-stat-n">50<em>%+</em></div>
+          <div class="hero-stat-n">40<em>%</em></div>
           <div class="hero-stat-label">
-            <span data-en>of foreign SMEs fail to sustain operations after Japan entry</span>
-            <span data-ja>外資中小企業の半数超が日本進出後に継続運営に失敗</span>
+            <span data-en>of exiting foreign companies had initially succeeded — then collapsed at the org layer</span>
+            <span data-ja>撤退した外資系企業の40%は、一度は成功していた。崩壊したのは組織層</span>
           </div>
-          <div class="hero-stat-src">JETRO / METI Research</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-n">3–5<em>yrs</em></div>
-          <div class="hero-stat-label">
-            <span data-en>average time to reach operational scale — if they get there</span>
-            <span data-ja>業務規模化までの平均年数。到達できた場合の話。</span>
-          </div>
-          <div class="hero-stat-src">Harvard Business Review</div>
+          <div class="hero-stat-src">Japan Finance Corporation (JFC) 2015</div>
         </div>
         <div class="hero-stat">
           <div class="hero-stat-n">#92<em style="font-size:1.1rem">/116</em></div>
@@ -558,51 +530,51 @@
       <span data-ja>根本原因分析</span>
     </div>
     <h2 class="reveal" style="font-size:clamp(1.8rem,3.5vw,3rem); margin-bottom:1.2rem; max-width:640px;">
-      <span data-en>Three structural patterns behind every Japan exit</span>
-      <span data-ja>撤退の裏にある3つの構造的パターン</span>
+      <span data-en>Three structural problems behind every Japan exit</span>
+      <span data-ja>撤退の裏にある3つの構造的問題</span>
     </h2>
     <p class="reveal" style="max-width:580px;">
-      <span data-en>Japan is the world's 4th largest economy by nominal GDP and 4th largest consumer market — yet ranks 92nd out of 116 countries in English proficiency (EF EPI 2024), 11th consecutive year of decline. The market is enormous. The bridge between HQ and that market is vanishingly thin. And the rare talent who can hold that bridge moves on. Regulatory barriers rarely cause exits. Orgs break&nbsp;first.</span>
-      <span data-ja>日本は世界第4位の名目GDP、第4位の消費者市場。それでいて英語能力は116カ国中92位（EF EPI 2024）、11年連続で下落中。市場は巨大です。HQとその市場をつなぐブリッジは、極めて細い。そのブリッジを担える稀有な人材は、やがて次へ移ります。規制の壁が撤退を招くことは稀です。組織が先に壊れます。</span>
+      <span data-en>Japan is the world's 4th largest economy — yet the bridge between HQ and that market is vanishingly thin. Foreign companies don't exit because of regulation or product-market fit. They exit because of decision-making failures, organisational fragility, and resource constraints that hit SMEs hardest. These three problems explain nearly every withdrawal.</span>
+      <span data-ja>日本は世界第4位の経済大国。それでいてHQとこの市場をつなぐブリッジは極めて細い。外資系企業の撤退理由は、規制でもプロダクトでもありません。意思決定の失敗、組織の脆弱性、そして中小企業に最も厳しく作用するリソース制約。この3つの構造的問題が、ほぼすべての撤退を説明します。</span>
     </p>
 
     <div class="problem-grid reveal">
       <div class="problem-cell">
         <div class="problem-cell-n">01</div>
-        <h3 data-en>Consensus architecture failure</h3>
-        <h3 data-ja>合意形成の設計ミス</h3>
-        <p data-en style="font-size:0.88rem">Japanese decision-making is consensus-driven and relationship-based — not just in large enterprises, but across organisations of every size. Bypassing the informal alignment process doesn't speed things up. It stops them&nbsp;entirely.</p>
-        <p data-ja style="font-size:0.88rem">日本の意思決定はコンセンサス重視・関係ベースです。大企業だけでなく、あらゆる規模の組織に共通します。非公式な合意プロセスをバイパスすることで、速くなるのではなく、完全に止まります。</p>
+        <h3 data-en>Decision-making structure</h3>
+        <h3 data-ja>意思決定構造の問題</h3>
+        <p data-en style="font-size:0.88rem">Ringi, nemawashi, and informal consensus processes get bypassed as "inefficient" — decisions appear made but nothing moves. HQ builds strategy in English without ground-level Japan fluency. Bilingual talent burns out as "translation&nbsp;machines."</p>
+        <p data-ja style="font-size:0.88rem">稟議・根回し・非公式な合意形成プロセスを「非効率」とバイパスし、表面上は「決定済み」なのに何も動かない。HQは英語で、会議室で、日本の現場を知らずに戦略を立てる。バイリンガル人材は「翻訳機」として消耗する。</p>
         <div class="problem-causes">
-          <div class="cause-item"><span class="cdot c-r"></span><span data-en>Key people never genuinely consulted — silent opposition builds</span><span data-ja>キーパーソンが真に相談されず、静かな反対が蓄積する</span></div>
-          <div class="cause-item"><span class="cdot c-g"></span><span data-en>Decisions appear made, but nothing actually moves</span><span data-ja>決定したように見えても、実際には何も動いていない</span></div>
-          <div class="cause-item"><span class="cdot c-b"></span><span data-en>"Yes" that means "I heard you" mistaken for agreement</span><span data-ja>「聞きました」の意味の「はい」を同意と誤認</span></div>
+          <div class="cause-item"><span class="cdot c-r"></span><span data-en>Consensus bypassed — "decided" on paper, frozen in practice</span><span data-ja>合意なきバイパス — 「決定済み」でも実際には何も動かない</span></div>
+          <div class="cause-item"><span class="cdot c-g"></span><span data-en>Bilingual talent consumed as translators, never as decision-makers</span><span data-ja>バイリンガル人材が翻訳者として消耗し、意思決定者になれない</span></div>
+          <div class="cause-item"><span class="cdot c-b"></span><span data-en>Local leadership never truly empowered to act</span><span data-ja>現地リーダーシップに実質的な権限が与えられない</span></div>
         </div>
       </div>
 
       <div class="problem-cell">
         <div class="problem-cell-n">02</div>
-        <h3 data-en>HQ ↔ local disconnect</h3>
-        <h3 data-ja>HQ↔現地の断絶</h3>
-        <p data-en style="font-size:0.88rem">HQ sets strategy in English, in a boardroom, without Japan org-culture fluency. Local teams implement — or go silent. The gap widens until the relationship&nbsp;breaks.</p>
-        <p data-ja style="font-size:0.88rem">HQは英語で、会議室で、日本組織文化の素養なしに戦略を立てます。現地チームは実行するか、沈黙するかです。ギャップは広がり続け、関係が壊れます。</p>
+        <h3 data-en>Organizational continuity</h3>
+        <h3 data-ja>組織継続性の問題</h3>
+        <p data-en style="font-size:0.88rem">High-calibre bridge talent leaving is not a "problem" — it's a condition. Organisations that don't design for this reality reset to zero with every key&nbsp;departure.</p>
+        <p data-ja style="font-size:0.88rem">優秀なブリッジ人材が去るのは「問題」ではなく「条件」。それを前提に設計しない組織は、キーパーソンが変わるたびにゼロに戻る。</p>
         <div class="problem-causes">
-          <div class="cause-item"><span class="cdot c-r"></span><span data-en>Global KPIs that don't translate to Japan's operational reality</span><span data-ja>日本の業務リアリティに翻訳できないグローバルKPI</span></div>
-          <div class="cause-item"><span class="cdot c-b"></span><span data-en>Bilingual talent overloaded as translators, not decision-makers</span><span data-ja>バイリンガル人材が意思決定者ではなく翻訳者として酷使される</span></div>
-          <div class="cause-item"><span class="cdot c-gr"></span><span data-en>Local leadership never truly empowered to act</span><span data-ja>現地リーダーシップに権限が与えられない</span></div>
+          <div class="cause-item"><span class="cdot c-r"></span><span data-en>Knowledge walks out with each departure — no cultural residue remains</span><span data-ja>人材が去るたびに知識も消える。文化的残留物がない</span></div>
+          <div class="cause-item"><span class="cdot c-g"></span><span data-en>No environment designed to attract the next high-calibre hire</span><span data-ja>次の優秀人材を惹きつける環境が設計されていない</span></div>
+          <div class="cause-item"><span class="cdot c-b"></span><span data-en>Org resets to zero with every key transition — compounding never begins</span><span data-ja>キーパーソンが変わるたびに組織がリセットされ、積み上げが始まらない</span></div>
         </div>
       </div>
 
       <div class="problem-cell">
         <div class="problem-cell-n">03</div>
-        <h3 data-en>Culture never designed for talent fluidity</h3>
-        <h3 data-ja>人材流動を前提とした文化設計の不在</h3>
-        <p data-en style="font-size:0.88rem">High-calibre bridge talent moves on. That's not a problem to solve — it's a condition to design for. Orgs that treat it as a problem keep restarting. Orgs that design for it keep&nbsp;compounding.</p>
-        <p data-ja style="font-size:0.88rem">優秀なブリッジ人材は、やがて次へ移ります。これは解決すべき問題ではなく、前提として設計に織り込むべき条件です。問題として扱う組織は何度もゼロに戻ります。設計に織り込んだ組織だけが、積み上がっていきます。</p>
+        <h3 data-en>SME-specific constraints</h3>
+        <h3 data-ja>中小企業固有の制約</h3>
+        <p data-en style="font-size:0.88rem">Large firms absorb mistakes with people and budget. SMEs cannot — Liability of Smallness, Foreignness, Newness, and Outsidership peak simultaneously. HQ expects results in 6 months; Japan's enterprise cycle runs 12+. HQ's patience runs out&nbsp;first.</p>
+        <p data-ja style="font-size:0.88rem">大企業なら人と予算で修正できるが、中小企業にはその余裕がない。四重のLiabilityが同時に最大化する。HQは6ヶ月で結果を求めるが、日本の営業サイクルは最低12ヶ月。HQの忍耐が先に切れる。</p>
         <div class="problem-causes">
-          <div class="cause-item"><span class="cdot c-gr"></span><span data-en>Knowledge walks out with each departure — no cultural residue remains</span><span data-ja>人材が去るたびに知識も消える。文化的残留物がない</span></div>
-          <div class="cause-item"><span class="cdot c-r"></span><span data-en>No environment designed to attract the next high-calibre hire</span><span data-ja>次の優秀人材を惹きつける環境が設計されていない</span></div>
-          <div class="cause-item"><span class="cdot c-b"></span><span data-en>Org resets to zero with every key transition — compounding never begins</span><span data-ja>キーパーソンが変わるたびに組織がリセットされ、積み上げが始まらない</span></div>
+          <div class="cause-item"><span class="cdot c-r"></span><span data-en>Four liabilities — small, foreign, new, outsider — compound simultaneously</span><span data-ja>「小さい」「外国」「新規」「部外者」の四重ハンディキャップが同時発動</span></div>
+          <div class="cause-item"><span class="cdot c-g"></span><span data-en>One wrong hire or one missed quarter can trigger an exit decision</span><span data-ja>1人の誤採用、1四半期の未達が撤退判断に直結する</span></div>
+          <div class="cause-item"><span class="cdot c-b"></span><span data-en>HQ's patience expires before the market begins to respond</span><span data-ja>HQの忍耐が切れるタイミングが、市場が応答し始める前に訪れる</span></div>
         </div>
       </div>
     </div>
@@ -622,15 +594,50 @@
       <span data-ja>エンゲージメント範囲</span>
     </div>
     <h2 class="reveal" style="font-size:clamp(1.8rem,3.5vw,3rem); margin-bottom:1.2rem; max-width:700px;">
-      <span data-en>Every company entering Japan handles the setup.<br>Half still fail.</span>
-      <span data-ja>日本進出企業はみな、セットアップを済ませている。<br>それでも半数が失敗する。</span>
+      <span data-en>Most companies hire<br>before they design.<br>That's why they fail.</span>
+      <span data-ja>ほとんどの企業は、<br>設計する前に採用する。<br>だから失敗する。</span>
     </h2>
     <p class="reveal" style="max-width:580px; margin-bottom:3rem;">
-      <span data-en>Legal entity, hiring, office, compliance — these are entry costs, not success factors. The gap is in strategy that never localised, and an organisation that was never designed to work in Japan. That's what Nalva&nbsp;designs.</span>
-      <span data-ja>法人設立・採用・オフィス・コンプライアンス。これらは参入コストであり、成功要因ではありません。ギャップは、日本に適合しなかった戦略と、日本で機能するよう設計されなかった組織にあります。そこがNalvaが設計する層です。</span>
+      <span data-en>Legal entity, hiring, office, compliance — these are entry costs, not success factors. Nalva designs the three layers that actually determine whether a Japan operation compounds or&nbsp;collapses.</span>
+      <span data-ja>法人設立・採用・オフィス・コンプライアンス。これらは参入コストであり、成功要因ではありません。Nalvaは、日本拠点が積み上がるか崩壊するかを実際に決定する3つの層を設計します。</span>
     </p>
 
     <div class="scope-grid reveal">
+
+      <!-- Entry Design -->
+      <div class="scope-col scope-col-nalva">
+        <div class="scope-col-heading nalva">
+          <span data-en>Entry Design</span>
+          <span data-ja>参入前設計</span>
+        </div>
+        <div class="scope-item">
+          <div class="si-icon si-yes">✓</div>
+          <div>
+            <strong data-en>Authority &amp; decision rights design</strong>
+            <strong data-ja>権限委譲・意思決定権限設計</strong>
+            <span data-en>Defining what the Japan GM can decide alone, what requires HQ, and where the grey zone is — before the first&nbsp;hire.</span>
+            <span data-ja>日本GMが単独で決定できること、HQ承認が必要なこと、グレーゾーンの範囲を、最初の採用前に定義。</span>
+          </div>
+        </div>
+        <div class="scope-item">
+          <div class="si-icon si-yes">✓</div>
+          <div>
+            <strong data-en>Japan-calibrated KPI framework</strong>
+            <strong data-ja>日本市場適合KPI設計</strong>
+            <span data-en>Translating global targets into metrics that make sense in Japan's relationship-driven, longer-cycle&nbsp;market.</span>
+            <span data-ja>グローバル目標を、関係重視・長期サイクルの日本市場で機能する指標に変換。</span>
+          </div>
+        </div>
+        <div class="scope-item" style="border-bottom:none;">
+          <div class="si-icon si-yes">✓</div>
+          <div>
+            <strong data-en>HQ ↔ local bridge architecture</strong>
+            <strong data-ja>HQ↔現地ブリッジ設計</strong>
+            <span data-en>Communication structures, reporting cadence, and escalation protocols designed before friction&nbsp;begins.</span>
+            <span data-ja>摩擦が始まる前に設計する、コミュニケーション構造・報告頻度・エスカレーションプロトコル。</span>
+          </div>
+        </div>
+      </div>
 
       <!-- Strategy -->
       <div class="scope-col scope-col-nalva">
@@ -650,28 +657,19 @@
         <div class="scope-item">
           <div class="si-icon si-yes">✓</div>
           <div>
-            <strong data-en>HQ ↔ local strategy alignment</strong>
-            <strong data-ja>HQ↔現地の戦略接続</strong>
-            <span data-en>Translating global strategy into Japan-operational language. Making HQ KPIs meaningful on the&nbsp;ground.</span>
-            <span data-ja>グローバル戦略を日本の現場言語に翻訳。HQのKPIを現場で機能させる。</span>
+            <strong data-en>Decision architecture</strong>
+            <strong data-ja>意思決定設計</strong>
+            <span data-en>Designing decision flows that work with Japan's consensus-based culture. Closing the gap between "discussed" and&nbsp;"decided."</span>
+            <span data-ja>日本のコンセンサス文化に機能する意思決定フロー設計。「議論済み」と「決定済み」のギャップを縮める。</span>
           </div>
         </div>
-        <div class="scope-item">
+        <div class="scope-item" style="border-bottom:none;">
           <div class="si-icon si-yes">✓</div>
           <div>
             <strong data-en>AI adoption design</strong>
             <strong data-ja>AI活用設計</strong>
             <span data-en>Implementing global AI strategy into Japan-language workflows. Design Thinking × AI, bilingual.</span>
             <span data-ja>グローバルAI戦略を日本語業務フローに実装。デザイン思考×AI、日英対応。</span>
-          </div>
-        </div>
-        <div class="scope-item" style="border-bottom:none;">
-          <div class="si-icon si-yes">✓</div>
-          <div>
-            <strong data-en>Decision architecture</strong>
-            <strong data-ja>意思決定設計</strong>
-            <span data-en>Designing decision flows that work with Japan's consensus-based culture. Closing the gap between "discussed" and&nbsp;"decided."</span>
-            <span data-ja>日本のコンセンサス文化に機能する意思決定フロー設計。「議論済み」と「決定済み」のギャップを縮める。</span>
           </div>
         </div>
       </div>
@@ -681,15 +679,6 @@
         <div class="scope-col-heading nalva">
           <span data-en>Organization</span>
           <span data-ja>組織設計</span>
-        </div>
-        <div class="scope-item">
-          <div class="si-icon si-yes">✓</div>
-          <div>
-            <strong data-en>HQ ↔ local bridge protocols</strong>
-            <strong data-ja>HQ↔現地ブリッジ設計</strong>
-            <span data-en>Communication structures and reporting flows that reduce friction between HQ and&nbsp;Japan.</span>
-            <span data-ja>HQと日本現地間の摩擦を減らすコミュニケーション構造と報告フロー。</span>
-          </div>
         </div>
         <div class="scope-item">
           <div class="si-icon si-yes">✓</div>
@@ -724,173 +713,65 @@
   </div>
 </section>
 
-<!-- ENGAGEMENT MODEL -->
-<section class="engagement-section" id="model">
+<!-- WHY NO ONE ELSE -->
+<section class="gap-section" id="gap">
   <div class="wrap">
     <div class="label reveal">
-      <span data-en>Engagement Model</span>
-      <span data-ja>エンゲージメントモデル</span>
+      <span data-en>The Structural Gap</span>
+      <span data-ja>構造的な空白</span>
     </div>
-    <h2 class="reveal" style="font-size:clamp(1.8rem,3.5vw,3rem); margin-bottom:1.2rem; max-width:640px;">
-      <span data-en>Monthly retainer. Continuous design.</span>
-      <span data-ja>月次リテイナー。継続的な設計。</span>
+    <h2 class="reveal" style="font-size:clamp(1.8rem,3.5vw,3rem); margin-bottom:1.2rem; max-width:700px;">
+      <span data-en>Why no established firm<br>covers the org layer.</span>
+      <span data-ja>なぜ大手は<br>組織層に踏み込まないのか。</span>
     </h2>
-    <p class="reveal" style="max-width:560px; margin-bottom:0;">
-      <span data-en>Before designing your org, you need to understand the terrain. Every engagement begins with <strong>Japan Business Essentials</strong> — a structured orientation to the business culture, norms, and decision-making patterns your org will operate&nbsp;inside.</span>
-      <span data-ja>組織設計の前に、まず地形を知る必要があります。すべてのエンゲージメントは <strong>Japan Business Essentials</strong> から始まります。貴社の組織が活動することになる商慣習・規範・意思決定パターンを体系的に理解するオリエンテーションプログラムです。</span>
+    <p class="reveal" style="max-width:580px; margin-bottom:0;">
+      <span data-en>Sophisticated buyers ask: "If this matters so much, why isn't any established service doing it?" The answer is structural — each category of advisor has a rational reason not to go&nbsp;here.</span>
+      <span data-ja>洗練されたクライアントは問います。「そこまで重要なら、なぜ従来型のサービスがやっていない？」答えは構造的です。各カテゴリーのアドバイザーには、ここに踏み込まない合理的な理由があります。</span>
     </p>
 
-    <div class="engagement-grid">
-      <!-- Japan Business Essentials -->
-      <div class="cycle-box reveal">
-        <div class="cycle-header" style="display:flex;align-items:center;gap:0.6rem;">
-          <span style="color:var(--gold);font-family:'DM Serif Display',serif;font-size:0.95rem;font-weight:400;letter-spacing:0;">Essential Package</span>
-          <span style="font-size:0.48rem;letter-spacing:0.12em;color:var(--ink-faint);text-transform:uppercase;">Japan Business Essentials</span>
+    <div class="gap-grid reveal">
+      <div class="gap-cell">
+        <div class="gap-cell-type">
+          <span data-en>GTM / Market Entry Consultants</span>
+          <span data-ja>GTM・市場参入コンサル</span>
         </div>
-
-        <div class="cycle-row">
-          <div class="cycle-week">
-            <div class="cycle-week-n">01</div>
-            <div class="cycle-week-label" data-en>Inside</div>
-            <div class="cycle-week-label" data-ja>社内の現実</div>
-          </div>
-          <div class="cycle-content">
-            <h5 data-en>Life inside a foreign subsidiary in Japan</h5>
-            <h5 data-ja>外資系日本法人の「あるある」</h5>
-            <ul>
-              <li><span data-en>HQ sends a deck. Japan nods. Nothing moves — why the loop breaks</span><span data-ja>HQがデッキを送ります。日本はうなずきます。しかし何も動きません。なぜこのループが壊れるのか</span></li>
-              <li><span data-en>Bilingual staff carrying the entire org on their shoulders — and burning out</span><span data-ja>バイリンガル人材が組織全体を一人で支え、消耗していく構造</span></li>
-              <li><span data-en>Global KPIs that make sense at HQ, but mean nothing on the ground in Japan</span><span data-ja>本社では合理的なKPIが、日本の現場では機能しない理由</span></li>
-              <li><span data-en>Local leadership told to "own" strategy but given no real decision rights</span><span data-ja>「戦略をオーナーシップして」と言われながら意思決定権がない現地リーダー</span></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="cycle-row">
-          <div class="cycle-week">
-            <div class="cycle-week-n">02</div>
-            <div class="cycle-week-label" data-en>Decisions</div>
-            <div class="cycle-week-label" data-ja>意思決定</div>
-          </div>
-          <div class="cycle-content">
-            <h5 data-en>How your Japanese clients actually make decisions</h5>
-            <h5 data-ja>取引先の日本企業はどう意思決定するか</h5>
-            <ul>
-              <li><span data-en>Consensus is built before the meeting — the meeting itself is a ceremony</span><span data-ja>会議の前にすでに合意は形成されています。会議はセレモニーにすぎません</span></li>
-              <li><span data-en>Multiple stakeholders need to be "informed" before anyone can say yes</span><span data-ja>誰かが「はい」と言う前に、複数の関係者への事前説明が必要です</span></li>
-              <li><span data-en><em style="font-style:normal">Honne</em> and <em style="font-style:normal">tatemae</em>: the real position vs. the public one — and why both are real</span><span data-ja>本音と建前。本当の気持ちと表の立場、そしてなぜどちらも「本物」なのか</span></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="cycle-row">
-          <div class="cycle-week">
-            <div class="cycle-week-n">03</div>
-            <div class="cycle-week-label" data-en>Silence</div>
-            <div class="cycle-week-label" data-ja>沈黙と空気</div>
-          </div>
-          <div class="cycle-content">
-            <h5 data-en>Reading what isn't said</h5>
-            <h5 data-ja>言われていないことを読む</h5>
-            <ul>
-              <li><span data-en>Silence in a meeting is a signal — often louder than words</span><span data-ja>会議の沈黙はシグナルです。言葉より雄弁なことがあります</span></li>
-              <li><span data-en>Disagreement is rarely stated directly — how to surface it</span><span data-ja>反対意見が直接表明されることはほぼありません。どう引き出すか</span></li>
-              <li><span data-en>Giving negative feedback without triggering disengagement or loss of face</span><span data-ja>関係を壊さず、面子を傷つけずにフィードバックする方法</span></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="cycle-row">
-          <div class="cycle-week">
-            <div class="cycle-week-n">04</div>
-            <div class="cycle-week-label" data-en>Trust</div>
-            <div class="cycle-week-label" data-ja>信頼と関係</div>
-          </div>
-          <div class="cycle-content">
-            <h5 data-en>Relationship before transaction — in both directions</h5>
-            <h5 data-ja>取引の前に関係がある。双方向に</h5>
-            <ul>
-              <li><span data-en>Japanese clients evaluate your process and attitude, not just your product</span><span data-ja>日本の取引先はプロダクトだけでなく、プロセスと姿勢を評価します</span></li>
-              <li><span data-en>Long sales cycles are trust-building, not inefficiency — how to work with them</span><span data-ja>長い営業サイクルは非効率ではなく信頼構築です。どう活かすか</span></li>
-              <li><span data-en>What "partner" means in Japan vs. what your HQ thinks it means</span><span data-ja>日本での「パートナー」の意味と、HQが考えているその意味のズレ</span></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="cycle-repeat">
-          <span data-en>Essentials completed → monthly retainer begins</span>
-          <span data-ja>エッセンシャル完了後 → 月次リテイナー開始</span>
+        <h3 data-en>Scope stops at strategy delivery</h3>
+        <h3 data-ja>スコープが戦略納品で終わる</h3>
+        <p data-en>They design the go-to-market plan. But KPI localisation and org design sit outside their deliverable — and outside their incentive&nbsp;structure.</p>
+        <p data-ja>GTM戦略は設計する。しかしKPIの日本市場適合や組織設計は納品範囲外。インセンティブ構造にも合わない。</p>
+        <div class="gap-cell-why">
+          <span data-en>→ Nalva starts where their scope ends</span>
+          <span data-ja>→ Nalvaは彼らのスコープが終わる地点から始まる</span>
         </div>
       </div>
 
-      <!-- Comparison -->
-      <div class="compare-box reveal">
-        <div class="compare-header">
-          <span data-en>Capability</span>
-          <span data-ja>項目</span>
-          <span>Nalva</span>
-          <span data-en>Typical Advisor</span>
-          <span data-ja>一般アドバイザー</span>
+      <div class="gap-cell">
+        <div class="gap-cell-type">
+          <span data-en>Recruitment / Staffing Firms</span>
+          <span data-ja>採用・人材紹介ファーム</span>
         </div>
-        <div class="compare-row">
-          <div class="compare-feature">
-            <span data-en>Consensus architecture design</span>
-            <span data-ja>合意形成アーキテクチャ設計</span>
-          </div>
-          <div class="compare-cell c-yes">✓</div>
-          <div class="compare-cell c-no">—</div>
+        <h3 data-en>No incentive to design beyond the hire</h3>
+        <h3 data-ja>採用の先を設計するインセンティブがない</h3>
+        <p data-en>They place the Country Manager. But whether that person can function — authority design, bridge protocols, cultural onboarding — is not their&nbsp;problem.</p>
+        <p data-ja>カントリーマネージャーを紹介する。しかしその人が機能するかどうか — 権限設計・ブリッジ構造・文化的オンボーディングは、彼らの問題ではない。</p>
+        <div class="gap-cell-why">
+          <span data-en>→ Nalva designs the environment the hire lands into</span>
+          <span data-ja>→ Nalvaは採用された人材が着地する環境を設計する</span>
         </div>
-        <div class="compare-row">
-          <div class="compare-feature">
-            <span data-en>Design Thinking × AI adoption</span>
-            <span data-ja>デザイン思考×AI活用設計</span>
-          </div>
-          <div class="compare-cell c-yes">✓</div>
-          <div class="compare-cell c-no">—</div>
+      </div>
+
+      <div class="gap-cell">
+        <div class="gap-cell-type">
+          <span data-en>Big Four / Large Consultancies</span>
+          <span data-ja>Big Four・大手コンサル</span>
         </div>
-        <div class="compare-row">
-          <div class="compare-feature">
-            <span data-en>HQ ↔ local bridge protocols</span>
-            <span data-ja>HQ↔ローカルブリッジ設計</span>
-          </div>
-          <div class="compare-cell c-yes">✓</div>
-          <div class="compare-cell c-no">—</div>
-        </div>
-        <div class="compare-row">
-          <div class="compare-feature">
-            <span data-en>Internal champion cultivation</span>
-            <span data-ja>社内チャンピオン育成</span>
-          </div>
-          <div class="compare-cell c-yes">✓</div>
-          <div class="compare-cell c-no">—</div>
-        </div>
-        <div class="compare-row">
-          <div class="compare-feature">
-            <span data-en>Japan-specific GTM design</span>
-            <span data-ja>日本特化GTM設計</span>
-          </div>
-          <div class="compare-cell c-yes">✓</div>
-          <div class="compare-cell c-maybe">Sometimes</div>
-        </div>
-        <div class="compare-row">
-          <div class="compare-feature">
-            <span data-en>Monthly retainer (ongoing partner)</span>
-            <span data-ja>月次リテイナー（継続型）</span>
-          </div>
-          <div class="compare-cell c-yes">✓</div>
-          <div class="compare-cell c-no">—</div>
-        </div>
-        <div class="compare-row">
-          <div class="compare-feature">
-            <span data-en>Bilingual JP / EN</span>
-            <span data-ja>バイリンガル（日英）</span>
-          </div>
-          <div class="compare-cell c-yes">✓</div>
-          <div class="compare-cell c-maybe">Varies</div>
-        </div>
-        <div class="compare-footer">
-          <span data-en><strong>Engagements begin with a free discovery call.</strong> A scoped proposal is delivered within one week — covering the org challenge, recommended scope, and fee structure. No standard packages. Every engagement is designed for the specific&nbsp;situation.</span>
-          <span data-ja><strong>エンゲージメントは無料のディスカバリーコールから始まります。</strong> 1週間以内に提案書を提出いたします。具体的な組織課題、推奨スコープ、フィー体系を含む内容です。標準パッケージはございません。すべてのエンゲージメントは固有の状況に合わせて設計します。</span>
+        <h3 data-en>Wrong price, wrong style</h3>
+        <h3 data-ja>価格もスタイルも合わない</h3>
+        <p data-en>Their minimum engagement size and team-heavy model don't fit the 5–50 person Japan org. And cultural fluency isn't built by flying in from&nbsp;Singapore.</p>
+        <p data-ja>最小契約規模とチーム型モデルが5〜50人の日本法人に合わない。そして文化的流暢さは、シンガポールからの出張では身につかない。</p>
+        <div class="gap-cell-why">
+          <span data-en>→ Nalva is embedded, bilingual, right-sized</span>
+          <span data-ja>→ Nalvaは組み込み型・バイリンガル・適正規模</span>
         </div>
       </div>
     </div>
