@@ -1548,4 +1548,20 @@
       if (entries[0].isIntersecting) {
         if (!animId) draw();
       } else {
-        cancelAnimationFrame(anim
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+    }, { threshold: 0 });
+
+    heroObserver.observe(heroEl);
+
+    window.addEventListener('resize', () => {
+      resize();
+      createParticles();
+    });
+
+    init();
+  })();
+</script>
+</body>
+</html>
