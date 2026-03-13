@@ -1,39 +1,237 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" data-lang="ja">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SFW03DREZH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SFW03DREZH');
+  </script>
+  <style>
+    /* reveal初期状態をopacity:1に上書き。JSでinクラスを付与する必要をなくす */
+    .reveal, .stagger { opacity: 1 !important; transform: none !important; }
+    .stagger > * { opacity: 1 !important; transform: none !important; }
+  </style>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
   <title>About — Nalva Inc.</title>
-  <meta name="description" content="感謝が循環する未来を設計する。Nalva Inc. — 高野 秋（Aki Takano）" />
+  <meta name="description" content="Designing a future where gratitude circulates. Nalva Inc. — Aki Takano" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400&family=Jost:wght@200;300;400&family=Space+Mono&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Serif+Display&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:          #F7F5F0;
+      --bg-white:    #FFFFFF;
+      --bg-lifted:   #F0EDE6;
+      --bg-card:     #EDEAE3;
+      --bg-ink:      #1C1A16;
+      --rule:        #D8D4CC;
+      --rule-accent: rgba(160,136,64,0.22);
+      --gold:        #A08840;
+      --gold-lite:   #C4A85A;
+      --gold-dim:    rgba(160,136,64,0.25);
+      --gold-ghost:  rgba(160,136,64,0.08);
+      --gold-bg:     #FAF6EC;
+      --ink:         #1C1A16;
+      --ink-mid:     #4A4640;
+      --ink-low:     #7A7570;
+      --ink-dim:     #B0ACA5;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans:  'Noto Sans JP', sans-serif;
+      --mono:  'DM Mono', monospace;
+      --max:   1140px;
+      --pad:   6vw;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.80;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: var(--max); margin-inline: auto; padding-inline: var(--pad); }
+    .label { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; }
+    .label-line { display: flex; align-items: center; gap: 1.1rem; }
+    .label-line::before { content: ''; display: block; width: 22px; height: 1px; background: var(--gold); flex-shrink: 0; }
+
+    /* NAV */
+    nav {
+      position: fixed; inset-block-start: 0; inset-inline: 0; z-index: 200;
+      height: 66px; display: flex; align-items: center; justify-content: space-between;
+      padding-inline: var(--pad);
+      border-bottom: 1px solid var(--rule);
+      background: rgba(247,245,240,0.92);
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      transition: border-color 0.4s;
+    }
+    nav.scrolled { border-bottom-color: var(--rule-accent); }
+    .nav-logo img { height: 25px; opacity: 0.92; display: block; }
+    .nav-right { display: flex; align-items: center; gap: 2.8rem; }
+    .nav-contact {
+      font-family: var(--mono); font-size: 0.60rem; letter-spacing: 0.14em;
+      color: var(--gold); text-decoration: none;
+      border-bottom: 1px solid var(--gold-dim); padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .nav-contact:hover { color: var(--ink); border-color: var(--ink-low); }
+
+    /* LANG TOGGLE */
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      border: 1px solid var(--rule-accent);
+      overflow: hidden;
+    }
+    .lang-btn {
+      font-family: var(--mono);
+      font-size: 0.54rem;
+      letter-spacing: 0.14em;
+      color: var(--ink-dim);
+      background: none;
+      border: none;
+      padding: 0.28rem 0.6rem;
+      cursor: pointer;
+      transition: color 0.2s, background 0.2s;
+      text-transform: uppercase;
+    }
+    .lang-btn:first-child { border-right: 1px solid var(--rule-accent); }
+    .lang-btn.active { color: var(--gold); background: var(--gold-ghost); }
+    .lang-btn:hover:not(.active) { color: var(--ink-low); }
+
+    @media (max-width: 860px) {
+    }
+
+    /* LANG SYSTEM */
+    [data-lang="ja"] [data-en] { display: none; }
+    [data-lang="en"] [data-ja] { display: none; }
+
+    /* HERO */
+    .hero { padding-top: calc(66px + 10vw); padding-bottom: 9vw; padding-inline: var(--pad); max-width: var(--max); margin-inline: auto; }
+    .hero-eyebrow { margin-bottom: 3rem; }
+    .hero h1 { font-family: var(--serif); font-size: clamp(2.6rem, 5vw, 5.2rem); font-weight: 400; color: var(--ink); line-height: 1.15; letter-spacing: -0.01em; max-width: 640px; }
+    .hero-rule { margin-top: 8vw; height: 1px; background: var(--rule); }
+
+    /* COMPANY */
+    .company { padding-block: 8rem; }
+    .company-inner { max-width: 640px; }
+    .company-body { margin-top: 2.8rem; font-size: 1.02rem; color: var(--ink-mid); line-height: 2.05; }
+    .company-body p + p { margin-top: 1.4rem; }
+    .company-accent { color: var(--ink); font-family: var(--serif); }
+
+    /* FOUNDER */
+    .founder { padding-block: 8rem; background: var(--bg-lifted); border-block: 1px solid var(--rule); }
+    .founder-inner { max-width: 640px; }
+    .founder-message { margin-top: 3rem; font-size: 0.96rem; color: var(--ink-mid); line-height: 2.1; }
+    .founder-message p + p { margin-top: 1.3rem; }
+    .founder-emphasis {
+      font-family: var(--serif); font-size: 1.12rem; color: var(--ink);
+      line-height: 1.85; padding-left: 1.6rem;
+      border-left: 1px solid var(--rule-accent); margin-block: 2rem;
+    }
+    .founder-sig { margin-top: 2.8rem; font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.16em; color: var(--gold); }
+
+    /* VALUES */
+    .values { padding-block: 8rem; }
+    .values-grid { margin-top: 3.5rem; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: var(--rule); }
+    @media (max-width: 760px) { .values-grid { grid-template-columns: 1fr; } }
+    .value-card { background: var(--bg); padding: 3rem 2.6rem 3.8rem; transition: background 0.24s; }
+    .value-card:hover { background: var(--bg-card); }
+    .value-idx { font-family: var(--mono); font-size: 0.54rem; letter-spacing: 0.18em; color: var(--gold); margin-bottom: 2rem; display: flex; align-items: center; gap: 0.7rem; }
+    .value-idx::before { content: ''; display: block; width: 14px; height: 1px; background: var(--gold); }
+    .value-name { font-family: var(--serif); font-size: clamp(1.5rem, 2.2vw, 2.1rem); color: var(--ink); margin-bottom: 1.4rem; }
+    .value-tagline { font-family: var(--serif); font-size: 0.88rem; color: var(--ink-mid); line-height: 1.65; padding-left: 1rem; border-left: 1px solid var(--rule-accent); margin-bottom: 1.2rem; }
+    .value-body { font-size: 0.90rem; color: var(--ink-low); line-height: 1.95; text-wrap: pretty; }
+
+    /* CONTACT */
+    .contact-section { background: var(--bg-ink); color: #F7F5F0; padding-block: 8rem; }
+    .contact-inner {
+      max-width: var(--max); margin-inline: auto; padding-inline: var(--pad);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+    }
+    @media(max-width:720px) { .contact-inner { grid-template-columns: 1fr; gap: 3rem; } }
+    .contact-left h2 { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 400; line-height: 1.18; letter-spacing: 0.01em; color: #F7F5F0; margin-top: 1rem; margin-bottom: 1.5rem; text-wrap: balance; }
+    .contact-left p { color: rgba(247,245,240,0.68); font-size: 1rem; line-height: 1.9; }
+    .contact-divider { width: 40px; height: 2px; background: var(--gold-lite); margin: 1.8rem 0; }
+    .contact-right { display: flex; flex-direction: column; gap: 0; }
+    .contact-step {
+      display: grid; grid-template-columns: 44px 1fr; gap: 1.2rem; align-items: start;
+      padding: 1.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .contact-step:last-child { border-bottom: none; }
+    .contact-step-n {
+      width: 44px; height: 44px; border: 1px solid rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono); font-size: 0.62rem; color: var(--gold-lite); flex-shrink: 0;
+    }
+    .contact-step h4 { font-family: 'Noto Sans JP', sans-serif; font-weight: 500; font-size: 0.92rem; color: #F7F5F0; margin-bottom: 0.3rem; }
+    .contact-step p { font-size: 0.84rem; color: rgba(247,245,240,0.55); line-height: 1.65; }
+    .contact-cta {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--gold); color: var(--bg-ink); font-family: var(--mono);
+      font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase;
+      padding: 1.1rem 2rem; margin-top: 2.5rem;
+      border: none; cursor: pointer; transition: background 0.2s; text-decoration: none;
+    }
+    .contact-cta:hover { background: var(--gold-lite); }
+    .contact-email { font-family: var(--mono); font-size: 0.80rem; letter-spacing: 0.06em; color: rgba(247,245,240,0.45); margin-top: 1.2rem; }
+    .contact-email a { color: inherit; text-decoration: none; }
+    .contact-alt-link {
+      display: block; margin-top: 2.5rem; padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.84rem; color: rgba(247,245,240,0.45);
+    }
+    .contact-alt-link a { color: var(--gold-lite); border-bottom: 1px solid rgba(196,168,90,0.3); padding-bottom: 1px; }
+
+    /* FOOTER */
+    footer { padding-block: 2.2rem; border-top: 1px solid var(--rule); }
+    .footer-inner { max-width: var(--max); margin-inline: auto; padding-inline: var(--pad); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    footer img { height: 20px; opacity: 0.38; }
+    .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 0.25rem; }
+    footer p { font-size: 0.64rem; color: var(--ink-dim); letter-spacing: 0.06em; }
+    .footer-social { display: flex; gap: 1.5rem; }
+    .footer-social a { font-family: var(--mono); font-size: 0.60rem; letter-spacing: 0.10em; color: var(--ink-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-social a:hover { color: var(--gold); }
+    @media (max-width: 600px) {
+      .footer-inner { flex-direction: column; align-items: center; text-align: center; gap: 0.75rem; }
+      .footer-right { align-items: center; }
+    }
+
+    /* SCROLL REVEAL */
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.78s ease, transform 0.78s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    .stagger > * { opacity: 0; transform: translateY(12px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .stagger.in > *:nth-child(1) { opacity:1; transform:none; transition-delay:0s; }
+    .stagger.in > *:nth-child(2) { opacity:1; transform:none; transition-delay:0.08s; }
+    .stagger.in > *:nth-child(3) { opacity:1; transform:none; transition-delay:0.16s; }
+  </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav id="nav">
-  <a href="index.html" class="nav-logo" aria-label="Nalva">
-    <img src="assets/logo.svg" alt="Nalva" />
-  </a>
-  <div class="nav-right">
-    <ul class="nav-links">
-      <li><a href="index.html#philosophy">思想</a></li>
-      <li><a href="index.html#capabilities">提供領域</a></li>
-      <li><a href="index.html#engagement">事例</a></li>
-      <li><a href="about.html" class="active">About</a></li>
-    </ul>
-    <a href="#contact" class="nav-contact">CONTACT</a>
-  </div>
-</nav>
+<nav id="nav"></nav>
 
 <!-- HERO -->
-<div class="about-hero">
+<div class="hero">
   <div class="hero-eyebrow reveal">
     <span class="label-line label">About Nalva</span>
   </div>
-  <h1 class="reveal">感謝が循環する<br>未来を設計する。</h1>
+  <h1 class="reveal">
+    <span data-ja>感謝が循環する<br>未来を設計する。</span>
+    <span data-en>Designing a future<br>where gratitude circulates.</span>
+  </h1>
   <div class="hero-rule"></div>
 </div>
 
@@ -43,8 +241,14 @@
     <div class="company-inner reveal">
       <span class="label-line label">What We Do</span>
       <div class="company-body">
-        <p><span class="company-accent">Nalvaは、AIを教える会社ではありません。</span><br>思考と構造を設計する会社です。</p>
-        <p>変革が属人化せず、いなくなっても続く状態をつくる。<br>依存を生まない設計。それが、Nalvaの仕事です。</p>
+        <p>
+          <span data-ja><span class="company-accent">Nalvaは、AIを教える会社ではありません。</span><br>思考と構造を設計する会社です。</span>
+          <span data-en><span class="company-accent">Nalva is not a company that teaches AI.</span><br>We are a company that designs thinking and structure.</span>
+        </p>
+        <p>
+          <span data-ja>変革が属人化せず、いなくなっても続く状態をつくる。<br>依存を生まない設計。それが、Nalvaの仕事です。</span>
+          <span data-en>Creating a state where transformation doesn't depend on any one person — and continues even after we've gone.<br>Design that generates no dependency. That is Nalva's work.</span>
+        </p>
       </div>
     </div>
   </div>
@@ -56,13 +260,22 @@
     <div class="founder-inner reveal">
       <span class="label-line label">Founder's Message</span>
       <div class="founder-message">
-        <p>ITベンダーとして技術の理想を見てきました。組織変革の現場では、構造の難しさも見てきました。ツール導入が進まない現実や、DX担当が孤立する場面も経験してきました。</p>
+        <p>
+          <span data-ja>ITベンダーとして技術の理想を見てきました。組織変革の現場では、構造の難しさも見てきました。ツール導入が進まない現実や、DX担当が孤立する場面も経験してきました。</span>
+          <span data-en>As an IT vendor, I witnessed the ideals of technology. On the front lines of organizational transformation, I saw the difficulty of structure. I experienced the reality of stalled tool adoption and the isolation that DX champions face.</span>
+        </p>
         <div class="founder-emphasis">
-          DXは進まないのではない。<br>
-          構造が設計されていないだけだと。
+          <span data-ja>DXは進まないのではない。<br>構造が設計されていないだけだと。</span>
+          <span data-en>DX doesn't fail to advance.<br>The structure simply hasn't been designed.</span>
         </div>
-        <p>Nalvaは、思考と組織、そしてAI実装を横断して設計します。変革が属人化せず、いなくなっても続く状態をつくる。</p>
-        <p>依存を生まない。それが、私の役割です。</p>
+        <p>
+          <span data-ja>Nalvaは、思考と組織、そしてAI実装を横断して設計します。変革が属人化せず、いなくなっても続く状態をつくる。</span>
+          <span data-en>Nalva designs across thinking, organization, and AI implementation. We create a state where transformation persists — not dependent on any individual, continuing even after we leave.</span>
+        </p>
+        <p>
+          <span data-ja>依存を生まない。それが、私の役割です。</span>
+          <span data-en>No dependency created. That is my role.</span>
+        </p>
       </div>
       <p class="founder-sig">— Aki Takano · Founder &amp; Principal Consultant, Nalva Inc.</p>
     </div>
@@ -72,25 +285,48 @@
 <!-- VALUES -->
 <section class="values" id="values">
   <div class="wrap">
-    <div class="reveal"><span class="label-line label">設計の原則</span></div>
+    <div class="reveal">
+      <span class="label-line label">
+        <span data-ja>設計の原則</span>
+        <span data-en>Design Principles</span>
+      </span>
+    </div>
     <div class="values-grid stagger">
       <div class="value-card">
         <div class="value-idx">01</div>
         <div class="value-name">Craftsmanship</div>
-        <p class="value-tagline">一流の成果は、細部に宿る。</p>
-        <p class="value-body">ワークショップの設計、テンプレートの一行、フィードバックの言葉選び。見えない部分ほど丁寧に作る。</p>
+        <p class="value-tagline">
+          <span data-ja>一流の成果は、細部に宿る。</span>
+          <span data-en>Excellence lives in the details.</span>
+        </p>
+        <p class="value-body">
+          <span data-ja>ワークショップの設計、テンプレートの一行、フィードバックの言葉選び。見えない部分ほど丁寧に作る。</span>
+          <span data-en>The design of every workshop, every line of every template, every word of every feedback. The parts no one sees are made with the most care.</span>
+        </p>
       </div>
       <div class="value-card">
         <div class="value-idx">02</div>
         <div class="value-name">Trust</div>
-        <p class="value-tagline">論理だけでは、人は動かない。</p>
-        <p class="value-body">推進担当の孤独も、現場の戸惑いも、経営層の懐疑も、誰一人置いていかない伴走を誠実さの基準にする。</p>
+        <p class="value-tagline">
+          <span data-ja>論理だけでは、人は動かない。</span>
+          <span data-en>Logic alone doesn't move people.</span>
+        </p>
+        <p class="value-body">
+          <span data-ja>推進担当の孤独も、現場の戸惑いも、経営層の懐疑も、誰一人置いていかない伴走を誠実さの基準にする。</span>
+          <span data-en>The loneliness of the DX lead, the confusion on the ground floor, the skepticism in the boardroom — leaving no one behind in the journey is the standard of integrity.</span>
+        </p>
       </div>
       <div class="value-card">
         <div class="value-idx">03</div>
         <div class="value-name">Beyond</div>
-        <p class="value-tagline">価値は、その先まで届けるためにある。</p>
-        <p class="value-body">Nalvaの仕事は、一つの組織の中だけで完結しない。価値は、その先まで届いてこそ意味がある。</p>
+        <p class="value-tagline">
+          <span data-ja>価値は、その先まで届けるためにある。</span>
+          <span data-en>Value exists to reach beyond its origin.</span>
+        </p>
+        <p class="value-body">
+          <span data-ja>Nalvaの仕事は、一つの組織の中だけで完結しない。価値は、その先まで届いてこそ意味がある。</span>
+          <span data-en>Nalva's work doesn't complete within a single organization. Value only has meaning when it reaches further.</span>
+        </p>
       </div>
     </div>
   </div>
@@ -98,46 +334,76 @@
 
 <!-- CONTACT -->
 <section class="contact-section" id="contact">
-  <div class="wrap">
-    <div class="contact-inner reveal">
-      <span class="label-line label">Contact</span>
-      <h2>まずは30分、<br>「うちの場合」を<br>一緒に考えませんか。</h2>
-      <p class="contact-note">
-        <strong>売り込みはしません。まずは状況整理から。</strong><br>
-        どのコースが合っているか、費用対効果はどのくらいか。すべて無料でお話しします。
-      </p>
-      <div class="contact-steps">
-        <div class="contact-step"><div class="step-n">1</div><div class="step-text">無料30分ヒアリング申込</div></div>
-        <div class="contact-step"><div class="step-n">2</div><div class="step-text">課題とコースを整理</div></div>
-        <div class="contact-step"><div class="step-n">3</div><div class="step-text">ROI試算・提案書（1週間以内）</div></div>
+  <div class="contact-inner">
+    <div class="contact-left">
+      <div class="label gold">
+        <span data-en>Start Here</span>
+        <span data-ja>ここから始める</span>
       </div>
-      <a href="mailto:support@nalva.net" class="contact-cta">CONTACT — support@nalva.net</a>
-      <div class="contact-links">
-        <a href="https://nalva.net">nalva.net</a>
-        <a href="https://linkedin.com/in/aki-takano" target="_blank" rel="noopener">LinkedIn</a>
+      <h2>
+        <span data-ja>まずは30分、「うちの場合」を一緒に考えませんか。</span>
+        <span data-en>Let's spend 30 minutes thinking through your specific situation.</span>
+      </h2>
+      <div class="contact-divider"></div>
+      <p>
+        <span data-ja>売り込みはしません。まずは状況整理から。どのコースが合っているか、費用対効果はどのくらいか。無料30分コールですべてお話しします。1週間以内に提案書を提出いたします。</span>
+        <span data-en>No sales pitch — just clarifying the situation. Which program fits, what the ROI might look like. A free 30-minute call to map the gap, followed by a scoped proposal within one week.</span>
+      </p>
+      <a href="https://calendly.com/atakano-nalva/30min" target="_blank" rel="noopener" class="contact-cta">
+        <span data-en>Book Free Discovery Call →</span>
+        <span data-ja>無料ディスカバリーコールを予約 →</span>
+      </a>
+      <div class="contact-email" id="contactEmail"></div>
+      <div class="contact-alt-link">
+        <span data-en>Learn more about our services <a href="service.html">→ Service</a></span>
+        <span data-ja>サービス詳細はこちら <a href="service.html">→ Service</a></span>
+      </div>
+    </div>
+
+    <div class="contact-right">
+      <div class="contact-step">
+        <div class="contact-step-n">01</div>
+        <div>
+          <h4 data-en>Free 30-min discovery call</h4>
+          <h4 data-ja>無料30分ディスカバリーコール</h4>
+          <p data-en>Map your specific situation — which program fits, what kind of change is realistic.</p>
+          <p data-ja>御社固有の状況をマッピング。どのコースが合っているか、どんな変化が現実的か。</p>
+        </div>
+      </div>
+      <div class="contact-step">
+        <div class="contact-step-n">02</div>
+        <div>
+          <h4 data-en>Scoped proposal — within one week</h4>
+          <h4 data-ja>提案書提出：1週間以内</h4>
+          <p data-en>ROI estimate + recommended engagement design. No standard packages.</p>
+          <p data-ja>ROI試算＋推奨エンゲージメント設計。標準パッケージはありません。</p>
+        </div>
+      </div>
+      <div class="contact-step">
+        <div class="contact-step-n">03</div>
+        <div>
+          <h4 data-en>Program begins — monthly cycle</h4>
+          <h4 data-ja>プログラム開始：月次サイクル</h4>
+          <p data-en>Design → Implement → Reflect → Report. Calibrated each cycle to your org's reality.</p>
+          <p data-ja>設計→実装→振り返り→報告。毎月、組織の実態に合わせてキャリブレーションします。</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <img src="assets/logo.svg" alt="Nalva" />
-    <p>&copy; 2026 Nalva Inc.</p>
-  </div>
-</footer>
+<footer></footer>
 
+<script src="js/shared.js"></script>
 <script>
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
-  }, { passive: true });
-
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: 0.07, rootMargin: '0px 0px -36px 0px' });
-  document.querySelectorAll('.reveal, .stagger').forEach(el => io.observe(el));
+  // Nav scroll
+  (function () {
+    var nav = document.getElementById('nav');
+    window.addEventListener('scroll', function () {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+  })();
 </script>
 </body>
 </html>

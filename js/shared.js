@@ -59,6 +59,16 @@
   var defaultLang = document.documentElement.getAttribute('data-lang') || 'ja';
   setLang(savedLang || defaultLang);
 
+  // ── EMAIL OBFUSCATION BYPASS ──
+  var emailEl = document.getElementById('contactEmail');
+  if (emailEl) {
+    var u = 'support', d = 'nalva.net', addr = u + '@' + d;
+    var a = document.createElement('a');
+    a.href = 'mai' + 'lto:' + addr;
+    a.textContent = addr;
+    emailEl.appendChild(a);
+  }
+
   // ── SCROLL REVEAL ──
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
