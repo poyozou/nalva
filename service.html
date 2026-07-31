@@ -486,37 +486,66 @@
       </h2>
       <div class="contact-divider"></div>
       <p>
-        <span data-ja>御社のAI導入がどこで止まっているか。対話を通じて整理します。無料30分コールでギャップをマッピングし、1週間以内に提案書を提出いたします。</span>
-        <span data-en>Where is your AI adoption stalling? We clarify through dialogue. A free 30-minute call to map the gap — followed by a scoped proposal within one&nbsp;week.</span>
+        <span data-ja>御社のAI導入がどこで止まっているか。対話を通じて整理します。フォームからご相談内容をお送りください。2営業日以内にご連絡し、まずは一度お話しした上で、必要であれば提案書を作成いたします。</span>
+        <span data-en>Where is your AI adoption stalling? We clarify through dialogue. Share your situation through the form below. We'll follow up within 2 business days to talk it through first, and put together a proposal if it makes&nbsp;sense.</span>
       </p>
-      <a href="https://calendly.com/atakano-nalva/30min" target="_blank" rel="noopener" class="contact-cta">
-        <span data-en>Book Free Discovery Call →</span>
-        <span data-ja>無料ディスカバリーコールを予約 →</span>
-      </a>
-      <div class="contact-email" id="contactEmail"></div>
+      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html" class="contact-form">
+        <input type="hidden" name="form-name" value="contact" />
+        <p class="form-hp" aria-hidden="true">
+          <label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+        </p>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cf-name"><span data-ja>お名前</span><span data-en>Name</span> <span class="req">*</span></label>
+            <input type="text" id="cf-name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="cf-company"><span data-ja>会社名</span><span data-en>Company</span></label>
+            <input type="text" id="cf-company" name="company">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="cf-email"><span data-ja>メールアドレス</span><span data-en>Email</span> <span class="req">*</span></label>
+          <input type="email" id="cf-email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="cf-message"><span data-ja>ご相談内容</span><span data-en>What's on your mind</span> <span class="req">*</span></label>
+          <textarea id="cf-message" name="message" rows="5" required></textarea>
+        </div>
+
+        <button type="submit" class="contact-cta contact-submit">
+          <span data-ja>相談内容を送る →</span>
+          <span data-en>Send Your Inquiry →</span>
+        </button>
+      </form>
+
       <div class="contact-alt-link">
-        <span data-en>Looking for global subsidiary advisory? <a href="service2.html">→ Japan Market Entry & Org Design</a></span>
-        <span data-ja>グローバル子会社向けアドバイザリーをお探しですか？ <a href="service2.html">→ Japan Market Entry & Org Design</a></span>
+        <span data-ja>今すぐお話ししたい方は <a href="https://calendly.com/atakano-nalva/30min" target="_blank" rel="noopener">無料ディスカバリーコールを予約 →</a></span>
+        <span data-en>Prefer to talk now? <a href="https://calendly.com/atakano-nalva/30min" target="_blank" rel="noopener">Book Free Discovery Call →</a></span>
       </div>
+      <div class="contact-email" id="contactEmail"></div>
     </div>
 
     <div class="contact-right">
       <div class="contact-step">
         <div class="contact-step-n">01</div>
         <div>
-          <h4 data-en>Free 30-min discovery call</h4>
-          <h4 data-ja>無料30分ディスカバリーコール</h4>
-          <p data-en>Map your current AI adoption structure — where it's stalling and what the real blockers are.</p>
-          <p data-ja>現在のAI導入構造をマッピング。どこで止まっているか、本当のブロッカーは何か。</p>
+          <h4 data-en>Tell us your situation</h4>
+          <h4 data-ja>ご相談内容の送信</h4>
+          <p data-en>Share your challenge through the form. We'll follow up within 2 business days to schedule a free call.</p>
+          <p data-ja>フォームから今の課題やお悩みをお送りください。2営業日以内にご連絡し、無料コールの日程を調整します。</p>
         </div>
       </div>
       <div class="contact-step">
         <div class="contact-step-n">02</div>
         <div>
-          <h4 data-en>Scoped proposal — within one week</h4>
-          <h4 data-ja>提案書提出：1週間以内</h4>
-          <p data-en>Recommended course + engagement design. No standard packages.</p>
-          <p data-ja>推奨コース＋エンゲージメント設計。標準パッケージはありません。</p>
+          <h4 data-en>Free 30-min call — let's talk it through</h4>
+          <h4 data-ja>無料30分コール：まずはお話しします</h4>
+          <p data-en>We'll hear your situation and put together a recommended course + engagement design if it makes sense. No standard packages.</p>
+          <p data-ja>状況を伺い、必要であれば推奨コース＋エンゲージメント設計をご提案します。標準パッケージはありません。</p>
         </div>
       </div>
       <div class="contact-step">
