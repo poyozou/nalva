@@ -1,250 +1,214 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>お問い合わせありがとうございます | NALVA</title>
-    
-    <!-- ファビコン -->
-    <link rel="icon" type="image/x-icon" href="./favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            color: #1a1a1a;
-            background: linear-gradient(135deg, #fefefe 0%, #f8f6f3 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .thank-you-container {
-            max-width: 600px;
-            padding: 60px 40px;
-            text-align: center;
-            background: white;
-            border-radius: 24px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-            margin: 40px;
-        }
-        
-        .success-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #22c55e, #16a34a);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 32px;
-            box-shadow: 0 8px 32px rgba(34, 197, 94, 0.3);
-        }
-        
-        .success-icon svg {
-            fill: white;
-        }
-        
-        h1 {
-            font-size: 36px;
-            font-weight: 600;
-            color: #1a1a1a;
-            margin-bottom: 24px;
-            letter-spacing: -0.01em;
-        }
-        
-        .subtitle {
-            font-size: 18px;
-            color: #666;
-            margin-bottom: 32px;
-            line-height: 1.6;
-        }
-        
-        .info-box {
-            background: #f8f6f3;
-            padding: 24px;
-            border-radius: 16px;
-            margin: 32px 0;
-            border-left: 4px solid #e6745c;
-        }
-        
-        .info-box h3 {
-            color: #e6745c;
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        
-        .info-box p {
-            color: #666;
-            font-size: 15px;
-            line-height: 1.6;
-        }
-        
-        .buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
-        
-        .btn-primary {
-            background: #e6745c;
-            color: white;
-            padding: 16px 32px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn-primary:hover {
-            background: #d86348;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(230, 116, 92, 0.3);
-        }
-        
-        .btn-secondary {
-            color: #666;
-            padding: 16px 32px;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 400;
-            transition: all 0.2s ease;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 12px;
-            background: white;
-        }
-        
-        .btn-secondary:hover {
-            color: #1a1a1a;
-            border-color: #e6745c;
-            background: rgba(230, 116, 92, 0.05);
-        }
-        
-        .contact-info {
-            margin-top: 40px;
-            padding-top: 32px;
-            border-top: 1px solid #f0f0f0;
-        }
-        
-        .contact-info h4 {
-            color: #1a1a1a;
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
-        
-        .contact-info p {
-            color: #666;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-        
-        .contact-info a {
-            color: #e6745c;
-            text-decoration: none;
-        }
-        
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-        
-        @media (max-width: 768px) {
-            .thank-you-container {
-                margin: 20px;
-                padding: 40px 24px;
-            }
-            
-            h1 {
-                font-size: 28px;
-            }
-            
-            .buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn-primary,
-            .btn-secondary {
-                width: 100%;
-                max-width: 300px;
-                text-align: center;
-            }
-        }
-        
-        /* アニメーション */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .thank-you-container {
-            animation: fadeInUp 0.8s ease;
-        }
-        
-        .success-icon {
-            animation: fadeInUp 0.8s ease 0.2s both;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お問い合わせありがとうございます | NALVA</title>
+
+  <!-- ファビコン -->
+  <link rel="icon" type="image/x-icon" href="./favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Serif+Display&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:           #F7F5F0;
+      --bg-white:     #FFFFFF;
+      --bg-ink:       #1C1A16;
+      --rule:         #D8D4CC;
+      --gold:         #A08840;
+      --gold-lite:    #C4A85A;
+      --gold-bg:      #FAF6EC;
+      --ink:          #1C1A16;
+      --ink-mid:      #4A4640;
+      --ink-low:      #7A7570;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans:  'Noto Sans JP', sans-serif;
+      --mono:  'DM Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+    }
+
+    .ty-wrap { max-width: 620px; width: 100%; }
+
+    .ty-logo { display: block; text-align: center; margin-bottom: 2.5rem; }
+    .ty-logo img { height: 24px; opacity: 0.75; }
+
+    .ty-card {
+      background: var(--bg-white);
+      border: 1px solid var(--rule);
+      padding: 3.5rem 3rem;
+      text-align: center;
+      animation: fadeInUp 0.6s ease;
+    }
+    @media (max-width: 640px) { .ty-card { padding: 2.75rem 1.75rem; } }
+
+    .ty-icon {
+      width: 56px; height: 56px;
+      border: 1px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.8rem;
+    }
+    .ty-icon svg { width: 22px; height: 22px; }
+    .ty-icon svg path { fill: none; stroke: var(--gold); stroke-width: 2; stroke-linecap: square; }
+
+    .label {
+      font-family: var(--mono);
+      font-size: 0.60rem;
+      letter-spacing: 0.20em;
+      color: var(--gold);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(1.6rem, 4vw, 2.1rem);
+      line-height: 1.35;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+    }
+
+    .ty-divider { width: 40px; height: 2px; background: var(--gold-lite); margin: 1.6rem auto; }
+
+    .ty-subtitle {
+      font-size: 0.98rem;
+      color: var(--ink-mid);
+      line-height: 1.9;
+      max-width: 420px;
+      margin-inline: auto;
+    }
+
+    .ty-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      margin-top: 2.8rem;
+      padding-top: 2.4rem;
+      border-top: 1px solid var(--rule);
+      text-align: left;
+    }
+    @media (max-width: 560px) { .ty-steps { grid-template-columns: 1fr; } }
+
+    .ty-step-n {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      border: 1px solid var(--rule);
+      width: 30px; height: 30px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 0.7rem;
+    }
+    .ty-step p { font-size: 0.84rem; color: var(--ink-mid); line-height: 1.65; }
+
+    .ty-buttons {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+      margin-top: 2.8rem;
+    }
+
+    .ty-btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--gold); color: var(--bg-white);
+      font-family: var(--mono);
+      font-size: 0.60rem; letter-spacing: 0.16em; text-transform: uppercase;
+      padding: 1rem 1.9rem;
+      text-decoration: none; border: none; transition: background 0.2s;
+    }
+    .ty-btn-primary:hover { background: var(--gold-lite); }
+
+    .ty-btn-secondary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: transparent; color: var(--ink-mid);
+      font-family: var(--mono);
+      font-size: 0.60rem; letter-spacing: 0.16em; text-transform: uppercase;
+      padding: 1rem 1.9rem;
+      text-decoration: none; border: 1px solid var(--rule); transition: border-color 0.2s, color 0.2s;
+    }
+    .ty-btn-secondary:hover { border-color: var(--gold); color: var(--ink); }
+
+    .ty-urgent {
+      margin-top: 2.8rem; padding-top: 1.8rem;
+      border-top: 1px solid var(--rule);
+    }
+    .ty-urgent h4 {
+      font-family: var(--mono);
+      font-size: 0.60rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink-low); margin-bottom: 0.7rem;
+    }
+    .ty-urgent p { font-size: 0.84rem; color: var(--ink-mid); line-height: 1.8; }
+    .ty-urgent a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(160,136,64,0.3); padding-bottom: 1px; }
+    .ty-urgent a:hover { color: var(--gold-lite); }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: none; }
+    }
+  </style>
 </head>
 <body>
-    <div class="thank-you-container">
-        <div class="success-icon">
-            <svg width="40" height="40" viewBox="0 0 24 24">
-                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-            </svg>
+  <div class="ty-wrap">
+    <a href="/" class="ty-logo"><img src="transparent-logo-blk.png" alt="Nalva"></a>
+
+    <div class="ty-card">
+      <div class="ty-icon">
+        <svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6"/></svg>
+      </div>
+      <span class="label">Submitted</span>
+      <h1>お問い合わせありがとうございます</h1>
+      <div class="ty-divider"></div>
+      <p class="ty-subtitle">
+        お送りいただいたご相談内容を確認のうえ、<br>
+        担当者より2営業日以内にご連絡いたします。
+      </p>
+
+      <div class="ty-steps">
+        <div class="ty-step">
+          <div class="ty-step-n">01</div>
+          <p>ご入力いただいた内容を確認</p>
         </div>
-        
-        <h1>お問い合わせありがとうございます</h1>
-        <p class="subtitle">
-            お送りいただいたご相談内容を確認させていただき、<br>
-            担当者より2営業日以内にご連絡いたします。
+        <div class="ty-step">
+          <div class="ty-step-n">02</div>
+          <p>2営業日以内にご連絡</p>
+        </div>
+        <div class="ty-step">
+          <div class="ty-step-n">03</div>
+          <p>まずは無料30分コールでお話し</p>
+        </div>
+      </div>
+
+      <div class="ty-buttons">
+        <a href="/" class="ty-btn-primary">ホームに戻る →</a>
+        <a href="/service.html" class="ty-btn-secondary">サービス詳細を見る</a>
+      </div>
+
+      <div class="ty-urgent">
+        <h4>お急ぎの場合</h4>
+        <p>
+          緊急のご相談がございましたら、直接メールでお問い合わせください：<br>
+          <a href="mailto:support@nalva.net">support@nalva.net</a>
         </p>
-        
-        <div class="info-box">
-            <h3>📧 次のステップ</h3>
-            <p>
-                ・ご入力いただいた内容を確認<br>
-                ・最適なソリューションをご提案<br>
-                ・無料相談セッションのご案内
-            </p>
-        </div>
-        
-        <div class="buttons">
-            <a href="https://nalva.net/" class="btn-primary">ホームに戻る</a>
-            <a href="https://nalva.net/#services" class="btn-secondary">サービス詳細を見る</a>
-        </div>
-        
-        <div class="contact-info">
-            <h4>お急ぎの場合</h4>
-            <p>
-                緊急のご相談がございましたら、直接メールでお問い合わせください：<br>
-                <a href="mailto:support@nalva.net">support@nalva.net</a>
-            </p>
-        </div>
+      </div>
     </div>
+  </div>
 </body>
 </html>
